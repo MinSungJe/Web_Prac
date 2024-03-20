@@ -13,11 +13,22 @@ function App() {
   return (
     <div className="App">
       <div className="black-nav">
-        <h4 style={{color: 'red', fontSize: '16px'}}>React 쓰는 민성제</h4>
+        <h4 style={{ color: 'red', fontSize: '16px' }}>React 쓰는 민성제</h4>
       </div>
+
+      <button onClick={() => {
+        let copy = [...title];
+        copy.sort();
+        setTitle(copy);
+      }}>가나다순정렬</button>
+
       <div className="list">
-        <h4>{title[0]} <span onClick={()=>{setLike(like+1)}}>🥰</span> {like} </h4>
-        <p>3월 19일 발행</p> <button onClick={()=>{setTitle(['에비동 맛집 추천', '국밥 맛집 추천', '제육볶음 맛집 추천'])}}>다음</button>
+        <h4>{title[0]} <span onClick={() => { setLike(like + 1) }}>🥰</span> {like} </h4>
+        <p>3월 19일 발행</p> <button onClick={() => {
+          let copy = [...title];
+          copy[0] = '에비동 맛집 추천';
+          setTitle(copy);
+        }}>글수정</button>
       </div>
       <div className="list">
         <h4>{title[1]}</h4>
@@ -27,6 +38,19 @@ function App() {
         <h4>{title[2]}</h4>
         <p>3월 21일 발행</p>
       </div>
+
+      <Modal></Modal>
+
+    </div>
+  );
+}
+
+function Modal() {
+  return (
+    <div className="modal">
+      <h4>제목</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
     </div>
   );
 }
