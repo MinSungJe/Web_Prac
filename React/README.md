@@ -1,5 +1,5 @@
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-# 📝 REACT 연습장
+# 📝 React 연습장
 ## 🗒️Last Update : 2024-03-20
 <details>
 <summary><b>🤔 State 왜 씀?</b></summary>
