@@ -8,7 +8,8 @@ function App() {
 
   let post = '민성제식 혼밥 맛집';
   let [title, setTitle] = useState(['가츠동 맛집 추천', '국밥 맛집 추천', '제육볶음 맛집 추천']);
-  let [like, setLike] = useState(0);
+  let [like, setLike] = useState([0, 0, 0]);
+  let [modal, setModal] = useState(false);
 
   return (
     <div className="App">
@@ -22,7 +23,7 @@ function App() {
         setTitle(copy);
       }}>가나다순정렬</button>
 
-      <div className="list">
+      {/* <div className="list">
         <h4>{title[0]} <span onClick={() => { setLike(like + 1) }}>🥰</span> {like} </h4>
         <p>3월 19일 발행</p> <button onClick={() => {
           let copy = [...title];
@@ -35,11 +36,29 @@ function App() {
         <p>3월 20일 발행</p>
       </div>
       <div className="list">
-        <h4>{title[2]}</h4>
+        <h4 onClick={() => { setModal(!modal) }}>{title[2]}</h4>
         <p>3월 21일 발행</p>
-      </div>
+      </div> */}
 
-      <Modal></Modal>
+      {
+        title.map(function (a, i) {
+          return (
+            <div className="list" key={i}>
+              <h4 onClick={()=>{setModal(!modal)}}>{title[i]}</h4>
+              <span onClick={()=>{
+                let copy = [...like];
+                copy[i] = copy[i]+1
+                setLike(copy)
+              }}>🥰</span> {like[i]}
+              <p>3월 20일 발행</p>
+            </div>
+          )
+        })
+      }
+
+      {
+        modal == true ? <Modal /> : null
+      }
 
     </div>
   );
