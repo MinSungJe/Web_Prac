@@ -16,9 +16,30 @@
     <div class="black-bg">
         <div class="white-bg">
             <h4>로그인하세요</h4>
-            <button class="btn btn-danger" id="btn-close">닫기</button>
+            <form action="success.html">
+                <div class="my-3">
+                    <input type="text" class="form-control" id="id">
+                </div>
+                <div class="my-3">
+                    <input type="password" class="form-control" id="pw">
+                </div>
+                <button id="submit" type="submit" class="btn btn-primary">전송</button>
+                <button type="button" class="btn btn-danger" id="btn-close">닫기</button>
+            </form>
         </div>
     </div>
+
+    <script>
+        $('form').on('submit', (e)=>{
+            if ($('#id').val() == '' || $('#pw').val() == '') {
+                alert('입력하지 않은 값이 있습니다.');
+                e.preventDefault();
+            } else if ($('#pw').val().length < 6) {
+                alert('비밀번호가 너무 짧습니다(최소 6자).');
+                e.preventDefault();
+            }
+        });
+    </script>
 
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
@@ -38,15 +59,19 @@
         <li class="list-group-item">And a fifth one</li>
     </ul>
 
-    <button id="btn-login">로그인</button>
+    <div class="main-bg">
+        <h4>Shirts on Sale</h4>
+        <button id="btn-login" class="btn btn-danger">로그인</button>
+    </div>
+
 
 
     <script>
-        $('#btn-login').on('click', ()=>{
+        $('#btn-login').on('click', () => {
             $('.black-bg').addClass("show-modal");
         })
 
-        $('#btn-close').on('click', ()=>{
+        $('#btn-close').on('click', () => {
             $('.black-bg').removeClass("show-modal");
         })
 
