@@ -11,6 +11,7 @@ function App() {
   let [like, setLike] = useState([0, 0, 0]);
   let [modal, setModal] = useState(false);
   let [idx, setIdx] = useState(0);
+  let [inputValue, setInputValue] = useState('');
 
   return (
     <div className="App">
@@ -45,23 +46,46 @@ function App() {
         title.map(function (a, i) {
           return (
             <div className="list" key={i}>
-              <h4 onClick={()=>{
+              <h4 onClick={() => {
                 setModal(!modal);
                 setIdx(i);
-                }}>{title[i]}</h4>
-              <span onClick={()=>{
-                let copy = [...like];
-                copy[i] = copy[i]+1
-                setLike(copy)
-              }}>🥰</span> {like[i]}
+              }}>{title[i]}
+                <span onClick={(e) => {
+                  e.stopPropagation();
+                  let copy = [...like];
+                  copy[i] = copy[i] + 1
+                  setLike(copy)
+                }}>🥰</span> {like[i]}</h4>
               <p>3월 20일 발행</p>
+              <button onClick={() => {
+                let copy = [...title];
+                let likeCopy = [...like];
+                copy.splice(i, 1);
+                likeCopy.splice(i, 1);
+                setTitle(copy);
+                setLike(likeCopy);
+              }}>삭제</button>
             </div>
           )
         })
       }
 
+      <input onChange={(e) => {
+        setInputValue(e.target.value);
+      }}></input>
+      <button onClick={() => {
+        if (inputValue == '')
+          return;
+        let copy = [...title];
+        let likeCopy = [...like];
+        copy.unshift(inputValue);
+        likeCopy.unshift(0);
+        setTitle(copy);
+        setLike(likeCopy);
+      }}>글발행</button>
+
       {
-        modal == true ? <Modal title={title} idx={idx}/> : null
+        modal == true ? <Modal title={title} idx={idx} /> : null
       }
 
     </div>

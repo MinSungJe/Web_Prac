@@ -30,6 +30,25 @@
     </div>
 
     <script>
+        function 삼육구게임(number) {
+            if ((number % 10) % 3 == 0)
+                console.log('박수')
+            else
+                console.log('통과')
+        }
+
+        function 합격했냐(score1, score2) {
+            if (score1 < 0 || score1 > 100 || score2 < 0 || score2 > 100) {
+                alert('장난치지마셈')
+                return
+            }
+            if ((score1 < 40 || score2 < 40) || score1+score2 < 120)
+                console.log('불합격');
+            else
+                console.log('합격')
+        }
+
+
         $('form').on('submit', (e)=>{
             if ($('#id').val() == '' || $('#pw').val() == '') {
                 alert('입력하지 않은 값이 있습니다.');
