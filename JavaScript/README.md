@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-03-21
+## 🗒️Last Update : 2024-03-25
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -75,3 +75,17 @@ ex) addEventListner() -> on() ...
     4. 시작스타일에 transition 추가
 </details>
 
+<details>
+<summary><b>🤔 var, let, const의 차이</b></summary>
+
+- var
+    - 재선언, 재할당 가능
+    - 범위: function
+- let
+    - 재선언 불가
+    - 범위: {}
+- const
+    - 재선언 불가
+    - 재할당 불가
+    - 범위: {}
+</details>

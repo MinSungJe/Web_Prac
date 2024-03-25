@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-03-23
+## 🗒️Last Update : 2024-03-25
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -56,4 +56,32 @@
     2. 자식컴포넌트 만드는 function으로 가서 props라는 파라미터 등록 후 props.작명 사용
 - 무조건 부모 -> 자식으로만 전달 가능. 자식 -> 부모 / 자식 -> 자식 전달 불가능
 - ❗<b>꼭 state만 전송할 수 있는 건 아님.</b> 일반 변수, 함수, 일반 문자전송 다 가능
+</details>
+
+<details>
+<summary><b>🤔 Component 문법 옛날버전 : class</b></summary>
+
+- 컴포넌트 만드는 옛날 문법으로 class가 있음
+- 예시
+```javascript
+class Modal2 extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      name : 'kim',
+      age : 20
+    }
+  }
+  render() {
+    return (
+      <div>안녕 {this.state.name} {this.state.age}
+        <button onClick={()=>{
+          this.setState({age : 21})
+        }}>버튼</button>
+      </div>
+    )
+  }
+}
+```
+- 복잡하니까 그냥 function 쓰자
 </details>
