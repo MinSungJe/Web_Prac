@@ -23,6 +23,18 @@
     - 코드가 지저분한 점을 해결 가능
     - 한번 작성한 컴포넌트를 쉽게 반복 가능
 - js에서 function 정의하듯이 Component를 생성하면 됨
+```javascript
+function Modal(props) {
+  return (
+    <div className="modal">
+      <h4>{props.title[props.idx]}</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+      <button>글수정</button>
+    </div>
+  );
+}
+```
 </details>
 
 <details>
