@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-03-25
+## 🗒️Last Update : 2024-03-26
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -84,4 +84,11 @@ class Modal2 extends React.Component {
 }
 ```
 - 복잡하니까 그냥 function 쓰자
+</details>
+
+<details>
+<summary><b>🤔 난 Bootstrap을 React에도 쓰고 싶어</b></summary>
+
+- Bootstrap의 React 버전이 따로 있음
+- Component들을 불러올 때 위에 import {} 문 작성해야 됨
 </details>
