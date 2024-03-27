@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-03-25
+## 🗒️Last Update : 2024-03-27
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -88,4 +88,12 @@ ex) addEventListner() -> on() ...
     - 재선언 불가
     - 재할당 불가
     - 범위: {}
+</details>
+
+<details>
+<summary><b>🤔 일정 시간이 지나면 코드를 실행시키고 싶어</b></summary>
+
+- <code>setTimeout(콜백함수, 시간(ms))</code> : 시간 뒤에 콜백함수 실행
+- <code>setInterval(콜백함수, 시간(ms))</code> : 시간마다 콜백함수 실행
+- 콜백함수 : 함수의 파라미터 자리에 들어가는 함수, ()=>{} 함수 혹은 함수명이 들어갈 수 있음
 </details>

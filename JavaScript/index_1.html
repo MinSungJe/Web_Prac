@@ -120,8 +120,6 @@
         <button id="btn-login" class="btn btn-danger">로그인</button>
     </div>
 
-
-
     <script>
         $('#btn-login').on('click', () => {
             $('.black-bg').addClass("show-modal");
@@ -136,6 +134,28 @@
             document.querySelector(".list-group").classList.toggle("show");
         })
     </script>
+
+
+    <div class="alert alert-danger">
+        <span id="num">5</span>초 이내 구매시 더 싸게 드려요!
+    </div>
+
+    <script>
+        var Time = 5;
+
+        setInterval(() => {
+            if (Time > 0) {
+                Time -= 1
+                $('#num').html(Time);
+            } else {
+                $('.alert').hide()
+            }
+        }, 1000);
+
+    </script>
+
+
+    
 
 
 

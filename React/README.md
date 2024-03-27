@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-03-26
+## 🗒️Last Update : 2024-03-27
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -103,4 +103,31 @@ class Modal2 extends React.Component {
 
 - Bootstrap의 React 버전이 따로 있음
 - Component들을 불러올 때 위에 import {} 문 작성해야 됨
+</details>
+
+<details>
+<summary><b>🤔 이미지를 넣는 여러가지 방법</b></summary>
+
+- React를 이용해 만든 앱에서 이미지를 넣는 방법은 여러 가지 있음
+  1. CSS파일에서 넣기 : <code>url('./이미지경로');</code>
+  2. HTML 안에서 이미지 넣기 : 이미지를 import 해오고 사용  
+  <code>import 작명 from './이미지경로'</code>
+  &lt;img&gt;태그 쓰고싶으면 <code>&lt;img src={작명}/&gt;</code>
+  3. 이미지같은 static 파일의 경우 public 폴더에 보관해도 됨  
+  해당 경우에는 <code>/이미지경로</code> 사용
+</details>
+
+<details>
+<summary><b>🤔 public 폴더는 뭔가요?</b></summary>
+
+- 리액트로 개발이 끝나면 build과정을 거치는데, 이때 src 안의 파일들은 전부 한 파일로 압축됨(bundling)
+- 반면, public 폴더의 파일들은 그대로 보존함 -> static 파일 보관 가능
+- 쉬운 접근 방법:
+  ```html
+  <img src='/이미지경로'/> 
+  ```
+- 권장 접근 방법:
+  ```html
+  <img src={process.env.PUBLIC_URL + '/이미지경로'} /> 
+  ```
 </details>
