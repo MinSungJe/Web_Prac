@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-03-27
+## 🗒️Last Update : 2024-03-28
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -96,4 +96,14 @@ ex) addEventListner() -> on() ...
 - <code>setTimeout(콜백함수, 시간(ms))</code> : 시간 뒤에 콜백함수 실행
 - <code>setInterval(콜백함수, 시간(ms))</code> : 시간마다 콜백함수 실행
 - 콜백함수 : 함수의 파라미터 자리에 들어가는 함수, ()=>{} 함수 혹은 함수명이 들어갈 수 있음
+</details>
+
+<details>
+<summary><b>🤔 제출된 값 안에 특정값이 있는지 확인해보고싶어요</b></summary>
+
+- ❗<b>정규식을 사용해보자</b>
+- 사용법 : 아래와 같이 입력하면 boolean값이 튀어나옴
+    ```javascript
+    /정규식/.test('확인할거')
+    ```
 </details>

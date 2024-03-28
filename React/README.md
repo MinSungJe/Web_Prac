@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-03-27
+## 🗒️Last Update : 2024-03-28
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -130,4 +130,13 @@ class Modal2 extends React.Component {
   ```html
   <img src={process.env.PUBLIC_URL + '/이미지경로'} /> 
   ```
+</details>
+
+<details>
+<summary><b>🤔 코드가 너무 길어서 따로 빼고 싶은데요</b></summary>
+
+- ❗<b>import, export문 사용하면 됨!</b>
+- 다른 js파일에 있는 변수나 함수를 가져와서 쓰고 싶다면
+  1. 변수가 있는 js파일에서 <code>export default 변수명;</code> / <code>export {변수1, 변수2}</code>
+  2. 그 변수를 가져올 js파일에서 <code>import 작명 from './파일경로'</code> / <code>import {변수1, 변수2} from './파일경로'</code>
 </details>

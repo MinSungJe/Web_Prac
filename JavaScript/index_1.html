@@ -72,12 +72,20 @@
 
 
         $('form').on('submit', (e)=>{
-            if ($('#id').val() == '' || $('#pw').val() == '') {
+            var idValue = $('#id').val()
+            var pwValue = $('#pw').val()
+            if (idValue == '' || pwValue == '') {
                 alert('입력하지 않은 값이 있습니다.');
+                e.preventDefault();
+            } else if (!/\S+@\S+\.\S+/.test(idValue)) {
+                alert('id가 이메일 형식이 아닙니다!');
                 e.preventDefault();
             } else if ($('#pw').val().length < 6) {
                 alert('비밀번호가 너무 짧습니다(최소 6자).');
                 e.preventDefault();
+            }
+            if (!/[A-Z]/.test(pwValue)) {
+                alert('비번에 영어 대문자 없음')
             }
         });
     </script>
@@ -144,7 +152,7 @@
         var Time = 5;
 
         setInterval(() => {
-            if (Time > 0) {
+            if (Time > 1) {
                 Time -= 1
                 $('#num').html(Time);
             } else {

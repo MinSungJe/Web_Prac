@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import { Button, Navbar, Container, Nav } from 'react-bootstrap';
 import './App.css';
-import main_background from './images/bg.png';
 import shoes1 from './images/shoes1.jpg';
+import data from './data.js'
 
 function App() {
+
+  let [shoes] = useState(data)
+
   return (
     <div className="App">
       <Navbar bg="dark" data-bs-theme="dark">
@@ -20,31 +24,27 @@ function App() {
 
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <img src={shoes1} width="80%"/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-          <div className="col-md-4">
-            
-          <div className="col-md-4">
-            <img src="https://codingapple1.github.io/shop/shoes2.jpg" width="80%"/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-          </div>
-          <div className="col-md-4">
-            
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL+"/logo192.png"} width="80%"/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-          </div>
+          {
+            shoes.map((a, i) => {
+              return (
+                <Product key={i} data={a}></Product>
+              )
+            })
+          }
         </div>
       </div>
 
 
+    </div>
+  );
+}
+
+function Product(props) {
+  return (
+    <div className="col-md-4">
+      <img src={shoes1} width="80%" />
+      <h4>{props.data.title}</h4>
+      <p>{props.data.content}</p>
     </div>
   );
 }
