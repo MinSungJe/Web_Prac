@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-03-28
+## 🗒️Last Update : 2024-04-01
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -106,4 +106,13 @@ ex) addEventListner() -> on() ...
     ```javascript
     /정규식/.test('확인할거')
     ```
+</details>
+
+<details>
+<summary><b>🤔 캐러셀이 뭔데요</b></summary>
+
+- 버튼 누르면 옆으로 샥 넘어가는 UI
+- one-way UI 만들듯이 만들면 됨
+- 가로로 긴 이미지를 미리 만들어두고 옆으로 샥 움직여서 구현(style 중 transform 이용)
+- 움직일때에는 언제나 transition 스타일 추가해두자
 </details>

@@ -28,7 +28,7 @@
             </form>
         </div>
     </div>
-    
+
     <p>태조 이성계가 태어난 년도는?</p>
     <input type="text" id="answer">
     <button id="send-answer">제출</button>
@@ -46,19 +46,18 @@
                 alert('장난치지마셈')
                 return
             }
-            if ((score1 < 40 || score2 < 40) || score1+score2 < 120)
+            if ((score1 < 40 || score2 < 40) || score1 + score2 < 120)
                 console.log('불합격');
             else
                 console.log('합격')
         }
-        
+
         var count = 0;
 
-        $('#send-answer').on('click', ()=>{
+        $('#send-answer').on('click', () => {
             var answer = $('#answer').val();
             console.log(answer, count);
-            if (answer == 1335)
-            {
+            if (answer == 1335) {
                 alert('성공');
             } else {
                 count += 1;
@@ -71,7 +70,7 @@
 
 
 
-        $('form').on('submit', (e)=>{
+        $('form').on('submit', (e) => {
             var idValue = $('#id').val()
             var pwValue = $('#pw').val()
             if (idValue == '' || pwValue == '') {
@@ -103,15 +102,13 @@
     <script>
         var count = 0;
 
-        $('.badge').on('click', ()=>{
+        $('.badge').on('click', () => {
             count += 1;
             if (count % 2 != 0)
                 $('.badge').html('Light 🔄');
             else
                 $('.badge').html('Dark 🔄');
         });
-
-
     </script>
 
 
@@ -127,6 +124,45 @@
         <h4>Shirts on Sale</h4>
         <button id="btn-login" class="btn btn-danger">로그인</button>
     </div>
+
+    <div style="overflow: hidden;">
+        <div class="slide-container">
+            <div class="slide-box">
+                <img src="images/car1.png">
+            </div>
+            <div class="slide-box">
+                <img src="images/car2.png">
+            </div>
+            <div class="slide-box">
+                <img src="images/car3.png">
+            </div>
+        </div>
+    </div>
+
+    <button class="slide-prev">이전</button>
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+    <button class="slide-next">다음</button>
+
+    <script>
+        document.querySelector(".slide-prev").addEventListener('click', ()=>{
+            console.log('hey')
+        })
+
+        document.querySelector(".slide-1").addEventListener('click', ()=>{
+            document.querySelector(".slide-container").style.transform = 'translateX(0)'
+        })
+
+        $(".slide-2").on('click', ()=>{
+            $(".slide-container").css('transform', 'translateX(-100vw)');
+        })
+
+        $(".slide-3").on('click', ()=>{
+            $(".slide-container").css('transform', 'translateX(-200vw)');
+        })
+    </script>
+
 
     <script>
         $('#btn-login').on('click', () => {
@@ -163,7 +199,7 @@
     </script>
 
 
-    
+
 
 
 
