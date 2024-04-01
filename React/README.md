@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-03-28
+## 🗒️Last Update : 2024-04-01
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -139,4 +139,27 @@ class Modal2 extends React.Component {
 - 다른 js파일에 있는 변수나 함수를 가져와서 쓰고 싶다면
   1. 변수가 있는 js파일에서 <code>export default 변수명;</code> / <code>export {변수1, 변수2}</code>
   2. 그 변수를 가져올 js파일에서 <code>import 작명 from './파일경로'</code> / <code>import {변수1, 변수2} from './파일경로'</code>
+</details>
+
+<details>
+<summary><b>🤔 다른 페이지로 옮겨보자</b></summary>
+
+- 일반 html css js 사이트 : html 파일 여러 개 만들고 옮겨다님
+- 리액트 : html 파일을 하나만 사용함 (index.html)  
+  즉 html 파일 내부의 큰 div를 갈아 치우는 방식
+- ❗<b>이 과정을 편하게 하려고 보통 react-router-dom 이라는 외부 라이브러리 설치해서 구현함</b>
+- 
+  <details>
+  <summary><b>🤔 아래는 react-router-dom 사용법</b></summary>
+
+  - 설치 : <code>npm install react-router-dom@6</code>
+  - 사용하는 거 : <code>import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'</code>
+    |이름|사용법|
+    |---|---|
+    |BrowserRouter|기본 세팅(index.js)|
+    |Routes|큰 틀, 안에 Route를 담음|
+    |Route|페이지 하나를 담음, url경로랑 보여줄 컴포넌트를 인자로 받음|
+    |Link|클릭 시 다른 페이지랑 연결, 해당 페이지의 url경로를 인자로 받음|
+  - 라이브러리니까 자세한 사용법은 인터넷 살펴보자
+  </details>
 </details>

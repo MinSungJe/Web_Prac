@@ -1,13 +1,11 @@
 import { useState } from 'react';
-import { Button, Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import './App.css';
-import shoes1 from './images/shoes1.jpg';
-import data from './data.js'
+import { Routes, Route, Link } from 'react-router-dom'
+import Main from './pages/Main.js'
+import Detail from './pages/Detail.js'
 
 function App() {
-
-  let [shoes] = useState(data)
-
   return (
     <div className="App">
       <Navbar bg="dark" data-bs-theme="dark">
@@ -19,32 +17,14 @@ function App() {
           </Nav>
         </Container>
       </Navbar>
+      
+      <Link to="/">홈</Link>
+      <Link to="/detail">상세페이지</Link>
 
-      <div className='main-bg'></div>
-
-      <div className="container">
-        <div className="row">
-          {
-            shoes.map((a, i) => {
-              return (
-                <Product key={i} data={a}></Product>
-              )
-            })
-          }
-        </div>
-      </div>
-
-
-    </div>
-  );
-}
-
-function Product(props) {
-  return (
-    <div className="col-md-4">
-      <img src={shoes1} width="80%" />
-      <h4>{props.data.title}</h4>
-      <p>{props.data.content}</p>
+      <Routes>
+        <Route path='/' element={<Main/>} />
+        <Route path='/detail' element={<Detail/>} />
+      </Routes>
     </div>
   );
 }
