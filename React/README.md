@@ -160,6 +160,22 @@ class Modal2 extends React.Component {
     |Routes|큰 틀, 안에 Route를 담음|
     |Route|페이지 하나를 담음, url경로랑 보여줄 컴포넌트를 인자로 받음|
     |Link|클릭 시 다른 페이지랑 연결, 해당 페이지의 url경로를 인자로 받음|
+    |useNavigate|useNavigate() 사용 시 다른 페이지로 이동시키는 함수가 남음, 해당 페이지의 url경로나 숫자(앞으로가기)를 인자로 받음|
+    |Outlet|NestedRoute의 구멍 역할|
   - 라이브러리니까 자세한 사용법은 인터넷 살펴보자
   </details>
+</details>
+
+<details>
+<summary><b>🤔 404 페이지는 어떻게 만드나요?</b></summary>
+
+- Route의 path='*'로 받으면 이미 설정한 경로 이외의 다른 모든 경로를 지정함
+</details>
+
+<details>
+<summary><b>🤔 서브경로는 어떻게 만들죠?</b></summary>
+
+- Nested Routes를 이용한다.
+- 간단하게 Route안에 Route를 넣어서 구현하면 됨
+- 큰 Route의 Component 내에 Outlet(구멍)을 넣어놔서 작은 Component가 들어갈 자리를 만들어둘 수 있음
 </details>
