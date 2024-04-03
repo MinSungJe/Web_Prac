@@ -146,20 +146,36 @@
     <button class="slide-next">다음</button>
 
     <script>
+
+        var currentState = 1;
+
         document.querySelector(".slide-prev").addEventListener('click', ()=>{
-            console.log('hey')
+            if (currentState >= 2) {
+                currentState -= 1;
+                $(".slide-container").css('transform', 'translateX(-'+(currentState-1)+'00vw)');
+            }
         })
+
+        $(".slide-next").on('click', ()=>{
+            if (currentState <= 2) {
+                currentState += 1
+                $(".slide-container").css('transform', `translateX(-${currentState-1}00vw)`);
+            }
+        });
 
         document.querySelector(".slide-1").addEventListener('click', ()=>{
             document.querySelector(".slide-container").style.transform = 'translateX(0)'
+            currentState = 1;
         })
 
         $(".slide-2").on('click', ()=>{
             $(".slide-container").css('transform', 'translateX(-100vw)');
+            currentState = 2;
         })
 
         $(".slide-3").on('click', ()=>{
             $(".slide-container").css('transform', 'translateX(-200vw)');
+            currentState = 3;
         })
     </script>
 
