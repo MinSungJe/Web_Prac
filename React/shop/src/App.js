@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import data from './data.js'
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import './App.css';
 import { Routes, Route, Link, useNavigate} from 'react-router-dom'
@@ -8,6 +10,7 @@ import Event from './routes/Event.js'
 
 function App() {
   let navigate = useNavigate();
+  let [shoes] = useState(data)
 
   return (
     <div className="App">
@@ -16,14 +19,14 @@ function App() {
           <Navbar.Brand href="#home">민성제샵</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={()=>{navigate('/')}}>Home</Nav.Link>
-            <Nav.Link onClick={()=>{navigate('/detail')}}>Detail</Nav.Link>
+            <Nav.Link onClick={()=>{navigate('/detail/0')}}>Detail</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
 
       <Routes>
-        <Route path='/' element={<Main/>} />
-        <Route path='/detail' element={<Detail/>} />
+        <Route path='/' element={<Main shoes={shoes}/>} />
+        <Route path='/detail/:id' element={<Detail shoes={shoes}/>} />
 
         <Route path='/about' element={<About/>}>
           <Route path='member' element={<div>멤버임</div>}/>

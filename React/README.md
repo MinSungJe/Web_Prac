@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-01
+## 🗒️Last Update : 2024-04-03
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -178,4 +178,13 @@ class Modal2 extends React.Component {
 - Nested Routes를 이용한다.
 - 간단하게 Route안에 Route를 넣어서 구현하면 됨
 - 큰 Route의 Component 내에 Outlet(구멍)을 넣어놔서 작은 Component가 들어갈 자리를 만들어둘 수 있음
+</details>
+
+<details>
+<summary><b>🤔 비슷한 페이지를 여러 개 만들고 싶어요</b></summary>
+
+- url 파라미터를 이용한다
+- Route나 Link 등으로 연결할 url의 뒤에 <code>:작명</code>을 넣는다
+- useParams() 훅을 하위 페이지에서 사용하면 넣은 파라미터를 가져올 수 있다
+- 이때 작명한 변수 이름은 url 파라미터 지정 시 사용한 작명과 같게 한다.
 </details>

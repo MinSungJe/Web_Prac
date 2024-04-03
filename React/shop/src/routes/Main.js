@@ -1,18 +1,13 @@
-import { useState } from 'react';
-import data from '../data.js'
-
-function Main() {
-
-    let [shoes] = useState(data)
+function Main(props) {
     return (
         <div>
             <div className='main-bg'></div>
             <div className="container">
                 <div className="row">
                     {
-                        shoes.map((_a, i) => {
+                        props.shoes.map((_a, i) => {
                             return (
-                                <Card shoes={shoes[i]} i={i}></Card>
+                                <Card shoes={props.shoes[i]} i={i}></Card>
                             )
                         })}
                 </div>
