@@ -68,8 +68,23 @@
             }
         })
 
+        function 함수1(m, s) {
+            return 1000 * ((60 * m)+s)
+        }
+        console.log(함수1(2,10))
 
+        function 함수2(price, first_Buy) {
+            var value = price*0.9
+            if (first_Buy) value -= 1.5
+            return parseFloat(value.toFixed(2))
+        }
+        console.log(함수2(70, false))
+        console.log(함수2(10, true))
+        console.log(함수2(10.3, true))
 
+    </script>
+
+    <script>
         $('form').on('submit', (e) => {
             var idValue = $('#id').val()
             var pwValue = $('#pw').val()
@@ -149,31 +164,31 @@
 
         var currentState = 1;
 
-        document.querySelector(".slide-prev").addEventListener('click', ()=>{
+        document.querySelector(".slide-prev").addEventListener('click', () => {
             if (currentState >= 2) {
                 currentState -= 1;
-                $(".slide-container").css('transform', 'translateX(-'+(currentState-1)+'00vw)');
+                $(".slide-container").css('transform', 'translateX(-' + (currentState - 1) + '00vw)');
             }
         })
 
-        $(".slide-next").on('click', ()=>{
+        $(".slide-next").on('click', () => {
             if (currentState <= 2) {
                 currentState += 1
-                $(".slide-container").css('transform', `translateX(-${currentState-1}00vw)`);
+                $(".slide-container").css('transform', `translateX(-${currentState - 1}00vw)`);
             }
         });
 
-        document.querySelector(".slide-1").addEventListener('click', ()=>{
+        document.querySelector(".slide-1").addEventListener('click', () => {
             document.querySelector(".slide-container").style.transform = 'translateX(0)'
             currentState = 1;
         })
 
-        $(".slide-2").on('click', ()=>{
+        $(".slide-2").on('click', () => {
             $(".slide-container").css('transform', 'translateX(-100vw)');
             currentState = 2;
         })
 
-        $(".slide-3").on('click', ()=>{
+        $(".slide-3").on('click', () => {
             $(".slide-container").css('transform', 'translateX(-200vw)');
             currentState = 3;
         })
