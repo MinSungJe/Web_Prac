@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-04
+## 🗒️Last Update : 2024-04-05
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -198,4 +198,12 @@ class Modal2 extends React.Component {
   2. 여기 적은 스타일이 다른 JS파일로 오염되지 않음(원래 CSS는 서로간 오염될 수 있음 -> 참고로 <code>컴포넌트명.module.css</code>로 CSS를 작명하면 오염되지 않게 가능)
   3. 페이지 로딩시간이 단축됨 : 이렇게 적은 스타일은 style태그로 바로 넣어주기 때문
 - 비슷한 UI를 만들기 위해 여기에도 ${props=>props.작명}을 이용한 props문법이 가능함
+</details>
+
+<details>
+<summary><b>🤔 useEffect 왜써요</b></summary>
+
+- useEffect() 훅: 생명주기 중 mount와 Update 시기에 코드 실행 가능
+- 근데 그냥 안쓰고 넣어도 실행 가능 하던데? -> ❗<b>useEffect 안의 코드는 html 렌더링 이후에 실행됨</b>
+- 그래서 어따 씀? -> side effect 기능들: 오래걸리는 반복연산, 서버에서 데이터가져오는 작업, 타이머다는거를 여따가 넣자
 </details>

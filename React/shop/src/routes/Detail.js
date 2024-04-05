@@ -1,14 +1,21 @@
 import { useParams } from "react-router-dom";
 import styled from 'styled-components';
+import { useEffect, useState } from "react";
 
 let YellowBtn = styled.button`
-  background : ${ props => props.bg };
-  color : ${props => props.bg == 'blue'?'white':'black'};
+  background : ${props => props.bg};
+  color : ${props => props.bg == 'blue' ? 'white' : 'black'};
   padding : 10px;
 `
-
-
 function Detail(props) {
+
+  useEffect(() => {
+    setTimeout(()=>{
+      setShow(false)}, 2000)
+  })
+
+  let [count, setCount] = useState(0);
+  let [show, setShow] = useState(true);
 
   let { id } = useParams();
   let product = props.shoes.find((x) => {
@@ -17,7 +24,13 @@ function Detail(props) {
 
   return (
     <div className="container">
-      <YellowBtn bg="blue">버튼</YellowBtn>
+      {show ?
+      <div id="alert-box" className="alert alert-warning">
+        2초이내 구매시 할인
+      </div> : null}
+      <YellowBtn bg="blue" onClick={() => {
+        setCount(count + 1)
+      }}>{count}</YellowBtn>
       <YellowBtn bg="orange">버튼</YellowBtn>
       <div className="row">
         <div className="col-md-6">
