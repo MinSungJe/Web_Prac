@@ -28,6 +28,62 @@
             </form>
         </div>
     </div>
+    <script>
+        $('form').on('submit', (e) => {
+            var idValue = $('#id').val()
+            var pwValue = $('#pw').val()
+            if (idValue == '' || pwValue == '') {
+                alert('입력하지 않은 값이 있습니다.');
+                e.preventDefault();
+            } else if (!/\S+@\S+\.\S+/.test(idValue)) {
+                alert('id가 이메일 형식이 아닙니다!');
+                e.preventDefault();
+            } else if ($('#pw').val().length < 6) {
+                alert('비밀번호가 너무 짧습니다(최소 6자).');
+                e.preventDefault();
+            }
+            if (!/[A-Z]/.test(pwValue)) {
+                alert('비번에 영어 대문자 없음')
+            }
+        });
+    </script>
+
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand">JSShop</span>
+            <span class="badge bg-dark">Dark 🔄</span>
+            <button class="navbar-toggler" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <script>
+
+        $(window).on('scroll', ()=>{
+            var windowScroll = window.scrollY
+            if (windowScroll > 100)
+                $('.navbar-brand').css('font-size','15px');
+            else
+                document.querySelector('.navbar-brand').style.fontSize = '25px';
+        })
+
+
+
+    </script>
+    <script>
+        var count = 0;
+
+        $('.badge').on('click', () => {
+            count += 1;
+            if (count % 2 != 0)
+                $('.badge').html('Light 🔄');
+            else
+                $('.badge').html('Dark 🔄');
+        });
+    </script>
+
+
 
     <p>태조 이성계가 태어난 년도는?</p>
     <input type="text" id="answer">
@@ -69,12 +125,12 @@
         })
 
         function 함수1(m, s) {
-            return 1000 * ((60 * m)+s)
+            return 1000 * ((60 * m) + s)
         }
-        console.log(함수1(2,10))
+        console.log(함수1(2, 10))
 
         function 함수2(price, first_Buy) {
-            var value = price*0.9
+            var value = price * 0.9
             if (first_Buy) value -= 1.5
             return parseFloat(value.toFixed(2))
         }
@@ -82,48 +138,6 @@
         console.log(함수2(10, true))
         console.log(함수2(10.3, true))
 
-    </script>
-
-    <script>
-        $('form').on('submit', (e) => {
-            var idValue = $('#id').val()
-            var pwValue = $('#pw').val()
-            if (idValue == '' || pwValue == '') {
-                alert('입력하지 않은 값이 있습니다.');
-                e.preventDefault();
-            } else if (!/\S+@\S+\.\S+/.test(idValue)) {
-                alert('id가 이메일 형식이 아닙니다!');
-                e.preventDefault();
-            } else if ($('#pw').val().length < 6) {
-                alert('비밀번호가 너무 짧습니다(최소 6자).');
-                e.preventDefault();
-            }
-            if (!/[A-Z]/.test(pwValue)) {
-                alert('비번에 영어 대문자 없음')
-            }
-        });
-    </script>
-
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <span class="navbar-brand">Navbar</span>
-            <span class="badge bg-dark">Dark 🔄</span>
-            <button class="navbar-toggler" type="button">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
-
-    <script>
-        var count = 0;
-
-        $('.badge').on('click', () => {
-            count += 1;
-            if (count % 2 != 0)
-                $('.badge').html('Light 🔄');
-            else
-                $('.badge').html('Dark 🔄');
-        });
     </script>
 
 
@@ -139,6 +153,24 @@
         <h4>Shirts on Sale</h4>
         <button id="btn-login" class="btn btn-danger">로그인</button>
     </div>
+
+    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit
+        debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur
+        praesentium exercitationem.
+    </div>
+
+    <script>
+        $('.lorem').on('scroll', ()=>{
+            var scrollValue = document.querySelector('.lorem').scrollTop;
+            var divSize = document.querySelector('.lorem').clientHeight;
+            var divScrollHeight = document.querySelector('.lorem').scrollHeight;
+            if (scrollValue + divSize >= divScrollHeight)
+                alert("끝까지 다 읽으셨군요")
+        })
+    </script>
+
+    <div style="height: 1000px;"></div>
 
     <div style="overflow: hidden;">
         <div class="slide-container">

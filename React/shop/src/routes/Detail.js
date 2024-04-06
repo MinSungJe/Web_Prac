@@ -8,15 +8,23 @@ let YellowBtn = styled.button`
   padding : 10px;
 `
 function Detail(props) {
-
-  useEffect(() => {
-    setTimeout(()=>{
-      setShow(false)}, 2000)
-  })
-
+  
   let [count, setCount] = useState(0);
   let [show, setShow] = useState(true);
+  let [num, setNum] = useState('');
+  
+    useEffect(() => {
+      let a = setTimeout(() => { setShow(false) }, 2000)
+      return () => {
+        clearTimeout(a);
+      }
+    }, [])
 
+    useEffect(() => {
+      if (isNaN(num) == true)
+        alert('그러지마세요')
+    }, [num])
+  
   let { id } = useParams();
   let product = props.shoes.find((x) => {
     return x.id == id
@@ -24,14 +32,16 @@ function Detail(props) {
 
   return (
     <div className="container">
-      {show ?
-      <div id="alert-box" className="alert alert-warning">
-        2초이내 구매시 할인
-      </div> : null}
+      {show
+        ? <div id="alert-box" className="alert alert-warning">
+          2초이내 구매시 할인
+        </div>
+        : null}
       <YellowBtn bg="blue" onClick={() => {
         setCount(count + 1)
       }}>{count}</YellowBtn>
       <YellowBtn bg="orange">버튼</YellowBtn>
+      <input onChange={ (e) => {setNum(e.target.value)} }/>
       <div className="row">
         <div className="col-md-6">
           <img src={"https://codingapple1.github.io/shop/shoes1.jpg"} width="100%" />

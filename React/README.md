@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-05
+## 🗒️Last Update : 2024-04-06
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -206,4 +206,6 @@ class Modal2 extends React.Component {
 - useEffect() 훅: 생명주기 중 mount와 Update 시기에 코드 실행 가능
 - 근데 그냥 안쓰고 넣어도 실행 가능 하던데? -> ❗<b>useEffect 안의 코드는 html 렌더링 이후에 실행됨</b>
 - 그래서 어따 씀? -> side effect 기능들: 오래걸리는 반복연산, 서버에서 데이터가져오는 작업, 타이머다는거를 여따가 넣자
+- <code>useEffect(()=>{},[])</code>에서 [] 안에 있는 변수가 Update 될때만 실행하도록 설정 가능, 비워놓으면 Update없이 mount시에만 실행함
+- ()=>{}안에 return ()=>{} 넣어두면 useEffect 실행 전에 먼저 실행할 코드를 입력 가능, 또 여기 코드는 unmount 시에도 한번 실행함
 </details>
