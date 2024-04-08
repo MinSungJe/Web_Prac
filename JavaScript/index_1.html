@@ -165,7 +165,7 @@
             var scrollValue = document.querySelector('.lorem').scrollTop;
             var divSize = document.querySelector('.lorem').clientHeight;
             var divScrollHeight = document.querySelector('.lorem').scrollHeight;
-            if (scrollValue + divSize >= divScrollHeight)
+            if (scrollValue + divSize >= divScrollHeight-10)
                 alert("끝까지 다 읽으셨군요")
         })
     </script>

@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-06
+## 🗒️Last Update : 2024-04-08
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -208,4 +208,27 @@ class Modal2 extends React.Component {
 - 그래서 어따 씀? -> side effect 기능들: 오래걸리는 반복연산, 서버에서 데이터가져오는 작업, 타이머다는거를 여따가 넣자
 - <code>useEffect(()=>{},[])</code>에서 [] 안에 있는 변수가 Update 될때만 실행하도록 설정 가능, 비워놓으면 Update없이 mount시에만 실행함
 - ()=>{}안에 return ()=>{} 넣어두면 useEffect 실행 전에 먼저 실행할 코드를 입력 가능, 또 여기 코드는 unmount 시에도 한번 실행함
+</details>
+
+<details>
+<summary><b>🤔 리액트에서 서버를 써보자</b></summary>
+
+- 서버란? 유저가 데이터달라고 요청하면 데이터보내주는 프로그램일 뿐임
+- 근데 요청할때 양식맞춰서 정중히 요청해야함
+  1. 어떤 데이터인지(URL 형식으로)
+  2. 어느 방법으로 요청할지(GET or POST)
+- 근데 이거 그냥 요청하면 브라우저가 새로고침됨 -> ❗<b>새로고침없이 간단하게 데이터 주고받을 수 있게 도와주는 브라우저 기능 : ajax!</b>
+- ajax로 GET/POST 요청하려면 방법 3개 중 택1하면 됨
+  1. XMLHttpRequest라는 옛날 문법 쓰기
+  2. fetch()라는 최신 문법 쓰기
+  3. axios 같은 외부 라이브러리 쓰기
+</details>
+
+<details>
+<summary><b>🤔 axios 써서 ajax 써먹어보고 싶은데요</b></summary>
+
+- 먼저 외부라이브러리이므로 설치부터 하자 <code>npm install axios</code>
+- 상단에서 import해오고 <code>axios.get(URL)</code>하면 그 URL로 GET요청함
+- 데이터 가져온 결과를 보고싶다면 뒤에 <code>.then((작명)=>{작명이용 코드~~})</code> 붙인다
+- 뒤에 <code>.catch(()=>{})</code> 붙이면 요청 실패시 코드를 작성할 수 있음
 </details>
