@@ -56,20 +56,24 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
+        <span class="progress-bar"></span>
     </nav>
 
     <script>
 
         $(window).on('scroll', ()=>{
             var windowScroll = window.scrollY
+            var scrollHeight = document.querySelector('html').scrollHeight
+            var clientHeight = document.querySelector('html').clientHeight
+            let progress = (windowScroll / (scrollHeight - clientHeight)) * 100
+            console.log(windowScroll, scrollHeight, clientHeight)
+            $('.progress-bar').css('width', progress+'%')
+            console.log(progress+'%')
             if (windowScroll > 100)
                 $('.navbar-brand').css('font-size','15px');
             else
                 document.querySelector('.navbar-brand').style.fontSize = '25px';
         })
-
-
-
     </script>
     <script>
         var count = 0;

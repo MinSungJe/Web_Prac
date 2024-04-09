@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-08
+## 🗒️Last Update : 2024-04-09
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -222,13 +222,20 @@ class Modal2 extends React.Component {
   1. XMLHttpRequest라는 옛날 문법 쓰기
   2. fetch()라는 최신 문법 쓰기
   3. axios 같은 외부 라이브러리 쓰기
+- 원래 서버랑은 문자자료만 주고받을 수 있지만 array 자료 받기 위해 JSON이라는 문자취급받는 자료를 써먹음
+- ❗<b>그래서 axios가 아니라 쌩자바스크립트문법인 <code>fetch()</code>를 써먹으려면 JSON -> object/array로 바꾸는 작업이 필요함!!</b>  
+  <code>fetch('URL').then(결과 => 결과.json()).then((결과) => { console.log(결과) } )</code>
 </details>
 
 <details>
 <summary><b>🤔 axios 써서 ajax 써먹어보고 싶은데요</b></summary>
 
 - 먼저 외부라이브러리이므로 설치부터 하자 <code>npm install axios</code>
-- 상단에서 import해오고 <code>axios.get(URL)</code>하면 그 URL로 GET요청함
+- 상단에서 import해오고 <code>axios.get('URL')</code>하면 그 URL로 GET요청함
 - 데이터 가져온 결과를 보고싶다면 뒤에 <code>.then((작명)=>{작명이용 코드~~})</code> 붙인다
 - 뒤에 <code>.catch(()=>{})</code> 붙이면 요청 실패시 코드를 작성할 수 있음
+- <code>axios.post('URL', {name:'min'})</code>하면 그 URL로 POST요청함  
+  완료 시 특정 코드를 실행하고 싶으면 뒤에 <code>.then()</code>을 붙임
+- 동시에 ajax 요청 여러 개 날리려면 <code>Promise.all([axios.get('URL1'), axios.get('URL2')])</code>  
+  역시 완료 시 특정 코드를 실행하고 싶으면 뒤에 <code>.then()</code>을 붙임
 </details>

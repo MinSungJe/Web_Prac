@@ -10,8 +10,10 @@ import Event from './routes/Event.js'
 import axios from 'axios'
 
 function App() {
-  let navigate = useNavigate();
   let [shoes, setShoes] = useState(data)
+  let [clickCount, setClickCount] = useState(0)
+  let [loding, setLoding] = useState(false)
+  let navigate = useNavigate();
 
   return (
     <div className="App">
@@ -28,15 +30,35 @@ function App() {
       <Routes>
         <Route path='/' element={
           <>
-          <Main shoes={shoes} />
-          <button onClick={()=>{
-            axios.get('https://codingapple1.github.io/shop/data2.json').then((data) => {
-              let temp = [...shoes, ...(data.data)]
-              setShoes(temp)
-            }).catch(()=>{
-              alert("요청실패함")
-            })
-          }}>버튼</button>
+            <Main shoes={shoes} />
+            {loding ?
+              <div>로딩중입니다.</div>
+              : null}
+            {clickCount < 2 ?
+              <button onClick={() => {
+                setLoding(true)
+                let url = '';
+                console.log(clickCount);
+                if (clickCount == 0) {
+                  url = 'https://codingapple1.github.io/shop/data2.json';
+                } else if (clickCount == 1) {
+                  url = 'https://codingapple1.github.io/shop/data3.json';
+                } else {
+                  setLoding(false)
+                  alert('모든 항목을 보셨습니다.')
+                  return;
+                }
+                axios.get(url).then((data) => {
+                  setLoding(false)
+                  let temp = [...shoes, ...(data.data)]
+                  setShoes(temp)
+                  setClickCount(clickCount + 1)
+                }).catch(() => {
+                  alert("요청실패함")
+                  setLoding(false)
+                })
+              }}>더보기</button>
+              : null}
           </>
         } />
         <Route path='/detail/:id' element={<Detail shoes={shoes} />} />

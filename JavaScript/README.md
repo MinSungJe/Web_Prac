@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-04-06
+## 🗒️Last Update : 2024-04-09
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -63,6 +63,7 @@ ex) click, mouseover, keydown ...
 - 이 외에도 JQuery식 축약문법이 다양하게 존재함  
 ex) addEventListner() -> on() ...
 - ❗<b>JQuery 셀렉터 뒤에는 JQuery 문법만, 기존 JS 셀렉터 뒤에는 기존 문법만 사용 가능!</b>
+- jQuery 셀렉터로 여러 요소 찾은 뒤 하나만 고르려면 <code>.eq(인덱스)</code> 사용하면 된다
 </details>
 
 <details>
@@ -126,4 +127,14 @@ ex) addEventListner() -> on() ...
 - 현재 위치에서부터 스크롤해줘 : <code>window.scrollBy(0, 100)</code>
 - div 박스를 얼마나 스크롤했는지 알려줘 : <code>셀렉터.scrollTop</code>
 - div 박스 실제 높이 구하고 싶어 : <code>셀렉터.scrollHeight</code>
+</details>
+
+<details>
+<summary><b>🤔 자바스크립트가 너무 길어서 html 보기 힘든데..</b></summary>
+
+- 모듈화해서 따로 빼두자
+- 작업폴더에 어쩌구.js로 빼둔 다음 그 코드가 필요한 html 파일에서 밑에꺼 쓰면 그대로 붙인거랑 다름없음  
+    ```html
+    <script src="어쩌구.js"></script>
+    ```
 </details>

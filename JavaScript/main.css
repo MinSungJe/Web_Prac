@@ -70,3 +70,11 @@ padding: 30px;
     font-size: 25px;
     transition: all 1s;
 }
+
+.progress-bar {
+    background-color: #00a6ed;
+    margin-top: 5px;
+    width: 0%;
+    height: 5px;
+    transition: all 1s;
+}
