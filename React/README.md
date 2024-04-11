@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-09
+## 🗒️Last Update : 2024-04-11
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -68,6 +68,7 @@ function Modal(props) {
     2. 자식컴포넌트 만드는 function으로 가서 props라는 파라미터 등록 후 props.작명 사용
 - 무조건 부모 -> 자식으로만 전달 가능. 자식 -> 부모 / 자식 -> 자식 전달 불가능
 - ❗<b>꼭 state만 전송할 수 있는 건 아님.</b> 일반 변수, 함수, 일반 문자전송 다 가능
+- 난 props 쓰기 귀찮은데요 -> props라는 파라미터 등록하는 대신 {작명}을 넣으면 바로 사용가능
 </details>
 
 <details>
@@ -238,4 +239,11 @@ class Modal2 extends React.Component {
   완료 시 특정 코드를 실행하고 싶으면 뒤에 <code>.then()</code>을 붙임
 - 동시에 ajax 요청 여러 개 날리려면 <code>Promise.all([axios.get('URL1'), axios.get('URL2')])</code>  
   역시 완료 시 특정 코드를 실행하고 싶으면 뒤에 <code>.then()</code>을 붙임
+</details>
+
+<details>
+<summary><b>🤔 컴포넌트를 보여줄 때 조건문을 사용하고 싶어요</b></summary>
+
+- html 내부에서 구현: 삼항연산자(?:)이용
+- 삼항연산자말고 if 쓰고 싶은데요: App() 외부에서 컴포넌트를 하나 구현하고 써먹자
 </details>
