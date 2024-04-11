@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-04-09
+## 🗒️Last Update : 2024-04-11
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
