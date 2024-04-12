@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-04-11
+## 🗒️Last Update : 2024-04-12
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -150,4 +150,21 @@ ex) addEventListner() -> on() ...
     }
     ```
 - 이유는 변수의 범위 때문, var는 for문 바깥에 포스트잇 생성 / let은 for문 안쪽에 포스트잇 생성
+</details>
+
+<details>
+<summary><b>🤔 난 이거 안눌렀는데 작동돼요</b></summary>
+
+- ❗<b>이벤트 버블링 현상 때문</b>
+- 그게 뭔데요: 하위요소에서 이벤트가 발생하면 그 이벤트가 상위요소로까지 전달되는 현상
+- 막으려면 이벤트 관련 유용한 함수들을 이용해 이벤트 버블링을 막으면 됨
+
+<details>
+<summary><b>🤔 이벤트 관련 유용한 함수를 소개합니다</b></summary>
+
+- ❗<b>이벤트 리스너 콜백 함수 안에 e라는 인자를 주면 여러 유용한 함수 사용가능</b>
+- e.target : 실제 클릭한 요소 알려줌
+- e.currentTarget : 지금 이벤트리스너가 달린 곳 알려줌(=this)
+- e.preventDefault() : 이벤트 기본 동작(submit 같은거)을 막아줌
+- e.stopPropagation() : 내 상위요소로의 이벤트 버블링을 중단해줌
 </details>

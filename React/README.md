@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-11
+## 🗒️Last Update : 2024-04-12
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -246,4 +246,30 @@ class Modal2 extends React.Component {
 
 - html 내부에서 구현: 삼항연산자(?:)이용
 - 삼항연산자말고 if 쓰고 싶은데요: App() 외부에서 컴포넌트를 하나 구현하고 써먹자
+</details>
+
+<details>
+<summary><b>🤔 전환 애니메이션 멋드러지게 만들고 싶어요</b></summary>
+
+- 애니메이션 만드는 4 step
+  1. 애니메이션 동작 전 스타일을 담을 className 만들기
+  2. 애니메이션 동작 후 스타일을 담을 className 만들기
+  3. transition 속성 추가
+  4. 원할 때 2번 탈부착
+- ❗<b>리액트에선 클래스 뗐다 붙였다 할때 state를 이용할 수 있음!</b>
+  ```javascript
+  let [fade, setFade] = useState('')
+
+  useEffect(()=>{
+    let a = setTimeout(()=>{setFade('end')}, 100)
+    return (()=>{
+      clearTimeout(a)
+      setFade('')})
+  }, [])
+
+  <div className={"start "+ fade}>
+  </div>
+  ```
+- setTimeout은 왜쓴건데요: 리액트 18버전 이후부터 생긴 automatic batch라는 기능 때문  
+  이 때문에 state 변경함수들이 연달아서 여러개 처리되어야한다면 마지막 한번에 다같이 재렌더링됨 -> setTimeout으로 시간차이 설정해줘야함
 </details>

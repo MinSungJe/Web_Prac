@@ -32,8 +32,20 @@ function Detail(props) {
     return x.id == id
   })
 
+  let [fade, setFade] = useState('');
+  useEffect(()=>{
+    let a = setTimeout(() => {
+      setFade('end');
+    }, 100);
+
+    return (()=>{
+      clearTimeout(a);
+      setFade('');
+    })
+  }, [])
+
   return (
-    <div className="container">
+    <div className={"container start "+fade}>
       {show
         ? <div id="alert-box" className="alert alert-warning">
           2초이내 구매시 할인
@@ -75,7 +87,21 @@ function Detail(props) {
 }
 
 function TabContent({tab}) {
-  return [<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][tab]
+
+  let [fade, setFade] = useState('')
+
+  useEffect(()=>{
+    let a = setTimeout(() => { setFade('end') }, 10);
+
+    return () => {
+      clearTimeout(a)
+      setFade('')
+    }
+  }, [tab])
+
+  return (<div className={"start "+ fade}>
+    { [<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][tab] }
+  </div>)
 }
 
 export default Detail;
