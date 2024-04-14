@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-12
+## 🗒️Last Update : 2024-04-14
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -272,4 +272,15 @@ class Modal2 extends React.Component {
   ```
 - setTimeout은 왜쓴건데요: 리액트 18버전 이후부터 생긴 automatic batch라는 기능 때문  
   이 때문에 state 변경함수들이 연달아서 여러개 처리되어야한다면 마지막 한번에 다같이 재렌더링됨 -> setTimeout으로 시간차이 설정해줘야함
+</details>
+
+<summary><b>🤔 컴포넌트 사이에 state를 props로 공유하기 힘들어요</b></summary>
+
+- props 문법은 부모 -> 자식으로만 전달되기 때문에 자식의 자식 컴포넌트에 state를 전달하려면 여러번 작성해야 됨
+- 그게 번거로울 수 있잖아요? 2가지 방법으로 해결가능
+  1. Context API 문법 사용
+  2. Redux 같은 외부 라이브러리 사용
+- <b>❗Context API는 여러 단점이 있어 보통 외부 라이브러리를 많이들 사용함</b>
+  1. state 변경 시 쓸데없는 컴포넌트까지 전부 재렌더링됨
+  2. useContext()를 쓰고 있는 컴포넌트는 나중에 다른 파일에서 재사용할 때 Context를 import하는게 귀찮아질 수 있음
 </details>

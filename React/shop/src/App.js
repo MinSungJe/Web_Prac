@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 import data from './data.js'
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import './App.css';
@@ -9,8 +9,12 @@ import About from './routes/About.js'
 import Event from './routes/Event.js'
 import axios from 'axios'
 
+export let Context1 = createContext()
+
+
 function App() {
   let [shoes, setShoes] = useState(data)
+  let [inventory] = useState([10, 11, 12])
   let [clickCount, setClickCount] = useState(0)
   let [loding, setLoding] = useState(false)
   let navigate = useNavigate();
@@ -61,7 +65,11 @@ function App() {
               : null}
           </>
         } />
-        <Route path='/detail/:id' element={<Detail shoes={shoes} />} />
+        <Route path='/detail/:id' element={
+        <Context1.Provider value={{inventory}}>
+          <Detail shoes={shoes} />
+        </Context1.Provider>
+        } />
 
         <Route path='/about' element={<About />}>
           <Route path='member' element={<div>멤버임</div>} />

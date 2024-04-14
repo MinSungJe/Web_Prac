@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom";
 import styled from 'styled-components';
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Nav } from 'react-bootstrap';
+
+import {Context1} from './../App.js'
 
 let YellowBtn = styled.button`
   background : ${props => props.bg};
@@ -9,6 +11,8 @@ let YellowBtn = styled.button`
   padding : 10px;
 `
 function Detail(props) {
+
+  let {inventory} = useContext(Context1)
 
   let [count, setCount] = useState(0);
   let [show, setShow] = useState(true);
@@ -89,6 +93,7 @@ function Detail(props) {
 function TabContent({tab}) {
 
   let [fade, setFade] = useState('')
+  let {inventory} = useContext(Context1)
 
   useEffect(()=>{
     let a = setTimeout(() => { setFade('end') }, 10);

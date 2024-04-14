@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-04-12
+## 🗒️Last Update : 2024-04-14
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -158,6 +158,7 @@ ex) addEventListner() -> on() ...
 - ❗<b>이벤트 버블링 현상 때문</b>
 - 그게 뭔데요: 하위요소에서 이벤트가 발생하면 그 이벤트가 상위요소로까지 전달되는 현상
 - 막으려면 이벤트 관련 유용한 함수들을 이용해 이벤트 버블링을 막으면 됨
+</details>
 
 <details>
 <summary><b>🤔 이벤트 관련 유용한 함수를 소개합니다</b></summary>
@@ -167,4 +168,20 @@ ex) addEventListner() -> on() ...
 - e.currentTarget : 지금 이벤트리스너가 달린 곳 알려줌(=this)
 - e.preventDefault() : 이벤트 기본 동작(submit 같은거)을 막아줌
 - e.stopPropagation() : 내 상위요소로의 이벤트 버블링을 중단해줌
+</details>
+
+<details>
+<summary><b>🤔 사실 html안에 개발자가 정보 숨겨둘 수 있는거 아세요</b></summary>
+
+- ❗<b>dataset 문법을 소개합니다.</b>
+- html 안에 한번 이거 넣어보세요
+    ```html
+    <div data-데이터이름="값"></div> 
+    ```
+- 이 정보를 뽑아내려면 다음과 같이 쓰시면 됩니다.
+    ```javascript
+    document.querySelector().dataset.데이터이름;
+    ```
+- 이런 기술을 알고 있다면 이벤트리스너 적게 사용할 때 내가 뭐 눌렀는지 쉽게 파악이 가능하답니다.
+- 참고: 이벤트리스너 줄이면 램 사용 줄이는 이점이 있음
 </details>
