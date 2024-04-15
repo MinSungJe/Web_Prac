@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-14
+## 🗒️Last Update : 2024-04-15
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -274,6 +274,7 @@ class Modal2 extends React.Component {
   이 때문에 state 변경함수들이 연달아서 여러개 처리되어야한다면 마지막 한번에 다같이 재렌더링됨 -> setTimeout으로 시간차이 설정해줘야함
 </details>
 
+<details>
 <summary><b>🤔 컴포넌트 사이에 state를 props로 공유하기 힘들어요</b></summary>
 
 - props 문법은 부모 -> 자식으로만 전달되기 때문에 자식의 자식 컴포넌트에 state를 전달하려면 여러번 작성해야 됨
@@ -283,4 +284,32 @@ class Modal2 extends React.Component {
 - <b>❗Context API는 여러 단점이 있어 보통 외부 라이브러리를 많이들 사용함</b>
   1. state 변경 시 쓸데없는 컴포넌트까지 전부 재렌더링됨
   2. useContext()를 쓰고 있는 컴포넌트는 나중에 다른 파일에서 재사용할 때 Context를 import하는게 귀찮아질 수 있음
+</details>
+
+<details>
+<summary><b>🤔 Redux 세팅법</b></summary>
+
+- redux 사용하는 이유? : state를 다른 컴포넌트로 전달할 때 편함
+- 천천히 Step 따라와보세요
+  - 터미널에 <code>npm install @reduxjs/toolkit@1.8.1 react-redux </code> (Redux 설치) -> 이때 react, react-dom 항목의 버전이 18.1.x 이상이어야 함
+  - 아무데나 store.js 파일 만들고 이 코드 복붙: state 보관하는 파일임
+    ```javascript
+    import { configureStore } from '@reduxjs/toolkit'
+
+    export default configureStore({
+      reducer: { }
+    }) 
+    ```
+  -  index.js 파일가서 Provider 라는 컴포넌트와 아까 작성한 파일을 import하고 밑에 &lt;App/&gt;을 &lt;Provider store={import해온거}&gt;로 감싸면 설정 완료  
+      ```javascript
+      import { Provider } from "react-redux";
+      import store from './store.js'
+      ...
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+      ...
+      ```
 </details>

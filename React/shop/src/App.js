@@ -7,6 +7,7 @@ import Main from './routes/Main.js'
 import Detail from './routes/Detail.js'
 import About from './routes/About.js'
 import Event from './routes/Event.js'
+import Cart from './routes/Cart.js'
 import axios from 'axios'
 
 export let Context1 = createContext()
@@ -70,6 +71,8 @@ function App() {
           <Detail shoes={shoes} />
         </Context1.Provider>
         } />
+
+        <Route path='/cart' element={ <Cart/> }/>
 
         <Route path='/about' element={<About />}>
           <Route path='member' element={<div>멤버임</div>} />

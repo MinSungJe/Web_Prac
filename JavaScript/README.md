@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-04-14
+## 🗒️Last Update : 2024-04-15
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -184,4 +184,12 @@ ex) addEventListner() -> on() ...
     ```
 - 이런 기술을 알고 있다면 이벤트리스너 적게 사용할 때 내가 뭐 눌렀는지 쉽게 파악이 가능하답니다.
 - 참고: 이벤트리스너 줄이면 램 사용 줄이는 이점이 있음
+</details>
+
+<details>
+<summary><b>🤔 Array랑 Object 친구 소개합니다</b></summary>
+
+- 여러 가지 변수들을 하나의 변수로 뭉쳐주는 그릇에는 Array랑 Object가 있음
+- Array : [], 인덱스로 자료 탐색, 정렬이나 슬라이싱 가능,리스트
+- Object : {}, key값으로 자료 탐색, key:value 자료형으로 저장, 딕셔너리
 </details>

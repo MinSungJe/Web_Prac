@@ -57,6 +57,20 @@
         }
     </style>
 
+    <div class="container mt-3">
+        <div class="card p-3">
+            <span class="stuff-name">상품명</span> / <span class="stuff-price">가격</span>
+        </div>
+    </div>
+
+    <script>
+
+        var car2 = {name:'소나타', price:50000}
+        document.querySelector('.stuffName').innerHTML = car2.name;
+        $('.stuffPrice').html(car2.price)
+
+    </script>
+
     <div class="container mt-5">
         <ul class="list">
             <li class="tab-button" data-id="0">Products</li>
