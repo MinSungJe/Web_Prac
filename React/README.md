@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-15
+## 🗒️Last Update : 2024-04-17
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -287,9 +287,17 @@ class Modal2 extends React.Component {
 </details>
 
 <details>
+<summary><b>🤔 Redux를 왜 쓰는 거에요</b></summary>
+
+- <b>❗컴포넌트 간 State 공유가 편리하기 때문!</b>
+- 그럼 Redux만 쓰면 되는거 아니에요? : 공유할 필요없는 State는 사용할 필요 없음
+- 또 간단한거 만들 때 컴포넌트가 몇개 없을 때 이럴 땐 그냥 props 쓰는게 더 코드가 짧아짐
+
+</details>
+
+<details>
 <summary><b>🤔 Redux 세팅법</b></summary>
 
-- redux 사용하는 이유? : state를 다른 컴포넌트로 전달할 때 편함
 - 천천히 Step 따라와보세요
   - 터미널에 <code>npm install @reduxjs/toolkit@1.8.1 react-redux </code> (Redux 설치) -> 이때 react, react-dom 항목의 버전이 18.1.x 이상이어야 함
   - 아무데나 store.js 파일 만들고 이 코드 복붙: state 보관하는 파일임
@@ -312,4 +320,68 @@ class Modal2 extends React.Component {
       </Provider>
       ...
       ```
+</details>
+
+<details>
+<summary><b>🤔 이제 Redux로 State 써봅시다</b></summary>
+
+- State 등록법 : 만들어준 store.js 가서
+  ```javascript
+  import { configureStore, createSlice } from '@reduxjs/toolkit'
+
+  let user = createSlice({
+      name : 'user',
+      initialState : 'kim'
+  })
+
+  export default configureStore({
+      reducer: {
+          user : user.reducer
+      }
+  })
+  ```
+- 등록한 State 사용법 : 사용할 js로 가서
+  ```javascript
+  import { useSelector } from 'react-redux'
+  ...
+  function Cart() {
+
+    let state = useSelector((state)=> state.user)
+
+    return (
+      ...
+  )}
+  ```
+
+- 등록한 State 변경법 3 step
+  - store.js 안에 state 수정해주는 함수를 만듦
+    ```javascript
+    let user = createSlice({
+      name : 'user',
+      initialState : 'kim',
+      reducers : {
+        changeName(state){
+          return 'john ' + state
+        }
+      }
+    }) 
+    ```
+  - 다른 곳에서 쓰기 좋게 export 해둠
+    ```javascript
+    export let { changeName } = user.actions 
+    ```
+  - 원할 때 import 해서 사용하는데 dispatch()로 감싸서 써야함
+    ```javascript
+    (Cart.js)
+
+    import { useDispatch, useSelector } from "react-redux"
+    import { changeName } from "./../store.js"
+
+    ...
+
+    <button onClick={()=>{
+      dispatch(changeName())
+    }}>버튼임</button> 
+    ```
+    dispatch()는 메시지 또는 요청을 보낸다는 뜻임!
 </details>

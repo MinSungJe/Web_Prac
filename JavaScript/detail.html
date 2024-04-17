@@ -55,21 +55,48 @@
         .show {
             display: block;
         }
+
+        .hide {
+            display: none;
+        }
     </style>
 
     <div class="container mt-3">
         <div class="card p-3">
-            <span class="stuff-name">상품명</span> / <span class="stuff-price">가격</span>
+            <span class="car-name">상품명</span>
+            <span class="car-price">가격</span>
         </div>
     </div>
 
     <script>
 
-        var car2 = {name:'소나타', price:50000}
-        document.querySelector('.stuffName').innerHTML = car2.name;
-        $('.stuffPrice').html(car2.price)
+        var car2 = { name: '소나타', price: [50000, 3000, 4000] }
+        document.querySelector('.car-name').innerHTML = car2['name'];
+        $('.car-price').html(car2['price'][0])
 
     </script>
+
+    <form class="container my-5 form-group">
+        <p>상품선택</p>
+        <select class="form-select mt-2">
+            <option>모자</option>
+            <option>셔츠</option>
+        </select>
+        <select class="form-select mt-2 hide ">
+            <option>95</option>
+            <option>100</option>
+            <option>105</option>
+        </select>
+    </form>
+
+    <script>
+        $('.form-select').eq(0).on('input', (e)=>{
+            let value = e.currentTarget.value;
+            if (value == '셔츠') $('.form-select').eq(1).removeClass('hide')
+            else $('.form-select').eq(1).addClass('hide')
+        })
+    </script>
+
 
     <div class="container mt-5">
         <ul class="list">
