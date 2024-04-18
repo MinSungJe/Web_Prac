@@ -81,19 +81,36 @@
         <select class="form-select mt-2">
             <option>모자</option>
             <option>셔츠</option>
+            <option>바지</option>
         </select>
-        <select class="form-select mt-2 hide ">
+        <select class="form-select mt-2 hide">
             <option>95</option>
             <option>100</option>
             <option>105</option>
         </select>
     </form>
 
+    <div id="test">
+        <h4>반가워</h4>
+    </div>
+
     <script>
-        $('.form-select').eq(0).on('input', (e)=>{
+        $('.form-select').eq(0).on('input', (e) => {
             let value = e.currentTarget.value;
-            if (value == '셔츠') $('.form-select').eq(1).removeClass('hide')
-            else $('.form-select').eq(1).addClass('hide')
+            if (value == '셔츠') {
+                var template = `<option>95</option>
+                <option>100</option>`
+            }
+            if (value == '바지') {
+                var template = `<option>28</option>
+                <option>30</option>`
+            }
+            if (value == '모자') $('.form-select').eq(1).addClass('hide')
+            else {
+                $('.form-select').eq(1).removeClass('hide')
+                $(".form-select").eq(1).html('')
+                $(".form-select").eq(1).append(template)
+            }
         })
     </script>
 

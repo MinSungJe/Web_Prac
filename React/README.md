@@ -378,6 +378,8 @@ class Modal2 extends React.Component {
     import { changeName } from "./../store.js"
 
     ...
+    let dispatch = useDispatch();
+    ...
 
     <button onClick={()=>{
       dispatch(changeName())

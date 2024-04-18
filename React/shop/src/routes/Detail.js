@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { Nav } from 'react-bootstrap';
 
 import {Context1} from './../App.js'
+import { useDispatch, useSelector } from "react-redux";
 
 let YellowBtn = styled.button`
   background : ${props => props.bg};
@@ -18,6 +19,8 @@ function Detail(props) {
   let [show, setShow] = useState(true);
   let [num, setNum] = useState('');
   let [tab, setTab] = useState(0);
+  let state = useSelector((state) => state);
+  let dispatch = useDispatch();
 
   useEffect(() => {
     let a = setTimeout(() => { setShow(false) }, 2000)
