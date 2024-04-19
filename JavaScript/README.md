@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-04-15
+## 🗒️Last Update : 2024-04-19
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -165,7 +165,8 @@ ex) addEventListner() -> on() ...
 
 - ❗<b>이벤트 리스너 콜백 함수 안에 e라는 인자를 주면 여러 유용한 함수 사용가능</b>
 - e.target : 실제 클릭한 요소 알려줌
-- e.currentTarget : 지금 이벤트리스너가 달린 곳 알려줌(=this)
+- e.currentTarget : 지금 이벤트리스너가 달린 곳 알려줌
+    this랑 키워드가 같은데 arrow function을 쓸때는 다름 / function(){}으로 선언시 같음
 - e.preventDefault() : 이벤트 기본 동작(submit 같은거)을 막아줌
 - e.stopPropagation() : 내 상위요소로의 이벤트 버블링을 중단해줌
 </details>

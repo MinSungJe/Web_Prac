@@ -95,21 +95,26 @@
     </div>
 
     <script>
+
+        var pants = [28, 30, 32, 34];
+        var shirts = [95, 100, 105];
+
         $('.form-select').eq(0).on('input', (e) => {
             let value = e.currentTarget.value;
-            if (value == '셔츠') {
-                var template = `<option>95</option>
-                <option>100</option>`
-            }
-            if (value == '바지') {
-                var template = `<option>28</option>
-                <option>30</option>`
-            }
             if (value == '모자') $('.form-select').eq(1).addClass('hide')
-            else {
+            if (value == '셔츠') {
                 $('.form-select').eq(1).removeClass('hide')
                 $(".form-select").eq(1).html('')
-                $(".form-select").eq(1).append(template)
+                for (let i in shirts) {
+                    $('.form-select').eq(1).append(`<option>${shirts[i]}</option>`)
+                }
+            }
+            if (value == '바지') {
+                $('.form-select').eq(1).removeClass('hide')
+                $(".form-select").eq(1).html('')
+                pants.forEach((data)=>{
+                    $('.form-select').eq(1).append(`<option>${data}</option>`)
+                })
             }
         })
     </script>

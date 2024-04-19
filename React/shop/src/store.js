@@ -8,16 +8,25 @@ let cart = createSlice({
         { id: 2, name: 'Grey Yordan', count: 1 }
     ],
     reducers: {
-        increaseOne(state, action) {
-            let target = state.find((x) => {
-                return x.id == action.payload
-            })
-            target.count += 1
+        addCount(state, action) {
+            let idx = state.findIndex((x) => x.id === action.payload)
+            state[idx].count += 1
+        },
+        addItem(state, action) {
+            let idx = state.findIndex((x) => x.id === action.payload.id)
+            if (idx == -1)
+                return [...state, action.payload]
+            else
+                state[idx].count += 1
+        },
+        deleteItem(state, action) {
+            let idx = state.findIndex((x) => x.id === action.payload)
+            state.splice(idx, 1)
         }
     }
 })
 
-export let { increaseOne } = cart.actions
+export let { addCount, addItem, deleteItem } = cart.actions
 export default configureStore({
     reducer: {
         user: user.reducer,
