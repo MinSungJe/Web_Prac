@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-04-19
+## 🗒️Last Update : 2024-04-20
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -188,9 +188,56 @@ ex) addEventListner() -> on() ...
 </details>
 
 <details>
-<summary><b>🤔 Array랑 Object 친구 소개합니다</b></summary>
+<summary><b>🤔 Array랑 Object를 소개합니다</b></summary>
 
 - 여러 가지 변수들을 하나의 변수로 뭉쳐주는 그릇에는 Array랑 Object가 있음
 - Array : [], 인덱스로 자료 탐색, 정렬이나 슬라이싱 가능,리스트
 - Object : {}, key값으로 자료 탐색, key:value 자료형으로 저장, 딕셔너리
+</details>
+
+<details>
+<summary><b>🤔 서버랑 통신하고 싶어요</b></summary>
+
+- 서버는 유저가 데이터 달라고 요청을 하면 데이터를 보내주는 간단한 프로그램
+- ❗<b>근데 그냥 달라고 요청하면 안되고 양식에 맞춰 정중하게 부탁해야함</b>
+    1. 어떤 데이터인지 url로 잘 기재하고
+    2. 어떤 방법으로 요청할 지 결정해야함 (GET/POST 등..)
+- GET요청은 서버에 있던 데이터를 읽고싶을때 주로 사용하고(주소창) POST요청은 서버로 데이터를 보내고 싶을 때 사용함
+- 근데 그냥 요청날리면 브라우저가 새로고침됨 -> ❗<b>새로고침 없이 데이터를 주고받을 수 있게 도와주는 간단한 브라우저 기능이 ajax임!</b>
+</details>
+
+<details>
+<summary><b>🤔 ajax 써보고 싶은데요</b></summary>
+
+- 왜 써요? : ❗<b>새로고침없이 서버요청을 통해 데이터를 주고받을 수 있음</b>
+- jQuery로 ajax 요청하기
+    1. GET
+        ```javascript
+        $.get('url~~~~')
+        .done(function(data){
+            console.log(data)
+        })
+        .fail(function(error){
+            console.log('실패함')
+        });
+        ```
+        - done, fail 대신 then, catch 넣어도 됨
+    2. POST
+        ```javascript
+        $.post('url~~', {name : 'Min'})
+        ```
+- 쌩자바스크립트로 ajax 요청하기(fetch)
+    ```javascript
+    fetch('url~~~~')
+    .then(res => res.json())
+    .then(function(data){
+        console.log(data)
+    })
+    .catch(function(error){
+        console.log('실패함')
+    });
+    ```
+    - 요렇게 쓰는 이유는 json자료(문자로 인식됨)을 array/object 형으로 바꾸어야 하기 때문
+    위에서는 왜 건너뛰었냐면 제이쿼리는 그냥 자동으로 json을 array/object 형으로 바꿔주기 때문
+- 외부 라이브러리 설치(axios 등)
 </details>
