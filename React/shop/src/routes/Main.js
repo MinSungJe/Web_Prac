@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 function Main(props) {
     return (
         <div>
@@ -7,7 +9,7 @@ function Main(props) {
                     {
                         props.shoes.map((_a, i) => {
                             return (
-                                <Card shoes={props.shoes[i]} i={i}></Card>
+                                <Card key={i} shoes={props.shoes[i]}></Card>
                             )
                         })}
                 </div>
@@ -17,9 +19,10 @@ function Main(props) {
 }
 
 function Card(props) {
+    let navigate = useNavigate();
     return (
         <div className="col-md-4">
-            <img src={"https://codingapple1.github.io/shop/shoes" + (props.i + 1) + ".jpg"} width="80%" />
+            <img src={"https://codingapple1.github.io/shop/shoes" + (props.shoes.id + 1) + ".jpg"} width="80%" onClick={()=>{navigate('/detail/'+props.shoes.id)}}/>
             <h4>{props.shoes.title}</h4>
             <p>{props.shoes.content}</p>
         </div>

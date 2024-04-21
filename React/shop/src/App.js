@@ -1,8 +1,8 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import data from './data.js'
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import './App.css';
-import { Routes, Route, Link, useNavigate } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import Main from './routes/Main.js'
 import Detail from './routes/Detail.js'
 import About from './routes/About.js'
@@ -14,6 +14,11 @@ export let Context1 = createContext()
 
 
 function App() {
+
+  useEffect(()=>{
+    localStorage.setItem('watched', JSON.stringify([]))
+  }, [])
+
   let [shoes, setShoes] = useState(data)
   let [inventory] = useState([10, 11, 12])
   let [clickCount, setClickCount] = useState(0)
@@ -27,7 +32,6 @@ function App() {
           <Navbar.Brand href="#home">민성제샵</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={() => { navigate('/') }}>Home</Nav.Link>
-            <Nav.Link onClick={() => { navigate('/detail/0') }}>Detail</Nav.Link>
             <Nav.Link onClick={() => { navigate('/cart') }}>Cart</Nav.Link>
           </Nav>
         </Container>

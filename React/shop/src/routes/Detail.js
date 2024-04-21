@@ -51,6 +51,13 @@ function Detail(props) {
     })
   }, [])
 
+  useEffect(()=>{
+    let data = JSON.parse(localStorage.getItem('watched'))
+    let temp = [...data, id]
+    let setTemp = new Set(temp)
+    localStorage.setItem('watched', JSON.stringify([...setTemp]))
+  }, [])
+
   return (
     <div className={"container start "+fade}>
       {show

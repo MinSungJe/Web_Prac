@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-18
+## 🗒️Last Update : 2024-04-21
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -386,4 +386,24 @@ class Modal2 extends React.Component {
     }}>버튼임</button> 
     ```
     dispatch()는 메시지 또는 요청을 보낸다는 뜻임!
+</details>
+
+<details>
+<summary><b>🤔 새로고침을 했는데 내 state데이터가 초기화돼요</b></summary>
+
+- 새로고침하면 모든 state 데이터는 리셋됨(html css js파일을 다시 읽기 때문)
+- 리셋 안시킬거면 서버로 보내서 DB로 저장하거나 localStorage를 쓰면 됨
+- localStorage 문법
+  ```javascript
+  localStorage.setItem('데이터이름', '데이터');
+  localStorage.getItem('데이터이름');
+  localStorage.removeItem('데이터이름')
+  ```
+- localStorage에는 문자만 저장할 수 있음 -> 근데 난 array/object 자료형 넣고싶은데요
+- 편법 : <b>array/object -> JSON</b>으로 변환해서 저장
+- JSON 변환 문법
+  ```javascript
+  JSON.stringify(array/object) // array/object -> JSON
+  JSON.parse() // JSON -> array/object
+  ```
 </details>
