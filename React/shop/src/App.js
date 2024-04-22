@@ -16,6 +16,7 @@ export let Context1 = createContext()
 function App() {
 
   useEffect(()=>{
+    if (localStorage.getItem('watched').length > 0) return;
     localStorage.setItem('watched', JSON.stringify([]))
   }, [])
 

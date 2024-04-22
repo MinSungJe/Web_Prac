@@ -53,9 +53,9 @@ function Detail(props) {
 
   useEffect(()=>{
     let data = JSON.parse(localStorage.getItem('watched'))
-    let temp = [...data, id]
-    let setTemp = new Set(temp)
-    localStorage.setItem('watched', JSON.stringify([...setTemp]))
+    data = [...data, product.id]
+    data = new Set(data)
+    localStorage.setItem('watched', JSON.stringify([...data]))
   }, [])
 
   return (
