@@ -9,6 +9,7 @@ import About from './routes/About.js'
 import Event from './routes/Event.js'
 import Cart from './routes/Cart.js'
 import axios from 'axios'
+import { useQuery } from '@tanstack/react-query';
 
 export let Context1 = createContext()
 
@@ -25,15 +26,31 @@ function App() {
   let [clickCount, setClickCount] = useState(0)
   let [loding, setLoding] = useState(false)
   let navigate = useNavigate();
+  
+  let result = useQuery({
+    queryKey : ['작명'],
+    queryFn : ()=>{
+      return axios.get('https://codingapple1.github.io/userdata.json').then((a)=>{
+        return a.data
+      })
+    }
+  })
+
+
 
   return (
     <div className="App">
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">민성제샵</Navbar.Brand>
+          <Navbar.Brand>민성제샵</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={() => { navigate('/') }}>Home</Nav.Link>
             <Nav.Link onClick={() => { navigate('/cart') }}>Cart</Nav.Link>
+          </Nav>
+          <Nav style={{'color':'white'}} className='ms-auto'>
+            { result.isLoading && '로딩중'}
+            { result.error && '에러남'}
+            { result.data && "안녕하세요 "+result.data.name}
           </Nav>
         </Container>
       </Navbar>

@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-04-20
+## 🗒️Last Update : 2024-04-23
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -240,4 +240,21 @@ ex) addEventListner() -> on() ...
     - 요렇게 쓰는 이유는 json자료(문자로 인식됨)을 array/object 형으로 바꾸어야 하기 때문
     위에서는 왜 건너뛰었냐면 제이쿼리는 그냥 자동으로 json을 array/object 형으로 바꿔주기 때문
 - 외부 라이브러리 설치(axios 등)
+</details>
+
+<details>
+<summary><b>🤔 자바스크립트의 Array.sort()는 어떨까?</b></summary>
+
+- sort()는 Array의 값들을 정렬할 때 사용, map()과 filter()와 달리 Array를 변형시킴
+- 그냥 sort()쓰면 문자열 오름차순으로 작동
+- sort 안에는 콜백함수를 넣을 수 있음
+- 콜백함수 작동원리는 다음과 같음
+    ```javascript
+    Array.sort((a, b) => return {양수/음수})
+    ```
+    - a와 b에는 Array안의 값 두 개씩 꺼내서 모든 경우를 비교함
+    - 만약 return 다음 값이 양수면 a가 오른쪽으로 감
+    - 만약 return 다음 값이 음수면 b가 오른쪽으로 감
+    - 0이면 아마 그대로 있을듯?
+- 이 작동원리를 이용해 내림차순이나 숫자간의 정렬도 구현 가능
 </details>

@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-21
+## 🗒️Last Update : 2024-04-23
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -406,4 +406,18 @@ class Modal2 extends React.Component {
   JSON.stringify(array/object) // array/object -> JSON
   JSON.parse() // JSON -> array/object
   ```
+</details>
+
+<details>
+<summary><b>🤔 react-query는 왜 쓰는거람</b></summary>
+
+- 장점1. ajax 요청 성공/실패/로딩중 상태를 쉽게 파악 가능
+  - <code>result.isLoading</code>, <code>result.error</code>, <code>result.data</code> 등..
+- 장점2. 틈만나면 알아서 ajax 재요청해줌
+- 장점3. 실패 시 재시도 알아서 해줌(4번인가 5번 정도?)
+- 장점4. ajax로 가져온 결과는 state 공유 필요없음
+  - ajax로 가져온게 자식컴포넌트에도 필요한 정보라면 원래는 props 문법써서 전달해야하지만 그냥 그 자식컴포넌트에서도 똑같이 ajax 요청하는 코드 또 적으면 됨
+  - react-query는 똑똑해서 ajax 요청이 2개나 있으면 1개만 날리고 캐싱기능도 있어서 이미 같은거 한 적 있으면 그걸 우선 가져와서 씀
+- 사실 비슷한 라이브러리 더 있긴함 (RTK Query라던가..)
+- 설치하고 사용하는 법은 공식 문서 참고
 </details>
