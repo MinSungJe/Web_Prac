@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-04-23
+## 🗒️Last Update : 2024-04-24
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -257,4 +257,15 @@ ex) addEventListner() -> on() ...
     - 만약 return 다음 값이 음수면 b가 오른쪽으로 감
     - 0이면 아마 그대로 있을듯?
 - 이 작동원리를 이용해 내림차순이나 숫자간의 정렬도 구현 가능
+</details>
+
+<details>
+<summary><b>🤔 DOM이란?</b></summary>
+
+- 생각해보면.. javascript가 어떻게 html의 요소를 접근하고 바꿀 수 있는걸까?
+- html의 태그로 만든 요소를 javascript가 읽기 편한 object 자료형으로 바꾸면 읽을 수 있지 않을까?
+- 그래서 ❗<b>실제로 브라우저는 html을 열 때 자바스크립트가 해석할 수 있는 object와 비슷한 자료형에 담아줌</b>
+- ❗<b>이렇게 저장한 자료형을 Document Object Model, 즉 DOM이라 부름</b>
+- 브라우저는 html 문서를 위에서부터 읽으면 DOM을 생성함 -> 따라서 스크립트의 순서와 태그의 순서를 맞추는 것이 중요함
+- DOMContentLoaded 이벤트 리스너를 이용해 실행을 나중에 하는 방법도 있음
 </details>

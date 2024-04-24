@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-23
+## 🗒️Last Update : 2024-04-24
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -420,4 +420,31 @@ class Modal2 extends React.Component {
   - react-query는 똑똑해서 ajax 요청이 2개나 있으면 1개만 날리고 캐싱기능도 있어서 이미 같은거 한 적 있으면 그걸 우선 가져와서 씀
 - 사실 비슷한 라이브러리 더 있긴함 (RTK Query라던가..)
 - 설치하고 사용하는 법은 공식 문서 참고
+</details>
+
+<details>
+<summary><b>🤔 lazy import</b></summary>
+
+- 리액트로 만드는 Single Page Application의 특징 -> 다만들고 빌드하면 html, js 파일이 하나만 생성됨
+- 그 안에 지금까지 만든 내용이 전부 들어 있어 파일 사이즈가 좀 큼 -> 첫 페이지 로딩 속도가 매우 느릴 수 있음
+- 그게 싫다면 js 파일을 쪼개면 됨 -> import 문법을 lazy import해서 사용
+- 메인 페이지에서 바로 보일 필요 없는 컴포넌트를 lazy import
+  ```javascript
+  (App.js)
+  import {lazy} from 'react'
+
+  const Detail = lazy( () => import('./routes/Detail.js') )
+  const Cart = lazy( () => import('./routes/Cart.js') )
+  ```
+- lazy 사용하면 당연히 컴포넌트 로드까지 지연시간 발생할 수 있을텐데 그럴때는
+  1. Suspense 라는 거 import 해오고
+  2. lazy import한 컴포넌트를 감싸면 로딩중일때 대신 보여줄 html 작성도 가능
+  ```javascript
+  import {Suspense} from 'react'
+  ...
+    <Suspense fallback={ <div>로딩중</div> }>
+      <Detail shoes={shoes} />
+    </Suspense>
+  ```
+- 아니면 Routes 전체를 감싸도 됨
 </details>
