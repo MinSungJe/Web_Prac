@@ -32,6 +32,7 @@
                     <img src="https://via.placeholder.com/600" class="w-100">
                     <h5>${a.title}</h5>
                     <p>가격 : ${a.price}</p>
+                    <button class="buy">구매</button>
                     </div>`
 
                 $('.container .row').append(template)
@@ -62,6 +63,21 @@
         ];
 
         makeCard(products)
+
+        $('.buy').click((e)=>{
+            let label = e.currentTarget.previousElementSibling.previousElementSibling.innerHTML
+            
+            if (localStorage.getItem('cart') == null) {
+                let temp = JSON.stringify([label])
+                localStorage.setItem('cart', temp)
+            } else {
+                let temp = JSON.parse(localStorage.getItem('cart'))
+                if (temp.findIndex((a)=>{return a == label}) != -1) return
+                temp = JSON.stringify([...temp, label])
+                localStorage.setItem('cart', temp)
+            }
+        })
+
 
         $('#price').click(() => {
             products.sort((a, b) => {

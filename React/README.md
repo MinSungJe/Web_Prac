@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-24
+## 🗒️Last Update : 2024-04-25
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -447,4 +447,18 @@ class Modal2 extends React.Component {
     </Suspense>
   ```
 - 아니면 Routes 전체를 감싸도 됨
+</details>
+
+<details>
+<summary><b>🤔 (참고) Memo, useMemo</b></summary>
+
+- Memo 언제 써요?
+  - 자식 컴포넌트 중 랜더링 시간이 오래걸리는 자식 컴포넌트가 있음
+  - 부모 컴포넌트의 state가 변화될때마다 자식도 새로 불러오면서 랜더링 시간을 또 잡아먹을 때
+- 사용법 <code>let 컴포넌트명 = function() {시간 오래 걸리는거}</code> 이런식으로 컴포넌트를 생성하고 함수를 <code>memo()</code>로 감싸자(react에서 import)
+- 이러면 자식 컴포넌트로 전달되는 props의 값이 바뀔때만 자식이 새로 랜더링됨
+  - 따라서 자식에게 전달되는 props가 복잡한 경우, 기존 props랑 달라진 점이 있는지 확인하기 위해 시간이 오히려 더 오래 걸림
+  - 이런 경우에는 안쓰는게 더 좋음
+- useMemo는 useEffect와 비슷한 용도임
+  - 차이점은 실행 시점의 차이(useEffect는 모든 랜더링이 끝나고, useMemo는 랜더링 중에)
 </details>

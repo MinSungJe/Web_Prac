@@ -1,0 +1,10 @@
+<div class="container">
+    <h2>장바구니 페이지</h2>
+</div>
+
+<script>
+    let arr = JSON.parse(localStorage.getItem('cart'))
+    arr.forEach((title) => {
+        document.querySelector('.container').insertAdjacentHTML('beforeend', `<p>${title}</p>`)
+    });
+</script>
