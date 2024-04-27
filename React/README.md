@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-25
+## 🗒️Last Update : 2024-04-27
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -461,4 +461,24 @@ class Modal2 extends React.Component {
   - 이런 경우에는 안쓰는게 더 좋음
 - useMemo는 useEffect와 비슷한 용도임
   - 차이점은 실행 시점의 차이(useEffect는 모든 랜더링이 끝나고, useMemo는 랜더링 중에)
+</details>
+
+<details>
+<summary><b>🤔 (참고) 리액트 18버전부터 사용가능한 혁신적 기능 소개</b></summary>
+
+- 리액트 18버전 이후부터 추가된 기능들 몇 가지 소개드림
+  - 일관된 batcing : state변경함수를 여러개 쓰면 재랜더링은 마지막 1번만 됨 - 이거 싫으면 flushSync 사용
+  - useTransition 추가됨
+    ```javascript
+    let [isPending, startTransition] = useTransition()
+    ```
+    - isPending : 처리중일때 True를 뱉는 변수
+    - startTransition : 이걸로 렌더링이 느린 컴포넌트를 감싸면 그걸 다른 코드들보다 나중에 처리해줌
+  - useDeferredValue 추가됨
+    - 위에 useTransition이랑 비슷함
+    ``` javascript
+    let state1 = useDeferredValue(name)
+    ```
+    - state 아니면 변수 하나를 집어넣을 수 있음
+    - 그 변수에 변동사항이 생기면 그걸 늦게 처리해줌
 </details>

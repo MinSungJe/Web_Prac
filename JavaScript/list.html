@@ -52,9 +52,6 @@
         <button class="btn btn-danger" id="underPrice">6만원 이하 상품보기</button>
     </div>
 
-
-
-
     <script>
         var products = [
             { id: 0, price: 70000, title: 'Blossom Dress' },
@@ -65,15 +62,15 @@
         makeCard(products)
 
         $('.buy').click((e)=>{
-            let label = e.currentTarget.previousElementSibling.previousElementSibling.innerHTML
+            let title = $(e.target).siblings('h5').text();
             
             if (localStorage.getItem('cart') == null) {
-                let temp = JSON.stringify([label])
+                let temp = JSON.stringify([title])
                 localStorage.setItem('cart', temp)
             } else {
-                let temp = JSON.parse(localStorage.getItem('cart'))
-                if (temp.findIndex((a)=>{return a == label}) != -1) return
-                temp = JSON.stringify([...temp, label])
+                let temp = JSON.parse(localStorage.cart)
+                if (temp.findIndex((a)=>{return a == title}) != -1) return
+                temp = JSON.stringify([...temp, title])
                 localStorage.setItem('cart', temp)
             }
         })
