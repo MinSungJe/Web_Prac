@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-27
+## 🗒️Last Update : 2024-04-29
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -481,4 +481,16 @@ class Modal2 extends React.Component {
     ```
     - state 아니면 변수 하나를 집어넣을 수 있음
     - 그 변수에 변동사항이 생기면 그걸 늦게 처리해줌
+</details>
+
+<details>
+<summary><b>🤔 (참고) PWA???</b></summary>
+
+- 웹서비스 바로가기인데 앱처럼 생겨먹음
+- 장점:
+  - 스마트폰, 태블릿 바탕화면에 웹사이트 설치 가능
+  - 오프라인에서도 동작 가능
+  - 설치 유도 비용이 매우 적음
+- ❗<b>만드는 법</b>: 프로젝트를 생성할 때 <code>npx create-react-app 프로젝트명 --template cra-template-pwa</code>
+- 원래 있던 프로젝트로 PWA 만드려면 위 방법대로 만들고 세부 파일/라이브러리를 복붙 및 설치하면 됨
 </details>

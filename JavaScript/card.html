@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="main.css" rel="stylesheet">
+    <title>Card Practice</title>
+</head>
+
+<body>
+
+    <div class="card-background">
+        <div class="card-box">
+            <img src="images/card1.png">
+        </div>
+        <div class="card-box">
+            <img src="images/card2.png">
+        </div>
+        <div class="card-box">
+            <img src="images/card3.png">
+        </div>
+    </div>
+
+    <script>
+
+        $(window).scroll(()=>{
+            var h = $(window).scrollTop();
+            // 721 1321 1->0.9
+            //  
+            var o1 = -(1/600)*h + 2.2025
+            var s1 = Math.min(-(1/6000)*h + 1.1202, 1)
+            var o2 = -(1/600)*h + 3.4758
+            var s2 = Math.min(-(1/6000)*h + 1.2476, 1)
+
+            $('.card-box').eq(0).css('opacity', o1)
+            $('.card-box').eq(0).css('scale', s1)
+            $('.card-box').eq(1).css('opacity', o2)
+            $('.card-box').eq(1).css('scale', s2)
+        })
+    </script>
+
+
+</body>
+
+</html>
