@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-04-24
+## 🗒️Last Update : 2024-04-30
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -268,4 +268,13 @@ ex) addEventListner() -> on() ...
 - ❗<b>이렇게 저장한 자료형을 Document Object Model, 즉 DOM이라 부름</b>
 - 브라우저는 html 문서를 위에서부터 읽으면 DOM을 생성함 -> 따라서 스크립트의 순서와 태그의 순서를 맞추는 것이 중요함
 - DOMContentLoaded 이벤트 리스너를 이용해 실행을 나중에 하는 방법도 있음
+</details>
+
+<details>
+<summary><b>🤔 마우스 입력 이벤트 리스너 정리</b></summary>
+
+- mousedown : 마우스를 눌렀을 때
+- mouseup : 마우스를 눌렀다 뗄 때
+- click : mousedown과 mouseup을 껄라버레이션
+- mousemove : 마우스가 안에서 움직일 때
 </details>

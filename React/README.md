@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-29
+## 🗒️Last Update : 2024-04-30
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -493,4 +493,53 @@ class Modal2 extends React.Component {
   - 설치 유도 비용이 매우 적음
 - ❗<b>만드는 법</b>: 프로젝트를 생성할 때 <code>npx create-react-app 프로젝트명 --template cra-template-pwa</code>
 - 원래 있던 프로젝트로 PWA 만드려면 위 방법대로 만들고 세부 파일/라이브러리를 복붙 및 설치하면 됨
+</details>
+
+<details>
+<summary><b>🤔 async 함수를 조심하자</b></summary>
+
+- 원래 코드는 위에서 아래로 한줄한줄씩 실행이 됨(sync)
+- 하지만 몇몇 코드는 실행시간이 오래걸리므로 순차적 실행이 아닌 개별로 완료되면 실행됨(async, 비동기적)
+- setTimeout(), <b>setState()</b> 등의 함수가 async에 해당됨
+- 그래서 예상과 다르게 코드가 동작할 수 있음!!
+</details>
+
+<details>
+<summary><b>🤔 이제 내가 만든 리액트를 웹서버랑 연동해보자</b></summary>
+
+- 리액트로 만든 HTML을 전송하려면 우선 리액트 프로젝트를 빌드함 <code>npm run build</code>
+- 그러면 build 폴더 안에 서버로 보내줘야 할 것들(index.html, static폴더 내 파일들)이 정리되어 제공됨
+- node.js를 이용해 구축한 서버의 명령어는 다음과 같음
+  ```javascript
+  // 서버 생성 기본 코드
+  const express = require('express');
+  const path = require('path');
+  const app = express();
+
+  app.listen(8080, function () {
+    console.log('listening on 8080')
+  });
+
+  // 이거 넣어야 서버간 ajax 요청이 잘 됨
+  app.use(express.json())
+  var cors = require('cors')
+  app.use(cors())
+
+  // build 파일 보내기(static 안 필요 자료들)
+  app.use(express.static(path.join(__dirname, 'react-project/build')))
+  // build 파일 보내기(html)
+  app.get('/', function(요청, 응답) {
+      응답.setFile(path.join(__dirname, 'react-project\build\index.html'))
+  })
+
+  // 데이터 보내기(/product로 get요청, client-side rendering)
+  app.get('/product', function(요청, 응답) {
+      응답.json({name:'black shoes'})
+  })
+
+  // 리액트에서 라우팅을 담당하는 경우
+  app.get('*', function(요청, 응답) {
+      응답.setFile(path.join(__dirname, 'react-project\build\index.html'))
+  })
+  ```
 </details>

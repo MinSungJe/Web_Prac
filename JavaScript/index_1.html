@@ -189,13 +189,13 @@
     <div style="overflow: hidden;">
         <div class="slide-container">
             <div class="slide-box">
-                <img src="images/car1.png">
+                <img src="images/car1.png" draggable="false">
             </div>
             <div class="slide-box">
-                <img src="images/car2.png">
+                <img src="images/car2.png" draggable="false">
             </div>
             <div class="slide-box">
-                <img src="images/car3.png">
+                <img src="images/car3.png" draggable="false">
             </div>
         </div>
     </div>
@@ -237,6 +237,26 @@
         $(".slide-3").on('click', () => {
             $(".slide-container").css('transform', 'translateX(-200vw)');
             currentState = 3;
+        })
+
+        let startPos = 0;
+        let distance = 0;
+        let push = false;
+
+        $('.slide-box').eq(0).on('mousedown', (e)=>{
+            startPos = e.clientX
+            push = true;
+        })
+        $('.slide-box').eq(0).on('mouseup', (e)=>{
+            push = false;
+            if (distance < -100) $(".slide-container").css('transform', 'translateX(-100vw)');
+            else $(".slide-container").css('transform', 'translateX(0vw)');
+        })
+        $('.slide-box').eq(0).on('mousemove', (e)=>{
+            if (push == true) {
+                distance = e.clientX - startPos
+                $('.slide-container').css('transform', `translateX(${distance}px)`)
+            }
         })
     </script>
 
