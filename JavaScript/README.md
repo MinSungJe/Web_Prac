@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-04-30
+## 🗒️Last Update : 2024-05-01
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -277,4 +277,16 @@ ex) addEventListner() -> on() ...
 - mouseup : 마우스를 눌렀다 뗄 때
 - click : mousedown과 mouseup을 껄라버레이션
 - mousemove : 마우스가 안에서 움직일 때
+</details>
+
+<details>
+<summary><b>🤔 터치 입력 이벤트 리스너 정리</b></summary>
+
+- touch는 모바일 환경에서의 터치를 의미함
+- touchstart : 마우스를 눌렀을 때
+- touchend : 마우스를 눌렀다 뗄 때
+- touchmove : 마우스가 안에서 움직일 때
+- 주의 사항: <code>e.clientX -> e.touches[0].clientX</code>
+- touchend 이벤트 리스너에서는: <code>e.clientX -> e.changedTouches[0].clientX</code>
+- 터치는 하나 이상이 될 수 있기 때문에 index를 붙여줘야함
 </details>
