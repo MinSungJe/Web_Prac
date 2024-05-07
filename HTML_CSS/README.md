@@ -1,6 +1,6 @@
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 HTML5 & CSS3 연습장
-## 🗒️Last Update : 2024-05-02
+## 🗒️Last Update : 2024-05-07
 <details>
 <summary><b>🤔 이것들이 뭔가요?</b></summary>
 
@@ -68,6 +68,19 @@
 </details>
 
 <details>
+<summary><b>🤔 가로배치 하기 3: display: flex</b></summary>
+
+- <b>박스들을 감싸는 부모 요소에게 <code>display: flex;</code> 넣으면 배치 끝</b>
+- flex 특징
+    - table 폭하고 비슷하게 동작: width를 설정하면 무조건 그 크기대로 맞추는게 아니라 맞추려고 "노력"함
+    - width 크면 밑으로 보내고 싶을 때는 <code>flex-wrap: wrap;</code> 사용
+    - ❗<b>정렬은 justify-content 속성 사용</b>
+    - ❗<b>flex 이용 시 세로 배치: <code>flex-direction: row/column;</code> 사용</b>
+    - ❗<b>flex 이용 시 상하정렬: align-items 속성 사용</b>
+    - ❗<b>특정 박스만 크기를 키우고 싶을 때 배수 적용 가능!!: <code>flex-grow: 숫자;</code></b>
+</details>
+
+<details>
 <summary><b>🤔 글자 태그는 margin이 있음</b></summary>
 
 - h4, p 등의 글자를 보여주는 태그는 기본 margin이 있음!!
@@ -89,7 +102,11 @@
 
 - 셀렉터1 셀렉터2: 셀렉터1 안의 모든 셀렉터2에 접근
 - 셀렉터1 > 셀렉터2: 셀렉터1 안의 <b>직계자식</b> 셀렉터2에 접근
+- 셀렉터1, 셀렉터2: 셀렉터1, 셀렉터2에 둘다 접근(중복 선택 가능)
 - (참고) 태그에 class 2개 이상 부여하려면 <code>class="이름1 이름2"</code> 이런식으로 넣으면 됨
+- (참고2) 속성값으로 접근할 요소를 고르고 싶다면 <code>셀렉터[속성=속성값]</code> 이런 식으로 입력
+- (참고3) 셀렉터1:nth-child(숫자): {숫자}번째 셀렉터1을 선택함
+    - 여기서 숫자 말고 even, odd 넣어서 짝수홀수 할 수도 있고 3n+0 이런 식으로 넣어서 3의 배수만 스타일을 줄 수도 있음
 
 </details>
 
@@ -132,4 +149,149 @@
 - <code>position: fixed;</code>: 현재 화면(viewport)이 기준
 - <code>position: absolute;</code>: 내 부모 태그 중 position:relative;를 가진 부모 기준
 
+</details>
+
+<details>
+<summary><b>🤔 디테일 요소: width %의 문제 해결</b></summary>
+
+- width %를 주면 부모 태그의 %만큼의 크기를 갖게됨
+- 문제: PC에서 너무 큼 -> max-width 사용으로 제한주기
+- max-width 사용 시(혹은 width) 주의 점: width는 실제 너비가 아니라 content 영역의 너비를 의미함
+- ❗<b>해결책: padding과 border를 전부 포함한 것을 width로 설정하라고 명령을 줄 수 있음</b>
+    - <code>box-sizing: border-box;</code>
+    - 참고로 원래 default는 <code>box-sizing: content-box</code>
+
+</details>
+
+<details>
+<summary><b>🤔 숙련자일수록 css 위에 기본설정값이 있다~</b></summary>
+
+- 숙련자들은 CSS 파일 맨 위에 호환성 이슈 해결책부터 첨부하는 경우가 있음
+- 이걸 <b>normalize</b>라고 함
+- 검색 키워드: normalize.css
+
+</details>
+
+<details>
+<summary><b>🤔 form & input</b></summary>
+
+- 사용자의 입력을 받는 태그: form태그 안에 input태그를 넣음
+- form태그 속성
+    - action = "경로"
+    - method = "get", "post"
+- input태그 속성
+    - type = "text", "checkbox", "submit" 등 input태그 종류
+    - value = "미리 채워진 값"
+    - placeholder = "배경 글자"
+    - name = "인풋 이름"
+- input태그의 설명을 쓰기 위해 label 태그를 주로 활용함
+    - for = "아이디" 적고 input태그에 id = "아이디" 넣어서 활용
+- form태그 안에 input말고도 여러 태그를 넣을 수 있음
+    - textarea
+    - select태그 안에 option태그들 넣기: 옵션박스
+    - button type="submit"
+
+</details>
+
+<details>
+<summary><b>🤔 CSS는 어떻게 작성하면 좋을까요??</b></summary>
+
+- 재사용가능하게 class를 만들어보자
+    - ex) w-50, w-100 등..
+- ❗<b>Object Oriented CSS</b> : 뼈대용 class, 살점용 class를 각각 제작해보자
+    - ex1) btn 뼈대 class는 따로 만들고, bg-red / bg-blue
+    - ex2) Utility class: f-small, f-mid, f-lg
+    - 장점: css양이 줄어들고 유지보수가 편리해짐
+
+</details>
+
+<details>
+<summary><b>🤔 표 만들땐 table</b></summary>
+
+- ❗<b>가로 행을 먼저 그리고(tr) 세로 열을 그리면 된다(td)</b>
+- 제목용 세로열 만들땐 tr 대신 th
+- 제목 행(tr)은 thead에, 일반 행(tr)은 tbody에 넣으면 좋음
+- table은 기본적으로 틈이 존재
+    - 없애려면 <code>border-collapse: collapse</code>
+- 셀 안의 요소 상하정렬: <code>vertical-align: top/bottom/middle</code>
+- (참고) 일반 div태그를 이용해 표를 만들 수 있음
+    - display: table / display: tabel-row / display: table-cell
+</details>
+
+<details>
+<summary><b>🤔 display: inline</b></summary>
+
+- ❗<b>항상 옆으로 채워지는 폭과 너비가 없는 요소들</b>
+- inline/inline-block 요소 간의 세로 정렬할 때는 vertical-align을 쓸 수 있음
+</details>
+
+<details>
+<summary><b>🤔 table 태그 쓸 때 특이한 포인트</b></summary>
+
+- 테두리 색상을 밑에만 넣고 싶다면 border-bottom 쓰면 됨
+- 셀 블록마다 width를 설정해 줄 수 있음
+    - 이 때 하나의 td에 width를 줘도 그 열의 전체 width가 변함
+- td 여러개를 합치고 싶다면 colspan 사용 / tr은 rowspan
+</details>
+
+<details>
+<summary><b>🤔 table 태그에 border-radius가 안먹는데요</b></summary>
+
+- border-collapse 속성을 적용해서 둘이 충돌이 일어나 안먹는 경우임
+- 해결방법
+    - border-spacing: 0; 사용
+        ```css
+        table {
+        border-collapse : collapse;
+        border-spacing : 0;
+        }
+
+        (왼쪽위에있는 td) {
+        border-top-left-radius : 5px;
+        }
+        ```
+    - 테두리를 가짜로 만들어내는 편법
+        ```css
+        table {
+        border-collapse : collapse;
+        border-radius : 7px;
+        border-style : hidden;
+        box-shadow : 0 0 0 1px #666;
+        }
+        ```
+</details>
+
+<details>
+<summary><b>🤔 pseudo-class로 버튼을 누름직하게 만들어보자</b></summary>
+
+- 버튼태그에서 pseudo-class를 이용해 디자인이 가능함
+    - cursor 속성: 마우스 갖다댔을 때 마우스의 변화 설정
+    - 버튼:hover 셀렉터: 마우스 갖다댔을 때 버튼의 변화 설정하는 pseudo-class
+    - 버튼:active 셀렉터: 마우스를 클릭했을 때 버튼의 변화 설정하는 pseudo-class
+    - 버튼:focus 셀렉터: 버튼이 focus 됐을 때 버튼의 변화 설정하는 pseudo-class
+    - pseudo-class 넣을 땐 순서가 중요함: hover -> focus -> active (hofa)
+- a태그에서도 쓰임
+    - text-decoration 속성: 링크 꾸미는 요소 설정(none, underline 등)
+    - a:link 셀렉터: 방문 전 링크 스타일링
+    - a:visited 셀렉터: 방문 후 링크 스타일링
+</details>
+
+<details>
+<summary><b>🤔 내 페이지에 font를 넣고 싶어요</b></summary>
+
+- 커스텀 폰트 넣는법:
+    - css 파일로 가서 내가 준비한 폰트파일을 등록
+        ```css
+        @font-face {
+        font-family: '작명';
+        src: url(경로~~~);
+        }
+        ```
+    - 이후 적용할 셀렉터에서 <code>box-sizing: '작명';</code>
+- 한글폰트 사이즈는 너무 큼: 1~2개만 쓰자
+- 혹은 ttf말고 woff쓰자 -> 웹에서 사용하기 위해 용량을 줄인 폰트임
+- font-weight 속성: 폰트의 굵기를 줄 수 있는데 그냥 주면 안이쁨 -> 굵은 폰트를 따로 등록해야됨
+- 폰트파일을 호스팅해주는 Google Fonts를 사용해도 됨
+- 폰트를 부드럽게 처리하는 안티앨리어싱 해보려면 -> 폰트를 매우조금 돌려주면 됨
+    - <code>transform: rotate(0.03deg);</code>
 </details>
