@@ -1,6 +1,6 @@
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 HTML5 & CSS3 연습장
-## 🗒️Last Update : 2024-05-07
+## 🗒️Last Update : 2024-05-08
 <details>
 <summary><b>🤔 이것들이 뭔가요?</b></summary>
 
@@ -294,4 +294,37 @@
 - 폰트파일을 호스팅해주는 Google Fonts를 사용해도 됨
 - 폰트를 부드럽게 처리하는 안티앨리어싱 해보려면 -> 폰트를 매우조금 돌려주면 됨
     - <code>transform: rotate(0.03deg);</code>
+</details>
+
+<details>
+<summary><b>🤔 반응형 레이아웃을 만들어보자</b></summary>
+
+- 반응형 레이아웃이란: 창이 작아지거나 모바일 환경에서 보기 좋게 바뀌는 레이아웃
+- PC용 레이아웃부터 먼저 만들어서 적용해보자
+- 관련 단위
+    - vw: 브라우저 폭에 비례
+    - vh: 브라우저 높이에 비례
+    - rem: 기본 폰트사이즈에 비례(html 태그 폰트사이즈의 10배, 기본값 16px)
+    - em: 내 폰트사이즈의 X배
+- 반응형 만들려면 넣어야 하는 meta 태그:
+    ```html
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    ```
+- ❗<b>CSS파일에 media query문법을 적는다!</b>
+    - 추가해주는 개념이므로 CSS 파일 밑에 적자
+    - ex) 현재 브라우저 폭이 1200px 이하일 경우 적용할 스타일 적는법
+        ```css
+        @media screen and (max-width: 1200px) {
+            셀렉터1 {
+                font-size: 25px;
+            }
+            셀렉터2 {
+                스타일~~~~~
+            }
+        }
+        ```
+    - 중복 적용 가능
+    - (참고) breakpoint 기준 px값은 다른사람 따라하는걸 권장
+        - 1200px / 992px / 768px / 576px
+        - 1200px 이하는 태블릿, 768px 이하는 모바일로 디자인하는게 간편함
 </details>

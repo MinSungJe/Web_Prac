@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+}
+div {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
+.card {
+    width: 25%;
+    padding: 15px;
+    text-align: center;
+}
+
+.title {
+    font-weight: 600;
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        max-width: 600px;
+    }
+    .card {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        width: 100%;
+    }
+}
