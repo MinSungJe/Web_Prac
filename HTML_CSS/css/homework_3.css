@@ -16,6 +16,17 @@ div {
     
 }
 
+.container i {
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    background-color: burlywood;
+    padding-top: 25px;
+    border-radius: 50px;
+    color: white;
+    margin-top: 2dvi;
+}
+
 .card {
     width: 25%;
     padding: 15px;

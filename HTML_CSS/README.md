@@ -340,4 +340,25 @@
     <link rel="stylesheet" type="text/css" href="css/ie8.css" />
     <![endif]-->
     ```
+- 호환성이 목표라면 IE용 class를 따로 하나 더 만들어주는 것도 good
+</details>
+
+<details>
+<summary><b>🤔 Font Awesome 라이브러리를 이용해 아이콘을 넣고싶어</b></summary>
+
+- 먼저 Font Awesome 라이브러리를 다운
+    - CDN(Content Delivery Network): 다른 웹사이트에서 불러와서 가져다쓰는거
+    - 직접 파일 다운
+- 스타일링은 글자처럼 가능
+</details>
+
+<details>
+<summary><b>🤔 one-way 애니메이션 만드는 step</b></summary>
+
+- one-way 애니메이션은 4가지 step이 있음
+    1. 시작스타일 만들기
+    2. 최종스타일 만들기
+    3. 언제 최종스타일로 변하는지(trigger)
+    4. transition 줘서 전환효과 주기
+- (참고) transition의 전환속도 관련 함수를 조정하기 위해선 transition-timing-function
 </details>
