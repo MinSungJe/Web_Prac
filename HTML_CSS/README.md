@@ -1,6 +1,6 @@
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 HTML5 & CSS3 연습장
-## 🗒️Last Update : 2024-05-08
+## 🗒️Last Update : 2024-05-11
 <details>
 <summary><b>🤔 이것들이 뭔가요?</b></summary>
 
@@ -361,4 +361,15 @@
     3. 언제 최종스타일로 변하는지(trigger)
     4. transition 줘서 전환효과 주기
 - (참고) transition의 전환속도 관련 함수를 조정하기 위해선 transition-timing-function
+</details>
+
+<details>
+<summary><b>🤔 Bootstrap을 써봅시다</b></summary>
+
+- 사이트 가서 cdn으로 설치(css, js를 연결)
+- Bootstrap을 쓰는 이유
+    - 부트스트랩 사이트에서 복붙식 개발 가능
+        - 거의 뼈대 디자인이므로 css파일로 커스터마이징 가능
+    - Utility Class 사용 가능
+        - container, mt-5, pb-5, fs-3, text-center, fw-bold 등..
 </details>
