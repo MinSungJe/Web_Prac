@@ -1,6 +1,6 @@
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 HTML5 & CSS3 연습장
-## 🗒️Last Update : 2024-05-11
+## 🗒️Last Update : 2024-05-15
 <details>
 <summary><b>🤔 이것들이 뭔가요?</b></summary>
 
@@ -372,4 +372,48 @@
         - 거의 뼈대 디자인이므로 css파일로 커스터마이징 가능
     - Utility Class 사용 가능
         - container, mt-5, pb-5, fs-3, text-center, fw-bold 등..
+</details>
+
+<details>
+<summary><b>🤔 Bootstrap으로 반응형 레이아웃 만들기(grid)</b></summary>
+
+- .row와 .col을 이용하면 균일하게 쪼개기 가능
+- 정확한 사이즈인 가로로 쪼개고 싶으면 <code>col-차지할크기</code> (한 줄은 12칸 있음)
+- 반응형을 추가하고 싶으면 조건문을 더하면 됨
+    - col<b>-md-</b>6 (md 사이즈 이상에서만 6사이즈를 적용해주세요)
+    - xl: 1200px / lg: 992px / md: 768px / sm: 576px
+- 이를 이용해 @media 문법 없이도 반응형 레이아웃 개발 가능
+- Grid Layout만 쓸 수 있는 라이브러리도 제공함
+- order-숫자 부착해서 div박스 순서 재배치도 가능
+    - 역시 중간에 조건문 추가 가능 ex) order-md-3
+- 부트스트랩 반응형 레이아웃을 사용할 때 col 클래스는 여러 개 써도 되고, 모바일 먼저 만드는게 편함
+    - 그냥 CSS에서는 맨 마지막에 media query가 들어가므로 PC화면을 먼저 만듦
+</details>
+
+<details>
+<summary><b>🤔 CSS 덮어쓰기 하는 법</b></summary>
+
+- 세 가지 방법 중 하나로 써보자
+    - 그냥 같은 클래스명 하단에 쓰기
+        - 같은 이름인데 더 밑에 있으면 그 스타일을 적용함
+        - html 내 css 선언도 더 밑에 해두면 그 css의 내용을 적용함
+        - @media 문법을 하단에 작성해야 되는 이유
+    - 우선순위 높이기
+        - ex) class 대신 id나 html내 style속성을 넣어버리기
+        - ❗<b>주어진 스타일 옆에 !important를 넣으면 무조건 적용시켜줌(만점짜리)</b>
+    - specificity 높이기
+        - 특정적으로 열심히 셀렉터 써서 찝은 경우는 우선순위가 부여됨
+            - ex) .container .test 는 .test보다 우선순위가 크다
+            - ex) p.container는 .container보다 우선순위가 크다
+        - 셀렉터가 복잡하면 미래에 덮어쓰기 힘들어짐
+            - 평소에 스타일을 하나만 써서 쓰는게 좋다
+- Bootstrap 사용 시에는 덮어쓰기 보다는 class 추가하는게 흔함
+    - 내 css파일을 부트스트랩 cdn보다 더 아래에 선언해주자
+</details>
+
+<details>
+<summary><b>🤔 좋은 코드의 원칙</b></summary>
+
+- 나중에 수정/관리가 쉬운가?
+- 확장성이 좋은가? (재활용 가능한지, 확장해서 다른 class 만들기 쉬운지)
 </details>
