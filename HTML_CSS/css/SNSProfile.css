@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    background: #f7f9fc;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+h2, h5, p {
+    margin-bottom: 0;
+}
+
+.f-skyblue {
+    color: #6fbaf8;
+}
+
+.bg-skyblue {
+    background: #6fbaf8;
+    color: white;
+}
+
+.border-profile {
+    border-bottom: 3px solid #6fbaf8;
+}
+
+.tech-box {
+    border: 1px solid black;
+    border-radius: 50px;
+}
