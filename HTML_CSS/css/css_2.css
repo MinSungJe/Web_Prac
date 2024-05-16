@@ -156,6 +156,19 @@ input[type=text] {
     margin: 0;
 }
 
+progress {
+    appearance: none;
+}
+
+progress::-webkit-progress-value {
+    background-color: greenyellow;
+    border-radius: 5px;
+}
+progress::-webkit-progress-bar {
+    background-color: #fe7675;
+    border-radius: 5px;
+}
+
 
 @media screen and (max-width: 1200px) {
     .main-title {

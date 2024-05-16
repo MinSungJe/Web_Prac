@@ -1,6 +1,6 @@
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 HTML5 & CSS3 연습장
-## 🗒️Last Update : 2024-05-15
+## 🗒️Last Update : 2024-05-16
 <details>
 <summary><b>🤔 이것들이 뭔가요?</b></summary>
 
@@ -416,4 +416,34 @@
 
 - 나중에 수정/관리가 쉬운가?
 - 확장성이 좋은가? (재활용 가능한지, 확장해서 다른 class 만들기 쉬운지)
+</details>
+
+<details>
+<summary><b>🤔 pseudo-element?</b></summary>
+
+- (참고) :pseudo-class / ::pseudo-element
+- pseudo-class: 다른 상태일 때 스타일링, 콜론 하나
+- pseudo-element: 내부의 일부분만 스타일 줄때, 콜론 두개
+- ::first-letter, ::first-line 등..
+- 그나마 자주 사용하는거
+    - ::after -> 내부 맨 뒤에 뭔가 추가할 때
+    - ::before -> 내부 맨 앞에 뭔가 추가할 때
+    - content 속성으로 내용 추가 가능
+- 숨겨진 요소(Shadow DOM) 스타일줄때도 ::사용함
+</details>
+
+<details>
+<summary><b>🤔 특정 태그는 하나만 넣어도 요소가 두 개 나오는 이유가 뭐에요? </b></summary>
+
+- ex) input[type=file]태그는 하나만 넣어도 버튼과 span태그가 생성됨
+- 이렇게 자동으로 만들어진 요소들은 숨겨짐: Shadow DOM라 함
+- 그렇다면 이렇게 생성된 shadow DOM에 스타일링을 하고싶다면?
+    - pseudo-element(내부 일부만 스타일주고 싶을 때 씀) 사용
+    - shadow DOM 보기 설정을 한 뒤 해당 요소에 있는 pseudo 확인 후 pseudo-element 스타일 주면 됨
+    - user agent stylesheet(브라우저 기본 스타일)에서 셀렉터 살짝 따와도 됨
+        - ❗<b>user agenet stylesheet가 있다면 수정이 안될 수 있음</b> -> 상위에 <code>apperance: none;</code>을 넣어야 함(기본 스타일 입히기 말아주세요)
+    - pseudo에서 맨 처음 들어가는 요소 설명
+        - -webkit- : 크롬, 사파리, Edge에서 적용되는 스타일
+        - -moz- : Firefox에서만 적용
+        - -ms-: IE에서만 적용
 </details>
