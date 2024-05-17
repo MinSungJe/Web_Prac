@@ -451,10 +451,11 @@
 <details>
 <summary><b>🤔 SASS 써봅시다 </b></summary>
 
+- SCSS랑 SASS는 중간에 중괄호 넣냐(SCSS) 탭키 넣냐(SASS) 차이밖에 없음
 - 직접 써봅시다
-    - ❗<b>웹브라우저는 CSS만 알지 SCSS같은거 모름 -> SCSS를 CSS로 변환해주는 변환기를 돌려서 넣어줘야 함</b>
+    - ❗<b>웹브라우저는 CSS만 알지 SCSS/SASS같은거 모름 -> SCSS/SASS를 CSS로 변환해주는 변환기를 돌려서 넣어줘야 함</b>
 - .map 파일의 용도: 크롬 개발자도구 디버깅용 -> 크롬에서 css가 아니라 scss 파일로 분석해줌
-- ❗<b>SASS 왜쓰는데요?</b>
+- ❗<b>SCSS, SASS 왜쓰는데요?</b>
     - CSS에는 없는 프로그래밍스러운 문법 존재함 -> 반복적인 부분 쉽게 처리 가능
     - 변수문법을 사용함: 어려운 단어를 사용하거나, 규칙적인 스타일 만들 때 사용
         ```scss
@@ -482,4 +483,40 @@
             width: calc(40% - 20px);
             }
             ```
+    - nesting 문법 사용 가능 -> 관련있는 class들 묶을 때 좋음
+        ```scss
+        .main-bg {
+            width: 100px;
+            h4 {
+                font-size: 16px;
+            }
+
+            button {
+                color: red;
+            }
+        }
+        ```
+    - @extend 문법 사용 가능 -> <code>%임시클래스명</code>으로 임시클래스를 만들고 <code>@extend %임시클래스명</code>
+        ```scss
+        %btn {
+            width: 100px;
+            height: 100px;
+            padding: 20px;
+        }
+
+        .btn-green {
+            @extend %btn;
+            color: green;
+        }
+        .btn-red {
+            @extend %btn;
+            color: red;
+        }
+        .btn-blue {
+            @extend %btn;
+            color: blue;
+        }
+        ```
+        - 임시 클래스는 단독으로 컴파일되지 않음 -> 다른 클래스에 종속되어있음
+        - 다른 메인 클래스도 @extend 가능
 </details>
