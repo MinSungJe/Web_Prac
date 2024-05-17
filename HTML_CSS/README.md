@@ -1,6 +1,6 @@
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 HTML5 & CSS3 연습장
-## 🗒️Last Update : 2024-05-16
+## 🗒️Last Update : 2024-05-17
 <details>
 <summary><b>🤔 이것들이 뭔가요?</b></summary>
 
@@ -446,4 +446,40 @@
         - -webkit- : 크롬, 사파리, Edge에서 적용되는 스타일
         - -moz- : Firefox에서만 적용
         - -ms-: IE에서만 적용
+</details>
+
+<details>
+<summary><b>🤔 SASS 써봅시다 </b></summary>
+
+- 직접 써봅시다
+    - ❗<b>웹브라우저는 CSS만 알지 SCSS같은거 모름 -> SCSS를 CSS로 변환해주는 변환기를 돌려서 넣어줘야 함</b>
+- .map 파일의 용도: 크롬 개발자도구 디버깅용 -> 크롬에서 css가 아니라 scss 파일로 분석해줌
+- ❗<b>SASS 왜쓰는데요?</b>
+    - CSS에는 없는 프로그래밍스러운 문법 존재함 -> 반복적인 부분 쉽게 처리 가능
+    - 변수문법을 사용함: 어려운 단어를 사용하거나, 규칙적인 스타일 만들 때 사용
+        ```scss
+        $main-color: #fe8e03;
+        $basic-size: 16px;
+
+        .background {
+            background: $main-color;
+            font-size: $basic-size - 2px; /* 사칙 연산 바로 가능 */
+        }
+
+        .box {
+            color: $main-color;
+            font-size: $basic-size / 2px; /* 곱셈 나눗셈은 정수연산 */
+        }
+        ```
+        - 사실 CSS에서도 변수 문법, 사칙 연산 사용 가능
+            ```css
+            :root {
+            --css-color: red;
+            }
+
+            .background {
+            background: var(--main-color);
+            width: calc(40% - 20px);
+            }
+            ```
 </details>
