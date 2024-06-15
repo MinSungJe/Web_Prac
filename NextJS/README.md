@@ -1,6 +1,6 @@
 [![Next.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Next.js 연습장
-## 🗒️Last Update : 2024-06-14
+## 🗒️Last Update : 2024-06-15
 <details>
 <summary><b>🤔 Next.js가 뭔가요?</b></summary>
 
@@ -39,5 +39,21 @@
     3. HTML안에 변수 넣으려면 { 변수명 } (= 데이터바인딩 문법)
     4. style 속성 넣으려면 style={{ 어쩌구: '저쩌구', 어쩌구: '저쩌구'}}
         - object 자료형을 넣으므로 -(대쉬)기호 대신 대문자로 바꿔줘야 함
+
+</details>
+
+<details>
+<summary><b>🤔 다른 페이지로 이동해보자</b></summary>
+
+- 페이지를 나누는걸 라우팅이라고 함
+- ❗<b>Next.js는 자동 라우팅을 지원</b>함
+    - 예를 들어 /list로 접속시 목록 html을 보여주고 싶다면
+        1. app 폴더 안에 list 폴더를 만들고
+        2. 그 안에 page.js 만들어서 상품목록 html 넣어두면 됨
+    - Next.js는 app 폴더 안에 있는 폴더들을 자동으로 url로 만들어줌
+- 페이지 이동 링크 만들고 싶으면 위에서 Link라는 걸 import 해온 다음 a태그처럼 쓰면 됨
+- ❗<b>중복되는 html은 layout.js 파일에 적으면 됨</b>
+    - Next.js는 page.js를 보여줄 때 옆에 layout.js가 있다면 layout.js 내용 안에 page.js를 담아서 보여줌
+    - 상위폴더에 layout.js가 있다면 그 안에 하위 폴더의 layout.js를 담아서 보여줌
 
 </details>
