@@ -1,3 +1,5 @@
+@use 'reset';
+
 $main-color: #fe8e03;
 $basic-size: 16px;
 
@@ -38,4 +40,13 @@ $basic-size: 16px;
 .div-blue {
     @extend %box;
     background: blue;
+}
+
+@mixin 폰트스타일($구멍, $구멍2) {
+    font-size: $구멍;
+    #{ $구멍2 }: -1px;
+    color: reset.$메인칼라;
+}
+h2 {
+    @include 폰트스타일(30px, letter-spacing)
 }

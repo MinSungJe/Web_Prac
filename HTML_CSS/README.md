@@ -1,6 +1,6 @@
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 HTML5 & CSS3 연습장
-## 🗒️Last Update : 2024-05-17
+## 🗒️Last Update : 2024-06-16
 <details>
 <summary><b>🤔 이것들이 뭔가요?</b></summary>
 
@@ -519,4 +519,67 @@
         ```
         - 임시 클래스는 단독으로 컴파일되지 않음 -> 다른 클래스에 종속되어있음
         - 다른 메인 클래스도 @extend 가능
+    - @mixin 문법 사용 가능 -> 함수 기능! @mixin 문법의 $파라미터는 긴 코드를 가변적으로 만들 때 씀 / 넣을 땐 @include
+        - 글자 중간에 $변수나 $파라미터 넣을 땐 <code>#{$변수명}</code>
+        ```scss
+        @mixin 폰트스타일($구멍, $구멍2) {
+            font-size: $구멍;
+            #{ $구멍2 }: -1px;
+        }
+        h2 {
+            @include 폰트스타일(30px, letter-spacing)
+        }
+        ```
+    - @use 문법 사용 가능 -> <code>@use '파일경로';</code>
+        - CSS 기본 문법에도 @import 있음
+        - @use로 가져온 scss 안의 변수나 mixin은 갖다 쓸 수 있음
+            - 변수 갖다쓰기: <code>파일명.$변수</code>
+            - mixin 갖다쓰기: <code>파일명.mixin이름()</code>
+    - function, if, for 이런 것도 있음
+    - (참고) scss 파일이름 앞에 _(언더바) 넣으면 css로 자동변환하지 않음
+</details>
+
+<details>
+<summary><b>🤔 Video, Audio 넣기 </b></summary>
+
+- Video 넣는 법
+    ```html
+    <video controls autoplay muted loop poster="썸네일경로" preload="metadata">
+        <source src="비디오파일경로">
+    </video>
+    ```
+    - controls를 넣어야 실행버튼이 생김
+    - 나머지는 보면 알듯
+- Audio 넣는 법
+    ```html
+    <audio controls muted loop preload="metadata">
+        <source src="오디오파일경로">
+    </audio>
+    ```
+- Video 배경처럼 넣는 법
+    ```html
+    <div class="video-box">
+    <video class="video-container" autoplay muted loop>
+        <source src="img/bridge.mp4" type="video/mp4">
+    </video>
+    <h3 class="video-title">Buy Our Shoes!</h3>
+    </div>
+    ```
+    ```css
+    .video-box {
+    height: 500px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    }
+
+    .video-container {
+    position: absolute;
+    width : 100%;
+    top: 50%;
+    left: 50%;
+    transform : translate(-50%,-50%);
+    z-index: -1;
+    }
+    ```
 </details>

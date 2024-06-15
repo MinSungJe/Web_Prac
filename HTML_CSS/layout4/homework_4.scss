@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.sh-list {
+    list-style: none;
+    padding-inline-start: 0;
+    margin: 0;
+    padding: 20px;
+    width: 300px;
+
+    li {
+        border: 1px solid grey;
+        padding: 10px;
+        margin-top: -1px;
+    }
+
+    .active {
+        background-color: #007bff;
+        color: white;
+    }
+}
+
+.alert-container {
+    padding: 20px;
+}
+
+%alert-box {
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    p {
+        margin: 0;
+        span {
+            font-weight: 600;
+        }
+    }
+}
+.alert-done {
+    @extend %alert-box;
+    background: #dff0d8;
+    color: #659d88;
+}
+.alert-attention {
+    @extend %alert-box;
+    background: #d9edf7;
+    color: #367293;
+}
+.alert-warning {
+    @extend %alert-box;
+    background: #fcf8e3;
+    color: #8d7046;
+}
+
+@mixin setWidth($value) {
+    width: $value;
+    padding: 15px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    .col-6 {
+        @include setWidth(50%);
+    }
+    .col-4 {
+        @include setWidth(33.33%);
+    }
+    .col-3 {
+        @include setWidth(25%);
+    }
+}

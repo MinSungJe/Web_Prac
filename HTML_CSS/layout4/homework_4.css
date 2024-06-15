@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+.sh-list {
+  list-style: none;
+  padding-inline-start: 0;
+  margin: 0;
+  padding: 20px;
+  width: 300px;
+}
+.sh-list li {
+  border: 1px solid grey;
+  padding: 10px;
+  margin-top: -1px;
+}
+.sh-list .active {
+  background-color: #007bff;
+  color: white;
+}
+
+.alert-container {
+  padding: 20px;
+}
+
+.alert-warning, .alert-attention, .alert-done {
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 5px;
+}
+.alert-warning p, .alert-attention p, .alert-done p {
+  margin: 0;
+}
+.alert-warning p span, .alert-attention p span, .alert-done p span {
+  font-weight: 600;
+}
+
+.alert-done {
+  background: #dff0d8;
+  color: #659d88;
+}
+
+.alert-attention {
+  background: #d9edf7;
+  color: #367293;
+}
+
+.alert-warning {
+  background: #fcf8e3;
+  color: #8d7046;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.row .col-6 {
+  width: 50%;
+  padding: 15px;
+}
+.row .col-4 {
+  width: 33.33%;
+  padding: 15px;
+}
+.row .col-3 {
+  width: 25%;
+  padding: 15px;
+}/*# sourceMappingURL=homework_4.css.map */
