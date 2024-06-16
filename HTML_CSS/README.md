@@ -1,6 +1,6 @@
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 HTML5 & CSS3 연습장
-## 🗒️Last Update : 2024-06-16
+## 🗒️Last Update : 2024-06-17
 <details>
 <summary><b>🤔 이것들이 뭔가요?</b></summary>
 
@@ -449,7 +449,7 @@
 </details>
 
 <details>
-<summary><b>🤔 SASS 써봅시다 </b></summary>
+<summary><b>🤔 SASS 써봅시다</b></summary>
 
 - SCSS랑 SASS는 중간에 중괄호 넣냐(SCSS) 탭키 넣냐(SASS) 차이밖에 없음
 - 직접 써봅시다
@@ -540,7 +540,7 @@
 </details>
 
 <details>
-<summary><b>🤔 Video, Audio 넣기 </b></summary>
+<summary><b>🤔 Video, Audio 넣기</b></summary>
 
 - Video 넣는 법
     ```html
@@ -582,4 +582,74 @@
     z-index: -1;
     }
     ```
+</details>
+
+<details>
+<summary><b>🤔 고오급 애니메이션을 넣고 싶어요</b></summary>
+
+- ❗<b>@keyframes</b> 사용!
+    - 애니메이션이 실행되는 시기를 결정해서 애니메이션 넣기 가능
+    1. 우선 @keyframes를 정의
+        ```css
+        @keyframes 움찔움찔{
+        0% {
+            transform : translateX(0px); /* 애니메이션이 0%만큼 동작시 */
+        }
+        50% {
+            transform : translateX(-20px); /* 애니메이션이 50%만큼 동작시 */
+        }
+        100% {
+            transform : translateX(20px); /* 애니메이션이 100%만큼 동작시 */
+        }
+        }
+        ```
+    2. 이후 넣고 싶은 곳에 keyframes를 첨부
+        ```css
+        .box:hover {
+        animation-name : 움찔움찔;
+        animation-duration : 1s;
+        }
+        ```
+    3. 세부조정은 다음과 같이
+        ```css
+        .box:hover {
+        animation-name : 움찔움찔;
+        animation-duration : 1s;
+        animation-timing-function : linear; /*베지어 주기*/
+        animation-delay : 1s; /*시작 전 딜레이*/
+        animation-iteration-count : 3; /*몇회 반복할것인가*/
+        animation-play-state : paused;  /*애니메이션을 멈추고 싶은 경우 자바스크립트로 이거 조정*/
+        animation-fill-mode: forwards;  /*애니메이션 끝난 후에 원상복구 하지말고 정지*/
+        }
+        ```
+- 애니메이션 성능을 잡을 수 있는 방법에는 여러 가지가 있음
+    1. will-change 쓰기
+        - 바뀔 내용을 미리 렌더링해주는 속성임
+        - 이상하게 많이 쓰면 브라우저 자체가 더 느려질 수 있음
+        ```css
+        .box {
+        will-change: transform;
+        } 
+        ```
+    2. 하드웨어 가속
+        - translate3d를 쓰면 3D 이동도 가능한데 이때 GPU를 사용함
+        - CPU보다 GPU가 처리속도가 빠름
+        ```css
+        .box {
+        transform: translate3d(0, 0, 0);
+        }
+        ```
+</details>
+
+<details>
+<summary><b>🤔 근데 왜 transform 써서 애니메이션 넣어야해요?</b></summary>
+
+- 웹브라우저는 html css를 2D 그래픽으로 바꿔주는 간단한 프로그램임
+- 그래픽 바꿀 때 순서는 다음과 같음
+    1. Render Tree 만들기
+    2. Layout 잡기
+    3. Paint 하기
+    4. Composite 처리
+- layout이 바뀌면(margin, width 이런거) layout부터 다시 잡아야함
+- 하지만 transform, opacity는 Composite 처리에 속하기 때문에 굳이 윗단계를 렌더링 안해도 됨 -> 더 빠르게 동작함!
 </details>
