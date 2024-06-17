@@ -653,3 +653,67 @@
 - layout이 바뀌면(margin, width 이런거) layout부터 다시 잡아야함
 - 하지만 transform, opacity는 Composite 처리에 속하기 때문에 굳이 윗단계를 렌더링 안해도 됨 -> 더 빠르게 동작함!
 </details>
+
+<details>
+<summary><b>🤔 display: grid 사용 설명서</b></summary>
+
+- Edge 포함 기타 최신 브라우저에서 사용가능한 속성
+- 부모 div에 display: grid를 넣으면 자식 div는 전부 격자처럼 진열됨
+    - grid-template-columns는 격자의 열 너비와 갯수를 설정
+    - grid-template-rows는 격자의 행 높이와 갯수를 설정
+    - fr: 몇 배만큼 차지할지 나타내는 단위 값
+        ```html
+        <div class="grid-container">
+            <div class="grid-nav">헤더</div>
+            <div class="grid-sidebar">사이드바</div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        ```
+        ```css
+        .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 100px 100px 100px;
+        grid-gap: 10px;
+        }
+        ```
+- Grid로 레이아웃 만드는 법은 2가지가 있음
+    1. 자식 div 높이와 폭을 조정하기
+        ```css
+        .grid-nav {
+        grid-column : 1 / 4; /* 1~4까지 차지해주세요~ */
+        grid-row : 2 / 4; /* 2~4까지 차지해주세요~ */
+        }
+        ```
+    2. 자식에게 이름지어주고 부모가 배치하기
+        ```css
+        /* 자식에게 이름 짓는 법: grid-area 속성 */
+        .grid-nav {
+        grid-area: 헤더;
+        }
+
+        .grid-sidebar {
+        grid-area: 사이드;
+        }
+        ```
+        ```css
+        /* 그 다음 부모에게 grid-template-areas 속성을 추가 */
+        .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 100px 100px 100px;
+        grid-gap: 10px;
+        grid-template-areas: 
+            "헤더 헤더 헤더 헤더"
+            "사이드 사이드 . ."
+            "사이드 사이드 . ."
+        }
+        ```
+</details>

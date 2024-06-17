@@ -1,0 +1,28 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+    grid-template-areas: 
+    "header header header header"
+    "side section section section"
+    "side section section section";
+}
+.grid-container div {
+    border: 1px solid black;
+}
+
+.grid-nav {
+    /* grid-column: 1 / 5; */
+    grid-area: header;
+}
+
+.grid-sidebar {
+    /* grid-row: 2 / 4; */
+    grid-area: side;
+}
+
+.grid-section {
+    /* grid-row: 2 / 4;
+    grid-column: 2 / 5; */
+    grid-area: section;
+}
