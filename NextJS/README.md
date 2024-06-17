@@ -1,6 +1,6 @@
 [![Next.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Next.js 연습장
-## 🗒️Last Update : 2024-06-17
+## 🗒️Last Update : 2024-06-18
 <details>
 <summary><b>🤔 Next.js가 뭔가요?</b></summary>
 
@@ -95,4 +95,21 @@
             <div/>
         )} 
         ```
+</details>
+
+<details>
+<summary><b>🤔 Next.js의 컴포넌트는 2개지요</b></summary>
+
+- <b>server component</b>
+    - React 문법 Component처럼 아무데나 대충 만든 컴포넌트
+    - html에 자바스크립트 기능 넣기 불가능
+    - useState, useEffect 등 사용 불가
+    - 로딩속도 빠름
+    - 검색엔진 노출 유리
+- <b>client component</b>
+    - ❗<b>js파일 맨위에다 'use client' 넣은 뒤 아래 있는 컴포넌트</b>
+    - html에 자바스크립트 기능 넣기 가능
+    - useState, useEffect 등 사용가능
+    - 로딩속도 느림(자바스크립트 많이 필요, hydration 필요)
+- 큰 페이지는 server component, JS기능 필요한 곳만 client component
 </details>
