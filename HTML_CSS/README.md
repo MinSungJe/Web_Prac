@@ -1,6 +1,6 @@
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 HTML5 & CSS3 연습장
-## 🗒️Last Update : 2024-06-17
+## 🗒️Last Update : 2024-06-18
 <details>
 <summary><b>🤔 이것들이 뭔가요?</b></summary>
 
@@ -716,4 +716,17 @@
             "사이드 사이드 . ."
         }
         ```
+</details>
+
+<details>
+<summary><b>🤔 position: sticky 한번 잡솨봐요</b></summary>
+
+- position: sticky는 조건부 fixed
+    - 부모박스 넘어서면 fixed 해제
+- 둘의 정확한 차이
+    - position: fixed는 항상 화면에 고정이 되는 요소를 만들 때 사용
+    - position: sticky는 스크롤이 되어서 이 요소가 화면에 나오면 고정시킴
+- sticky의 주의점
+    - 스크롤을 할 부모 박스가 있어야 함
+    - top 등 좌표속성과 함께 사용해야 제대로 보임
 </details>
