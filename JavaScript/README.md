@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-05-01
+## 🗒️Last Update : 2024-06-18
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -289,4 +289,22 @@ ex) addEventListner() -> on() ...
 - 주의 사항: <code>e.clientX -> e.touches[0].clientX</code>
 - touchend 이벤트 리스너에서는: <code>e.clientX -> e.changedTouches[0].clientX</code>
 - 터치는 하나 이상이 될 수 있기 때문에 index를 붙여줘야함
+</details>
+
+<details>
+<summary><b>🤔 this 키워드를 알아봅시다</b></summary>
+
+- this 키워드는 4가지 경우가 있음
+    1. 그냥 쓰거나 일반 함수(콜백함수로 사용한 경우 등) 안에서 쓰면 {window} (기본 함수들 수납공간)
+        - strict mode + 일반함수 내에서 쓰면 undefined
+    2. ❗<b>오브젝트 내 함수안에서 쓰면 그 함수를 가지고 있는 오브젝트를 뜻함</b>
+        - 1번이 window인 이유는 함수나 변수를 전역공간에서 만들면 {window}에 보관하기 때문!
+    3. constructor 안에서 쓰면 새로 생성되는 오브젝트(=instance)를 뜻함
+    4. 이벤트리스너 안에서는 e.currentTarget과 같음
+        - 지금 이벤트가 동작하고 있는 html요소
+- 특수 경우
+    - 콜백함수는 그냥 일반함수랑 취급이 같음
+    - 신문법 Arrow Function 특징
+        - this 값을 함수 밖에 있던거 그대로 씀
+        - 내부의 this값을 변화시키지 않음(외부 this값 그대로 재사용 가능)
 </details>
