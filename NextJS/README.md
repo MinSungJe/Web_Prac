@@ -109,7 +109,7 @@
 - <b>client component</b>
     - ❗<b>js파일 맨위에다 'use client' 넣은 뒤 아래 있는 컴포넌트</b>
     - html에 자바스크립트 기능 넣기 가능
-    - useState, useEffect 등 사용가능
+    - React의 useState, useEffect 등 사용가능
     - 로딩속도 느림(자바스크립트 많이 필요, hydration 필요)
 - 큰 페이지는 server component, JS기능 필요한 곳만 client component
 </details>

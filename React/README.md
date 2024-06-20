@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-04-30
+## 🗒️Last Update : 2024-06-21
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -12,8 +12,10 @@
 <summary><b>🤔 State 왜 씀?</b></summary>
 
 - 실시간으로 변경되는 값을 사용하기 위해 사용
-- <code>setState(실제 변경값, 변경함수)</code>
+- <code>let [변수, set변수] = setState(실제 변경값, 변경함수)</code>
 - state는 부모 컴포넌트에서 자식 컴포넌트로만 전송이 가능하기 때문에, 해당 state를 사용하는 최상위 컴포넌트에서 정의해야 됨
+- state는 전과 후가 같으면 변경되지 않음
+  - array, object와 같은 reference 타입의 state의 경우에는 복사본을 만들어야 변경점을 저장할 수 있음
 </details>
 
 <details>
