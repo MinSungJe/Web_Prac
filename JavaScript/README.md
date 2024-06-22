@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-06-18
+## 🗒️Last Update : 2024-06-22
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -307,4 +307,19 @@ ex) addEventListner() -> on() ...
     - 신문법 Arrow Function 특징
         - this 값을 함수 밖에 있던거 그대로 씀
         - 내부의 this값을 변화시키지 않음(외부 this값 그대로 재사용 가능)
+</details>
+
+<details>
+<summary><b>🤔 함수 만들 때 function 키워드 대신 =></b></summary>
+
+- function 키워드 대신 ES6 Arrow function(=>)을 이용해서 함수를 만들 수 있음
+- 함수를 만드는 이유
+    1. 코드들을 기능으로 묶고 싶을 때 사용
+    2. 입출력 기계를 만들고 싶을 때 사용
+- Arrow function 장점
+    1. 입출력 기계 만들 때 보기쉬움
+    2. 파라미터가 1개면 소괄호 생략 가능
+    3. 코드 한줄이면 중괄호도 생략 가능
+- Arrow function 특징
+    - 바깥에 있던 this 값을 내부에서 그대로 사용
 </details>

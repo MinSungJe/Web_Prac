@@ -10,26 +10,56 @@
 <body>
     <p id="hello">안녕</p>
     <button id="button">버튼</button>
+    <button id="버튼">버튼이에요</button>
 
     <script>
 
-        document.getElementById('button').addEventListener('click', function (e) {
-            var 어레이 = [1,2,3]
-            어레이.forEach(function(a) {
-                console.log(a, this)
-            })
-        })
-
-        var 오브젝트 = {
-            이름들: ['김', '이', '박'],
-            함수: function() {
-                오브젝트.이름들.forEach((a) => {
-                    console.log(a, this)
-                })
+        var 사람 = {
+            name: '손흥민',
+            sayHi: () => {
+                console.log(`안녕 나는 ${사람.name}`)
             }
         }
-        
-        오브젝트.함수()
+
+        사람.sayHi();
+
+        var 자료 = {
+            data: [1, 2, 3, 4, 5]
+        }
+
+        자료['전부더하기'] = function () {
+            let value = 0
+            자료.data.forEach(element => {
+                value += element
+            });
+            console.log(value)
+        }
+        자료.전부더하기();
+
+        document.getElementById('버튼').addEventListener('click', 
+            function() { setTimeout(()=>{console.log(this.innerHTML)}, 1000) }
+        );
+
+
+
+
+        // document.getElementById('button').addEventListener('click', function (e) {
+        //     var 어레이 = [1,2,3]
+        //     어레이.forEach(function(a) {
+        //         console.log(a, this)
+        //     })
+        // })
+
+        // var 오브젝트 = {
+        //     이름들: ['김', '이', '박'],
+        //     함수: function() {
+        //         오브젝트.이름들.forEach((a) => {
+        //             console.log(a, this)
+        //         })
+        //     }
+        // }
+
+
 
     </script>
 </body>
