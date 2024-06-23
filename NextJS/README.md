@@ -1,6 +1,6 @@
 [![Next.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Next.js 연습장
-## 🗒️Last Update : 2024-06-18
+## 🗒️Last Update : 2024-06-23
 <details>
 <summary><b>🤔 Next.js가 뭔가요?</b></summary>
 
@@ -112,4 +112,52 @@
     - React의 useState, useEffect 등 사용가능
     - 로딩속도 느림(자바스크립트 많이 필요, hydration 필요)
 - 큰 페이지는 server component, JS기능 필요한 곳만 client component
+</details>
+
+<details>
+<summary><b>🤔 데이터베이스 세팅하기</b></summary>
+
+- 여기서는 MongoDB로 설명
+- MongoDB에 데이터를 저장하고 이를 불러오기 위한 세팅을 해보자
+    1. 작업 폴더에서 터미널 열고 <code>npm install mongodb</code>
+    2. 아무데나 js 파일을 만들고(util/database.js)
+        ```js
+        import { MongoClient } from 'mongodb'
+        const url = 'DB접속URL~~'
+        const options = { useNewUrlParser: true }
+        let connectDB
+
+        if (process.env.NODE_ENV === 'development') {
+        if (!global._mongo) {
+            global._mongo = new MongoClient(url, options).connect()
+        }
+        connectDB = global._mongo
+        } else {
+        connectDB = new MongoClient(url, options).connect()
+        }
+        export { connectDB }
+        ```
+    3. DB 입출력이 필요한 곳에서 connectDB 변수를 가져다 쓰자
+        ```js
+        import { connectDB } from "/util/database.js"
+
+        export default async function Home() {
+        let client = await connectDB;
+        const db = client.db('forum');
+        let result = await db.collection('post').find().toArray();
+
+        return (
+            <main>
+            {result[0].title}
+            </main>
+        )
+        }
+        ```
+    - top-level await라는 기능을 이용해서 await가 붙는 db 부분을 export하는 부분에 같이 넣어도 되지만, 버전이 낮은 경우 지원하지 않는 기술이라 잘 쓰이진 않음
+    - 다른 DB의 경우에도
+        1. DB 조작 도와주는 라이브러리 설치
+        2. DB 연결하는 코드 셋팅
+        3. 라이브러리 사용법 대로 DB 입출력하는 코드 사용
+    - ❗<b>DB 입출력하는 코드는 server component 안에서만 사용하자!</b>
+        - client component 안에 적은 코드는 유저들도 쉽게 볼 수 있기 때문
 </details>
