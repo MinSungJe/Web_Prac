@@ -16,8 +16,8 @@
 
         var 사람 = {
             name: '손흥민',
-            sayHi: () => {
-                console.log(`안녕 나는 ${사람.name}`)
+            sayHi: function() {
+                console.log(`안녕 나는 ${this.name}`)
             }
         }
 
@@ -27,9 +27,9 @@
             data: [1, 2, 3, 4, 5]
         }
 
-        자료['전부더하기'] = function () {
+        자료.전부더하기 = function () {
             let value = 0
-            자료.data.forEach(element => {
+            this.data.forEach(element => {
                 value += element
             });
             console.log(value)

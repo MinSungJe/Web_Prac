@@ -161,3 +161,13 @@
     - ❗<b>DB 입출력하는 코드는 server component 안에서만 사용하자!</b>
         - client component 안에 적은 코드는 유저들도 쉽게 볼 수 있기 때문
 </details>
+
+<details>
+<summary><b>🤔 (참고) await?</b></summary>
+
+- mongodb 라이브러리에서 값을 불러올 때 await을 사용함
+    - await는 promise를 뱉는 코드에 붙일 수 있음
+    - 보통 javascript는 실행이 느린 코드가 있다면 전부 실행하지 않고 다음 코드로 넘어감
+    - await을 붙여 해당 코드 실행을 전부 시키고 넘어가도록 설정 가능
+    - await이 있는 함수의 경우 async를 붙여줘야 함
+</details>
