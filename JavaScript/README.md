@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-06-22
+## 🗒️Last Update : 2024-07-01
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -322,4 +322,18 @@ ex) addEventListner() -> on() ...
     3. 코드 한줄이면 중괄호도 생략 가능
 - Arrow function 특징
     - 바깥에 있던 this 값을 내부에서 그대로 사용
+</details>
+
+<details>
+<summary><b>🤔 변수에 대해 몇 가지 알려드림</b></summary>
+
+- 변수는 Hoisting 현상이 있음
+    - 변수의 선언을 변수 범위 맨 위로 끌고 오는 현상
+    - 변수를 만나면 선언 부분을 강제로 맨 위로 끌어올림
+    - (참고) 함수선언도 Hoisting 현상이 일어남
+- 전역변수: 모든 곳에서 쓸 수 있는 변수
+    - 바깥에 있는 변수는 함수 안에서 그대로 쓸 수 있음
+    - window로 전역변수를 만들 수 있음
+        - window는 자바스크립트의 기본함수를 보관하는 큰 오브젝트임
+        - <code>window.이름 = '김';</code>
 </details>

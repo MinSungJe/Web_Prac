@@ -14,34 +14,38 @@
 
     <script>
 
-        var 사람 = {
-            name: '손흥민',
-            sayHi: function() {
-                console.log(`안녕 나는 ${this.name}`)
-            }
-        }
+        console.log(나이);
 
-        사람.sayHi();
+        var 나이 = 30;
 
-        var 자료 = {
-            data: [1, 2, 3, 4, 5]
-        }
-
-        자료.전부더하기 = function () {
-            let value = 0
-            this.data.forEach(element => {
-                value += element
-            });
-            console.log(value)
-        }
-        자료.전부더하기();
-
-        document.getElementById('버튼').addEventListener('click', 
-            function() { setTimeout(()=>{console.log(this.innerHTML)}, 1000) }
-        );
+        console.log(나이);
 
 
+        // var 사람 = {
+        //     name: '손흥민',
+        //     sayHi: function() {
+        //         console.log(`안녕 나는 ${this.name}`)
+        //     }
+        // }
 
+        // 사람.sayHi();
+
+        // var 자료 = {
+        //     data: [1, 2, 3, 4, 5]
+        // }
+
+        // 자료.전부더하기 = function () {
+        //     let value = 0
+        //     this.data.forEach(element => {
+        //         value += element
+        //     });
+        //     console.log(value)
+        // }
+        // 자료.전부더하기();
+
+        // document.getElementById('버튼').addEventListener('click', 
+        //     function() { setTimeout(()=>{console.log(this.innerHTML)}, 1000) }
+        // );
 
         // document.getElementById('button').addEventListener('click', function (e) {
         //     var 어레이 = [1,2,3]

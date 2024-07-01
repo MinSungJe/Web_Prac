@@ -1,6 +1,6 @@
 [![Next.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Next.js 연습장
-## 🗒️Last Update : 2024-06-23
+## 🗒️Last Update : 2024-07-01
 <details>
 <summary><b>🤔 Next.js가 뭔가요?</b></summary>
 
@@ -170,4 +170,70 @@
     - 보통 javascript는 실행이 느린 코드가 있다면 전부 실행하지 않고 다음 코드로 넘어감
     - await을 붙여 해당 코드 실행을 전부 시키고 넘어가도록 설정 가능
     - await이 있는 함수의 경우 async를 붙여줘야 함
+</details>
+
+<details>
+<summary><b>🤔 유사하게 만들 페이지가 너무 많아요 ㅜ</b></summary>
+
+- ❗<b>Dynamic Route</b>를 사용해보자!
+    - Next에서 새로운 url을 만들기 위해 만드는 폴더이름을 [url파라미터명]
+    - 이렇게 만든 page에 props를 넣으면 props.params를 통해 폴더이름에 넣은 url 파라미터를 가져올 수 있음
+        ```js
+        export default async function Detail(props) {
+        console.log(props)
+        (생략)
+        }
+        ```
+    - 즉, ❗<b>dynamic route</b>로 만든 URL에 적은 문자를 가져오고 싶으면 컴포넌트에서 params를 출력해보면 됨
+</details>
+
+<details>
+<summary><b>🤔 (MongoDB) 데이터 하나만 가져오고 싶음요</b></summary>
+
+- .findOne() 사용하면 됨
+    - <code>db.collection(컬렉션명).findOne(찾을document내용)</code>
+- 해당 document가 저장된 document 요소 하나를 가져옴
+- 보통 게시글의 경우에는 id를 가져오는 것이 좋음
+</details>
+
+<details>
+<summary><b>🤔 다른 페이지로 이동해보자 2</b></summary>
+
+- Link 이외에 다른 방법으로 페이지 이동을 하려면 useRouter 쓰면 됨
+- useRouter() 쓰면 자바스크립트 코드로 페이지이동을 시킬 수 있음
+- 다만 ❗<b>use어쩌구 문법들은 client component 안에서만 사용할 수 있음</b>
+    ```js
+    'use client'
+
+    import {useRouter} from 'next/navigation'
+
+    export default function DetailLink(){
+    let router = useRouter()
+    return (
+        <button onClick={()=>{ router.push('/') }}>버튼</button>
+    )
+    }
+    ```
+- Link 말고 사용하는 이유?: ❗<b>여러가지 재밌는 기능을 사용할 수 있음!</b>
+    - <code>router.back()</code>: 뒤로 가기
+    - <code>router.forward()</code>: 앞으로 가기
+    - <code>router.refresh()</code>: soft refresh
+    - <code>router.prefetch('/어쩌구')</code>: '/어쩌구'의 내용을 미리 로드함 -> 그 페이지를 방문할 때 속도가 매우 빨라짐
+        - server component에서도 Link 태그를 이용하면 이 기능을 사용 가능(화면에 보이는 순간 자동으로 미리 로드)
+- 이 외에 client component에서 현재 URL에 뭐가 적혀있는지 궁금하면
+    ```js
+    'use client'
+
+    import {usePathname, useSearchParams, useParams} from 'next/navigation'
+
+    export default function DetailLink(){
+    let a = usePathname()
+    let b = useSearchParams()
+    let c = useParams()
+    console.log(a)
+    }
+    ```
+    - <code>usePathname()</code>: 현재 URL을 출력
+    - <code>useSearchParams()</code>: search parameter(query string) 출력
+    - <code>useParams()</code>: [dynamic route]에 입력한 내용을 출력
 </details>
