@@ -1,6 +1,6 @@
 [![Next.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Next.js 연습장
-## 🗒️Last Update : 2024-07-01
+## 🗒️Last Update : 2024-07-03
 <details>
 <summary><b>🤔 Next.js가 뭔가요?</b></summary>
 
@@ -236,4 +236,46 @@
     - <code>usePathname()</code>: 현재 URL을 출력
     - <code>useSearchParams()</code>: search parameter(query string) 출력
     - <code>useParams()</code>: [dynamic route]에 입력한 내용을 출력
+</details>
+
+<details>
+<summary><b>🤔 서버란 무엇인가</b></summary>
+
+- 서버: 유저 요청을 받으면 이것저것 실행해주는 간단한 프로그램
+    - 유저가 입력한 것을 바로 DB로 저장시켜버리면 큰 문제가 발생할 수 있음(이상한 것을 DB에 넣어버릴 수 있으므로)
+    - ❗<b>따라서 서버를 거쳐서 서버단에서 예외처리 후 DB에 넣는게 좋음!</b>
+- 서버의 기능은 URL과 method 이름을 붙여서 구분함
+    - URL: 개발자 맘대로 작성
+    - method: GET(데이터 출력), POST(입력), PUT(수정), DELETE(삭제)
+- 서버로 POST 요청하려면 form 태그 이용
+</details>
+
+<details>
+<summary><b>🤔 Next.js로 서버를 구현해보자</b></summary>
+
+- ❗<b>Next.js에서 서버기능</b>을 만드려면!
+    1. (app이랑 같은 경로 내)pages 폴더 안에 api 폴더를 만들고 거기에 js 파일을 아무이름으로 만듬
+        - 이렇게 만든 파일과 폴더는 자동으로 서버 기능의 URL이 됨
+            - URL: /api/폴더명
+        - 해당 URL로 GET/POST/PUT/DELETE 요청하면 해당 js파일이 실행됨
+    2. 해당 js 파일에 함수 하나 넣으면 그 함수 안 코드가 실행됨
+        ```js
+        export default function handler(요청, 응답) {
+        console.log(123)
+        }
+        ```
+        - GET 요청을 하는 가장 빠른 방법은 URL을 입력하는 것
+    3. 서버는 요청을 받았으면 응답도 해주는 것이 좋음
+        ```js
+        export default function handler(요청, 응답) {
+        응답.status(200).json('처리완료함')
+        }
+        ```
+        - 서버 기능이 성공적으로 실행됐으면 <code>status(200)</code>
+        - 서버 기능이 실패했다면 <code>status(500)</code>
+        - 서버 기능이 유저때문에 실패한 경우 <code>status(400)</code>
+        - 요청자에게 데이터도 보내주고 싶다면 <code>응답.json()</code> 안에 데이터 넣으면 됨(object, array, 문자, 숫자 싹다 가능)
+    - (참고) 서버에서 method 종류마다 각각 다른 기능을 실행하고 싶으면 if문으로 구분 -> <code>요청.method == 'GET'?</code>
+    - 서버 측에서 실행되는 코드들이기 때문에 DB 입출력하는 코드를 여기 작성해도 상관 없음
+    - DB를 불러오는 도중에 발생하는 에러를 잡으려면 <code>try {} catch(error) {}</code> 문 활용
 </details>
