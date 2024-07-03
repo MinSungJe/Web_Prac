@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-07-01
+## 🗒️Last Update : 2024-07-03
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -336,4 +336,38 @@ ex) addEventListner() -> on() ...
     - window로 전역변수를 만들 수 있음
         - window는 자바스크립트의 기본함수를 보관하는 큰 오브젝트임
         - <code>window.이름 = '김';</code>
+</details>
+
+<details>
+<summary><b>🤔 backquote 문자열 알려드림</b></summary>
+
+- backquote 문자열이란?: 문자열 선언할때 따옴표(', ") 대신 백틱(`) 사용
+- backquote 문자열의 장점
+    1. 엔터키 가능
+        ```js
+        var 변수 = `이렇게
+        해도 인식되지롱`;
+        ```
+    2. 중간중간 변수넣기 쉬움(+기호 써서 합칠 필요 없음)
+    ```js
+    var 이름 = '민성제';
+    var 문자 = `안녕하세요 저는 ${이름}이에요`
+    ```
+- tagged literal: `문자`를 해체분석할 수 있음
+    - 단어 순서를 변경하거나, 단어를 제거하거나, ${변수} 위치를 옮길 수 있음
+    - 방법: 해체분석용 함수를 만든 뒤에 파라미터 넣기
+        - 파라미터1: ${} 양옆 문자들을 Array화 해줌
+        - 파라미터2: ${변수}를 뜻함
+        - 파라미터3..: 두번째.. ${변수}를 뜻함
+        ```js
+        var 변수 = '민성제'
+        var 문자 = `안녕하세요 ${변수}입니다.`
+
+        function 해체분석기(문자들,변수1) {
+            console.log(문자들)
+            console.log(변수들)
+        }
+
+        해체분석기`안녕하세요 ${변수}입니다.`
+        ```
 </details>
