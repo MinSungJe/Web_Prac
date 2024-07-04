@@ -22,6 +22,7 @@ function ListItem({id, title, content}) {
     return (
         <div className="list-item">
           <Link href={`/detail/${id}`}><h4>{title}</h4></Link>
+          <Link href={`/edit/${id}`}>✏️</Link>
           <DetailLink></DetailLink>
           <p>{content}</p>
         </div>

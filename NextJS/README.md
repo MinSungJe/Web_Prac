@@ -1,6 +1,6 @@
 [![Next.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Next.js 연습장
-## 🗒️Last Update : 2024-07-03
+## 🗒️Last Update : 2024-07-04
 <details>
 <summary><b>🤔 Next.js가 뭔가요?</b></summary>
 
@@ -278,4 +278,18 @@
     - (참고) 서버에서 method 종류마다 각각 다른 기능을 실행하고 싶으면 if문으로 구분 -> <code>요청.method == 'GET'?</code>
     - 서버 측에서 실행되는 코드들이기 때문에 DB 입출력하는 코드를 여기 작성해도 상관 없음
     - DB를 불러오는 도중에 발생하는 에러를 잡으려면 <code>try {} catch(error) {}</code> 문 활용
+</details>
+
+<details>
+<summary><b>🤔 (MongoDB) 데이터를 수정하고 싶음요</b></summary>
+
+- 역시 DB를 직접 수정하도록 하면 위험하므로 서버를 거쳐 수정을 시켜야 함
+- 서버에 필요한 데이터가 없으면 유저단에서 새로 보내거나, DB 조회
+- document 수정은 updateOne()
+    ```js
+    let result = await db.collection('post').updateOne({게시물정보}, { $set : {바꿀데이터}} );
+    ```
+    1. 요청.body에서 바꿀 데이터를 만들어서 updateOne()안에 집어넣음
+    2. 요청.body._id 꺼내서 게시물정보를 만들어 updateOne()안에 집어넣음
+    - (참고) $set은 덮어쓰기, $inc는 증감
 </details>
