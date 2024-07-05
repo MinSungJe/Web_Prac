@@ -1,6 +1,6 @@
 [![Next.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Next.js 연습장
-## 🗒️Last Update : 2024-07-04
+## 🗒️Last Update : 2024-07-05
 <details>
 <summary><b>🤔 Next.js가 뭔가요?</b></summary>
 
@@ -111,6 +111,7 @@
     - html에 자바스크립트 기능 넣기 가능
     - React의 useState, useEffect 등 사용가능
     - 로딩속도 느림(자바스크립트 많이 필요, hydration 필요)
+    - 작성한 코드를 유저들이 볼 수 있음
 - 큰 페이지는 server component, JS기능 필요한 곳만 client component
 </details>
 
@@ -253,7 +254,7 @@
 <details>
 <summary><b>🤔 Next.js로 서버를 구현해보자</b></summary>
 
-- ❗<b>Next.js에서 서버기능</b>을 만드려면!
+- ❗<b>Next.js에서 서버기능(=api)</b>을 만드려면!
     1. (app이랑 같은 경로 내)pages 폴더 안에 api 폴더를 만들고 거기에 js 파일을 아무이름으로 만듬
         - 이렇게 만든 파일과 폴더는 자동으로 서버 기능의 URL이 됨
             - URL: /api/폴더명
@@ -281,7 +282,7 @@
 </details>
 
 <details>
-<summary><b>🤔 (MongoDB) 데이터를 수정하고 싶음요</b></summary>
+<summary><b>🤔 (MongoDB) 데이터를 수정/삭제하고 싶음요</b></summary>
 
 - 역시 DB를 직접 수정하도록 하면 위험하므로 서버를 거쳐 수정을 시켜야 함
 - 서버에 필요한 데이터가 없으면 유저단에서 새로 보내거나, DB 조회
@@ -292,4 +293,76 @@
     1. 요청.body에서 바꿀 데이터를 만들어서 updateOne()안에 집어넣음
     2. 요청.body._id 꺼내서 게시물정보를 만들어 updateOne()안에 집어넣음
     - (참고) $set은 덮어쓰기, $inc는 증감
+- document 삭제는 deleteOne()
+    ```js
+    let result = await db.collection('post').deleteOne({게시물정보});
+    ```
+</details>
+
+<details>
+<summary><b>🤔 HTML안에 JS기능을 써야하는데요</b></summary>
+
+- 애니메이션을 주거나 나타나게 하는 등 ❗<b>javascript 기능은 client component에서만 사용 가능!</b>
+- 문제는 client component는 검색노출이 잘 되지 않는다는 단점이 있음
+    - ❗<b>client component에 적은 코드는 유저들이 볼 수 있어서 DB랑 직접 통신하는 코드는 적으면 안됨</b>
+    - 보통 useEffect를 이용해 서버랑 통신 후 데이터를 가져오는데 이 경우 처음에는 텅 빈 html을 보여줌 
+    - 검색 봇의 경우 텅빈 html만 보고 지나침 -> 검색노출 X
+- ❗<b>따라서 부모 server component에서 DB 데이터를 가져온 후 JS기능이 필요한 부분만 자식 client component로 구현 후 props 전송하는 구성</b>이 좋음!
+    - Next.js에선 server/client component들을 보여줘야할때 최대한 서버에서 미리 html을 만들어서 보냄
+    - 따라서 client component도 DB데이터를 미리 채워서 유저에게 보여주도록 구현 가능
+</details>
+
+<details>
+<summary><b>🤔 ajax를 사용해도 서버로 요청이 가능</b></summary>
+
+- form태그 말고도 서버랑 요청하는 방법: AJAX
+    - <code>fetch()</code> 함수 사용: GET, POST, PUT, DELETE 요청 가능
+        ```jsx
+        fetch('/URL')
+        .then((r)=>{
+        if(r.status == 200) {
+            return r.json()
+        } else {
+            //서버가 에러코드전송시 실행할코드
+        }
+        })
+        .then((result)=>{ 
+        //성공시 실행할코드
+        }).catch((error)=>{
+        //인터넷문제 등으로 실패시 실행할코드
+        console.log(error)
+        })
+        ```
+    - axios 같은 외부 라이브러리 사용(fetch보다 더 짧음)
+- 장점: 새로고침 없이 요청을 보낼 수 있음
+</details>
+
+<details>
+<summary><b>🤔 서버로 데이터를 보내는 법</b></summary>
+
+- fetch(): body에 넣기
+- form 태그: input태그에 넣고 name 속성 주기
+- query string: URL 뒤에 <code>?데이터이름1=값1&데이터이름2=값2</code> 입력가능
+    - <code>요청.query</code>로 데이터를 받을 수 있음
+    - 장점: 간단함, GET요청도 데이터 전송가능
+    - 단점: 데이터 많으면 더러움, URL에 데이터 노출됨
+- URL 파라미터 문법 이용: 전송하는 URL에 데이터를 넣어 전송
+    1. URL parameter 문법 이용해서 api를 하나 구현([어쩌구].js / [어쩌구] 폴더)
+    2. <code>요청.query</code>로 데이터를 받을 수 있음
+</details>
+
+<details>
+<summary><b>🤔 서버로 array, object 전송하고 싶어요</b></summary>
+
+- 서버랑은 원래 문자나 숫자만 주고받을 수 있음
+    - 그러므로 array, object는 주고받기가 안됨
+- 하지만 ❗<b>array, object에 따옴표를 쳐두면 문자취급이 됨 = JSON</b>
+    - 직접 따옴표 칠 필요는 없고 내장함수가 있음
+        ```js
+        JSON.stringify( {name : 'Min'} ) // 문자화(stringify)
+        ```
+    - 받은 JSON을 다시 array/object로 바꾸고 싶을땐
+        ```js
+        JSON.parse( '{"name" : "Min"}' ) // 분석(parse)
+        ```
 </details>
