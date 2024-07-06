@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-07-03
+## 🗒️Last Update : 2024-07-06
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -370,4 +370,56 @@ ex) addEventListner() -> on() ...
 
         해체분석기`안녕하세요 ${변수}입니다.`
         ```
+</details>
+
+<details>
+<summary><b>🤔 ... spread operator</b></summary>
+
+- ...: spread operator, 괄호 안에서만 사용 가능한 문법
+    1. Array/Object에 붙이면 괄호를 제거함
+    2. 문자에 붙이면 문자를 펼쳐줌
+
+- 활용법: 
+    1. Array, Object를 합치거나 복사(reference data type의 deepcopy)할 때 사용 가능
+    ```js
+    var a1 = [1, 2]
+    var a2 = [3, 4]
+    var a3 = [...a1, ...a2]
+    var a1_deepcopy = [...a1]
+    ```
+        - Object의 경우 값 중복이 일어나면 가장 뒤에 있는 걸 적용
+    2. 함수 파라미터 넣을 때
+        - Array 내의 모든 데이터를 파라미터로 집어넣고 싶은 경우 풀어헤치는 용도
+        - <code>함수.apply()</code>와 용도가 같음
+        ```js
+        function 더하기(a, b, c) {
+            console.log(a + b + c)
+        }
+
+        var a = [1, 2, 3]
+
+        더하기.apply(undefined, a) // 예전 방식
+        더하기(...a) // spread operator 사용
+        ```
+</details>
+
+<details>
+<summary><b>🤔 apply, call 함수 설명</b></summary>
+
+- <code>apply(옮길곳, 파라미터1, 파라미터2...)</code>: 함수를 옮겨와서 실행해주세요
+    - array 형태로 집어넣기 가능 -> <code>apply(옮길곳, [파라미터1, 파라미터2...])</code>
+    ```js
+    var person = {
+            인사: function() {
+                console.log(this.name, '안녕')
+            }
+        }
+
+        var person2 = {
+            name: '민성제'
+        }
+        
+        person.인사.apply(person2)
+    ```
+- <code>call(옮길곳, 파라미터1, 파라미터2...)</code>: apply와 비슷하지만 array 형태로 집어넣을 수 없음(유일한 차이점)
 </details>

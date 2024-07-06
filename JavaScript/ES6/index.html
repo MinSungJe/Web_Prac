@@ -13,15 +13,35 @@
     <button id="버튼">버튼이에요</button>
 
     <script>
-
-        var pants = 0;
-        var socks = 100;
-        function 해체분석기(문자들, 바지, 양말) {
-            if (바지 == 0) {
-                바지 = '다팔렸어요'
+        var person = {
+            인사: function() {
+                console.log(this.name, '안녕')
             }
-            console.log(문자들[0]+바지+문자들[1]+양말)
         }
+
+        var person2 = {
+            name: '민성제'
+        }
+        
+        person.인사.call(person2)
+
+        // function 더하기(a, b, c) {
+        //     console.log(a + b + c)
+        // }
+
+        // var a = [1, 2, 3]
+        
+        // 더하기.apply(undefined, a)
+        // 더하기(...a)
+
+        // var pants = 0;
+        // var socks = 100;
+        // function 해체분석기(문자들, 바지, 양말) {
+        //     if (바지 == 0) {
+        //         바지 = '다팔렸어요'
+        //     }
+        //     console.log(문자들[0]+바지+문자들[1]+양말)
+        // }
 
         // var 변수 = '민성제'
         // var 문자 = `안녕하세요 ${변수}입니다.`
