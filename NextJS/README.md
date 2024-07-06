@@ -1,6 +1,6 @@
 [![Next.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Next.js 연습장
-## 🗒️Last Update : 2024-07-05
+## 🗒️Last Update : 2024-07-06
 <details>
 <summary><b>🤔 Next.js가 뭔가요?</b></summary>
 
@@ -365,4 +365,114 @@
         ```js
         JSON.parse( '{"name" : "Min"}' ) // 분석(parse)
         ```
+</details>
+
+<details>
+<summary><b>🤔 static rendering? dynamic rendering?</b></summary>
+
+- <code>npm run build</code>를 통해 프로젝트를 배포하면 페이지를 자동으로 rendering 해줌
+- ㅇ 페이지는 static rendering 해줌(디폴트)
+    - npm run build 할 때 만든 html페이지 그대로 유저에게 보냄
+    - 미리 페이지 완성본을 만들어두므로 빠름
+- λ 페이지들은 dynamic rendering 해줌
+    - 유저가 페이지 접속마다 html 새로 만들어서 보내줌
+    - 페이지의 기능이 있어 구성이 매번 바뀌는 경우 dynamic rendering이 됨
+        - fetch('/URL', { cache: 'no-store' }) 로 데이터 가져오는 문법 
+        - useSearchParams(), cookies(), headers() 
+        - [dynamic route]
+    - 강제로 dynamic rendering으로 바꾸기
+        ```js
+        export const dynamic = 'force-dynamic' // force-static, auto 
+
+        export default function 페이지(){
+        (생략)
+        }
+        ```
+    - 단점: 매번 페이지를 불러와서 재구성하므로 서버/DB 부담이 커짐 -> 캐싱기능 사용 가능
+</details>
+
+<details>
+<summary><b>🤔 캐싱기능이 뭐에요</b></summary>
+
+- 캐싱: 결과를 잠깐 저장해두고 재사용
+    - 값을 미리 어딘가 저장해두고 그 결과를 보여주므로 서버/DB에 부담이 적음
+    - dynamic rendering 시 서버자원을 절약할 수 있음
+- Next.js에선 페이지 캐싱 / GET 요청결과 캐싱이 쉽게 가능함
+- GET 요청결과 캐싱하는 법(server component 안에서만 사용 가능)
+    ```js
+    fetch('/api/어쩌구', { cache: 'force-cache' }) // 사실 디폴트값임
+    ```
+    ```js
+    fetch('/URL', { next: { revalidate: 60 } }) // 캐싱결과를 60초동안 보관하고 사용, 다 지나면 새로 요청
+    ```
+    ```js
+    fetch('/URL', { cache: 'no-store' })  // 캐싱기능 안씀
+    ```
+- 페이지 캐싱 하는 법(DB 입출력코드 써놓은 거 캐싱)
+    1. GET요청 시 DB 데이터 보내주는 서버 API 만들어두고 fetch()로 바꾸기
+    2. revalidate 예약변수 쓰면 페이지단위 캐싱 가능
+        ```js
+        (아무 page.js 파일)
+
+        export const revalidate = 60; // 60초마다 페이지 재생성 및 캐싱
+
+        export default function Page() {
+        DB입출력하는코드~~
+        return (
+            <div>어쩌구</div>
+        )
+        } 
+        ```
+</details>
+
+<details>
+<summary><b>🤔 회원기능을 만들어보고 싶어요</b></summary>
+
+- 회원기능의 동작방식
+    - 회원가입
+        1. 유저가 가입하면 아이디랑 비번을 서버통해 DB에 저장
+    - 로그인
+        1. 유저가 로그인 시 아이디/비번을 서버로 보냄
+        2. 서버는 DB에 있는 아이디/비번과 유저가 보낸 아이디/비번이 일치하는 경우 ❗<b>입장권을 발급</b>
+    - 로그인이 필요한 서버기능
+        1. 유저는 서버에 GET/POST로 데이터 요청 시 입장권도 같이 제시
+        2. 서버는 입장권을 확인 후 데이터 및 페이지 보내줌
+
+- 여기서 입장권이란?
+    - 유저 정보가 써있는 간단한 문자자료
+        - 이름, 로그인 날짜, 유효기간 등이 들어 있음
+    - 보통은 브라우저의 쿠키 저장소를 이용해 유저측에 저장해둠
+        - 서버로 GET/POST 요청 시 자동으로 함께 전송됨
+        - 서버는 유저 브라우저의 쿠키공간에 입장권을 강제로 저장시켜둠(권한 있음)
+    - session, token 방식이 있음
+        - ❗<b>session 방식</b>
+            1. 유저가 로그인하면 DB에 { 유저의 아이디, 로그인 날짜, 유효기간, session id } 저장
+            2. 유저에게 입장권 발급할 때 session id 하나만 적어보냄
+            3. 유저가 GET/POST 요청 시 입장권을 제출함
+            4. 서버는 입장권에 써 있는 session id를 가지고 DB를 조회해본 다음 DB 기록에 별 이상 없으면 요청을 진행
+            - 장점: 하나하나의 요청마다 엄격하게 유저 체크 가능
+            - 단점: DB의 부담이 심해질 수 있음(Redis같은 DB를 사용해 빠르게 확인)
+        - ❗<b>token 방식(= JWT(JSON Web Token))</b>
+            1. 유저가 로그인하면 입장권에 { 유저의 아이디, 로그인 날짜, 유효기간 } 등을 적어두고 암호화해서 발행(DB엔 저장 X)
+            2. 유저가 GET/POST 요청 시 유저가 입장권을 제출하면 해당 입장권을 까보고 이상없으면 통과
+            - 장점: 요청마다 DB를 매번 조회하지 않아 DB 부담이 적음
+            - 단점: 유저의 JWT를 훔쳐가면 그사람의 활동을 막는 방법이 없음
+
+- 번외로 OAuth를 사용 가능
+    - 한 사이트의 사용권한을 다른 사이트에서 잠깐 빌리는 과정을 정의하는 규칙
+    - 소셜 로그인 구현 가능
+    1. 유저가 한 사이트에서 구글 로그인 버튼을 누르면 구글 계정으로 로그인
+    2. 이 사이트로 개인정보 전송하면 되는지 구글이 물어봄
+    3. 유저가 허락하면 구글에서 사이트의 서버로 알림을 전송함
+    4. 알림이 도착하면 그 서버는 구글에게 유저정보를 요청해서 받아옴
+    5. 그 정보들로 입장권만들어서 사용(JWT 만들기, session으로 DB 저장 등..)
+
+- Next.js에서는 Next-Auth (Auth.js) 라이브러리를 사용해서 쉽게 회원기능 구현 가능
+</details>
+
+<details>
+<summary><b>🤔 프로젝트 배포</b></summary>
+
+- <code>npm run build</code> -> 코드짠걸 html, css, js로 바꿔줌
+    - 이후 서버에서 <code>npm run start</code> 실행
 </details>
