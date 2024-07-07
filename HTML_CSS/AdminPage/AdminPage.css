@@ -4,7 +4,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
     margin: 0;
 }
 
@@ -12,39 +13,226 @@ div {
     box-sizing: border-box;
 }
 
-.d-flex {
-    display: flex;
-}
-
 .Container {
     display: flex;
-    height: 100vw;
+    height: 100vh;
 }
 
 .navbar-container {
-    background: #494cb4;
-    color: white;
     width: 40px;
     height: 100%;
-    padding: 10px 0px;
-    text-align: center;
 }
 
-nav i {
-    padding: 15px 5px;
+.navbar {
+    position: fixed;
+    width: 150px;
+    height: 100%;
+    background: #494cb4;
+    color: white;
+    padding: 10px 0px;
+    transition: all 0.5s;
+    text-align: right;
+    transform: translateX(-110px);
+}
+
+.navbar > div {
+    padding: 15px 10px;
+}
+
+.navbar p {
+    float: left;
+    transition: all 0.5s;
+    transform: translateX(-200px);
+}
+.navbar i {
+    transition: all 0.5s;
+    transform: translateX(0);
+}
+
+.navbar:hover i {
+    transform: translateX(-110px);
+}
+
+.navbar:hover p {
+    transform: translateX(30px);
+}
+
+.navbar:hover {
+    transform: translateX(0);
 }
 
 .main-container {
-    flex-grow: 10;
+    flex-grow: 1;
     height: 100%;
 }
 
 .main-navbar {
     height: 50px;
     border-bottom: 1px solid gray;
-    box-shadow: 0px 2px 5px gray;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .main-content {
+    height: 100%;
+    padding: 30px;
     background: #fafafa;
+}
+
+.search input {
+    padding: 5px;
+    width: 200px;
+    transition: all 1s;
+}
+
+.search input:focus {
+    width: 400px;
+}
+
+.search button {
+    padding: 5px 10px;
+    background: #343a40;
+    color: white;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+}
+
+.row-pc {
+    display: flex;
+    align-items: center;
+}
+
+.col-1 {
+    flex: 1;
+}
+
+.col-2 {
+    flex: 2;
+}
+
+.col-3 {
+    flex: 3;
+}
+
+.personal-info > * {
+    margin-left: 20px;
+}
+
+.content-box {
+    width: 100%;
+    background: white;
+    border: 1px solid gray;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px gray;
+}
+
+.p-10 {
+    padding: 10px;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.mr-20 {
+    margin-right: 20px;
+}
+
+.mr-20-pc {
+    margin-right: 20px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.fs-large {
+    font-size: 30px;
+}
+
+.fs-big {
+    font-size: 20px;
+}
+
+.fs-small {
+    font-size: 10px;
+}
+
+.fc-gray {
+    color: gray;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
+.tasks-number {
+    background: dodgerblue;
+    color: white;
+    border-radius: 10px;
+    padding: 0px 10px;
+    font-weight: bold;
+}
+
+.border-black {
+    border: 1px solid black;
+}
+
+.tasks-box {
+    justify-content: space-between;
+    padding: 10px 0px;
+    border-bottom: 1px solid gray;
+    padding: 20px;
+}
+
+.p-20 {
+    padding: 20px;
+}
+
+.content-box-title {
+    background: #fafafa;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid gray;
+    padding: 20px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.alarm-number {
+    position: absolute;
+    left: 10px;
+    top: -5px;
+    padding: 2px 5px;
+    background: crimson;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.personal-info > * {
+    margin-left: 30px;
+}
+
+@media screen and (max-width: 1200px) {
+    .row-pc {
+        display: block;
+    }
+    .content-box {
+        margin-bottom: 20px;
+    }
+    .mr-20-pc {
+        margin-right: 0;
+    }
 }

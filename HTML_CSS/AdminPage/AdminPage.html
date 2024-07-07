@@ -1,29 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
     <link href="AdminPage.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="Container">
-        <nav class="navbar-container">
-            <i class="fas fa-home"></i>
-            <i class="fas fa-headphones"></i>
-            <i class="fas fa-flag"></i>
-            <i class="fas fa-chart-pie"></i>
-        </nav>
+        <div class="navbar-container">
+            <div class="navbar">
+                <div>
+                    <i class="fas fa-home"></i>
+                    <p>Home</p>
+                </div>
+                <div>
+                    <i class="fas fa-headphones"></i>
+                    <p>Services</p>
+                </div>
+                <div>
+                    <i class="fas fa-flag"></i>
+                    <p>Alerts</p>
+                </div>
+                <div>
+                    <i class="fas fa-chart-pie"></i>
+                    <p>Stats</p>
+                </div>
+            </div>
+        </div>
         <div class="main-container">
-            <div class="main-navbar d-flex">
-                <div class="search-box">
+            <div class="main-navbar row">
+                <form class="search">
+                    <input placeholder="Search">
+                    <button><i class="fas fa-search"></i></button>
+                </form>
+                <div class="personal-info row">
+                    <div style="position: relative;">
+                        <div class="alarm-number fs-small">5</div>
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div style="position: relative;">
+                        <div class="alarm-number fs-small">9</div>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <span>MinSungJe</span>
                 </div>
             </div>
             <div class="main-content">
-                
+                <h1 class="mb-20">Dashboard</h1>
+                <div class="row-pc mb-20">
+                    <div class="col-1 mr-20 content-box p-20 row" style="border-left: 5px solid skyblue;">
+                        <div class="col-3">
+                            <p class="mb-10 fs-big fc-gray">Earnings (Monthly)</p>
+                            <h3 class="fs-large">$400,000</h3>
+                        </div>
+                        <div class="col-1 fc-gray" style="text-align: end;">
+                            <i class="fas fa-calendar-week fa-3x"></i>
+                        </div>
+                    </div>
+                    <div class="col-1 mr-20 content-box p-20 row" style="border-left: 5px solid green;">
+                        <div class="col-3">
+                            <p class="mb-10 fs-big fc-gray">Earnings (Annual)</p>
+                            <h3 class="fs-large">$800,000</h3>
+                        </div>
+                        <div class="col-1 fc-gray" style="text-align: end;">
+                            <i class="fas fa-dollar-sign fa-3x"></i>
+                        </div>
+                    </div>
+                    <div class="col-1 mr-20 content-box p-20 row" style="border-left: 5px solid darkblue;">
+                        <div class="col-3">
+                            <p class="mb-10 fs-big fc-gray">Tasks</p>
+                            <h3 class="fs-large">13</h3>
+                        </div>
+                        <div class="col-1 fc-gray" style="text-align: end;">
+                            <i class="fas fa-tasks fa-3x"></i>
+                        </div>
+                    </div>
+                    <div class="col-1 content-box p-20 row" style="border-left: 5px solid gold;">
+                        <div class="col-3">
+                            <p class="mb-10 fs-big fc-gray">Requests</p>
+                            <h3 class="fs-large">26</h3>
+                        </div>
+                        <div class="col-1 fc-gray" style="text-align: end;">
+                            <i class="fas fa-comments fa-3x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-pc" style="align-items: flex-start;">
+                    <div class="col-2 mr-20-pc">
+                        <div class="content-box">
+                            <div class="content-box-title mb-10">
+                                <h2>Earning Overview</p>
+                            </div>
+                            <div class="p-20">
+                                <canvas id="myChart" width="100"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <div class="content-box">
+                            <div class="content-box-title">
+                                <h2>Tasks</h2>
+                            </div>
+                            <div class="row tasks-box">
+                                <p class="fs-big">Borrowed Item</p>
+                                <div class="tasks-number">14</div>
+                            </div>
+                            <div class="row tasks-box">
+                                <p class="fs-big">Trello requests</p>
+                                <div class="tasks-number">2</div>
+                            </div>
+                            <div class="row tasks-box">
+                                <p class="fs-big">Marked comments</p>
+                                <div class="tasks-number">1</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 </body>
+
 </html>
