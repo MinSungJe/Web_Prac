@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-07-06
+## 🗒️Last Update : 2024-07-09
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -422,4 +422,29 @@ ex) addEventListner() -> on() ...
         person.인사.apply(person2)
     ```
 - <code>call(옮길곳, 파라미터1, 파라미터2...)</code>: apply와 비슷하지만 array 형태로 집어넣을 수 없음(유일한 차이점)
+</details>
+
+<details>
+<summary><b>🤔 JS 함수 파라미터 업그레이드(default 파라미터, arguments)</b></summary>
+
+- default 파라미터
+    - 파라미터에 아무것도 넣지 않았을 때 디폴트 값을 줄 수 있음
+    - 디폴트 값에 수학 연산자/함수도 넣을 수 있음
+        ```js
+        function 더하기(a, b=2) {
+                console.log(a + b)
+            }
+
+            더하기(1)
+        ```
+- 함수에서 arguments
+    - 모든 파라미터를 한꺼번에 싸잡아서 다루고 싶을 경우 -> arguments
+    - arguments: 모든 파라미터를 Array같은 자료형에 담은 변수
+        ```js
+        function 함수(a, b, c) {
+            console.log(arguments)
+        }
+
+        함수(1,2,3)
+        ```
 </details>
