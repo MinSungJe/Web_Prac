@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-07-09
+## 🗒️Last Update : 2024-07-11
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -447,4 +447,31 @@ ex) addEventListner() -> on() ...
 
         함수(1,2,3)
         ```
+</details>
+
+<details>
+<summary><b>🤔 arguments를 개선한 기능 -> Rest Parameter</b></summary>
+
+- ❗<b>함수 파라미터에서 ...은 Rest Parameter</b>임!
+    - 역할: ❗<b>해당 자리에 있는 모든 파라미터들을 Array에 보관</b>해줌
+        ```js
+        function 함수2(...파라미터들) {
+                console.log(파라미터들)
+            }
+
+            함수2(1,2,3,4,5,6) // => [1,2,3,4,5,6]
+
+        function 함수3(a, b, ...rest) {
+            console.log(rest)
+        }
+
+        함수2(1,2,3,4,5,6) // => [3,4,5,6] (a, b가 1, 2임)
+        ```
+    - ...rest는 파라미터가 몇개들어올지 지정을 안해도 됨
+    - 주의점
+        1. 가장 뒤에 써야함
+        2. 두번 이상 금지
+- ...은 파이썬의 *(asterisk)와 기능이 같음
+    - 함수 파라미터에 ...붙이면 Rest Parameter
+    - 나머지는 Spread operator
 </details>
