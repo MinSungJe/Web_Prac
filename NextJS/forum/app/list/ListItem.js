@@ -37,12 +37,13 @@ function ListElement({id, title, content}) {
                 }
             })
             .then((r)=>{
-                // 성공 시 실행할 코드
-                console.log(r)
-                e.target.parentElement.style.opacity = 0
-                setTimeout(()=>{
-                    e.target.parentElement.style.display = 'none' 
-                }, 1000)
+                if (r) {
+                    // 성공 시 실행할 코드
+                    e.target.parentElement.style.opacity = 0
+                    setTimeout(()=>{
+                        e.target.parentElement.style.display = 'none' 
+                    }, 1000)
+                }
             }).catch((error) => {
                 // 인터넷문제로 실패시 실행할 코드
                 console.log('인터넷 에러')

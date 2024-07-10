@@ -1,6 +1,6 @@
 [![Next.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Next.js 연습장
-## 🗒️Last Update : 2024-07-06
+## 🗒️Last Update : 2024-07-11
 <details>
 <summary><b>🤔 Next.js가 뭔가요?</b></summary>
 
@@ -452,6 +452,11 @@
             4. 서버는 입장권에 써 있는 session id를 가지고 DB를 조회해본 다음 DB 기록에 별 이상 없으면 요청을 진행
             - 장점: 하나하나의 요청마다 엄격하게 유저 체크 가능
             - 단점: DB의 부담이 심해질 수 있음(Redis같은 DB를 사용해 빠르게 확인)
+            - DB adapter 기능을 이용해 구현할 수 있음!
+                1. 첫 로그인 시 자동으로 유저를 회원가입 시켜서 DB에 유저 회원정보를 보관함
+                2. 로그인 시 자동으로 유저가 언제 로그인했는지 세션정보를 DB에 보관함
+                3. 서버에서 지금 로그인된 유저정보가 필요하면 JWT가 아니라 DB에 있던 세션정보를 조회해서 가져옴
+                4. 로그아웃 시 유저 세션정보는 DB에서 삭제됨
         - ❗<b>token 방식(= JWT(JSON Web Token))</b>
             1. 유저가 로그인하면 입장권에 { 유저의 아이디, 로그인 날짜, 유효기간 } 등을 적어두고 암호화해서 발행(DB엔 저장 X)
             2. 유저가 GET/POST 요청 시 유저가 입장권을 제출하면 해당 입장권을 까보고 이상없으면 통과
@@ -468,6 +473,61 @@
     5. 그 정보들로 입장권만들어서 사용(JWT 만들기, session으로 DB 저장 등..)
 
 - Next.js에서는 Next-Auth (Auth.js) 라이브러리를 사용해서 쉽게 회원기능 구현 가능
+</details>
+
+<details>
+<summary><b>🤔 .env 파일 활용하기</b></summary>
+
+- 깃허브에 올리거나 js파일을 따로 공유할 때 암호나 중요한 문자열을 다른 파일로 빼둘 수 있음 -> .env 파일
+- 중요정보를 하드코딩하지 않아도 됨!!
+    1. 프로젝트 폴더(최상위 폴더)에 .env 파일 생성
+    2. .env폴더 안에 내용 작성
+        ```env
+        작명1='보관할문자1'
+        작명2='보관할문자2'
+        ``` 
+    3. 필요한 js파일 가서 <code>process.env.작명1</code>라고 쓰면 그 자리에 해당 데이터가 남게됨
+</details>
+
+<details>
+<summary><b>🤔 이번엔 client-side rendering을 해보자</b></summary>
+
+- server-side rendering
+    - 서버에서 html을 전부 만들어서 보냄
+    - 내용변경 시 새로고침 필요 O
+- client-side rendering
+    - 브라우저에서 html 생성, 수정, 삭제 가능
+    - 내용변경 시 새로고침 필요 X
+    - 부드럽고 이쁜 사이트를 만들 수 있지만 검색노출이 잘 안될 수 있음
+- 내용을 변경하고 싶은 부분만 client component로 만들어서 server component에서 불러오면 됨
+    - 새로고침 없이 페이지 내용 갱신 => ajax로 서버에 요청
+        - state에 내용을 넣고 그 state를 넣어서 보냄(fetch 등 활용)
+            ```js
+            'use client'
+            import {useState} from 'react'
+
+            export default function Comment(props) {
+                let [comment, setComment] = useState('')
+                return (
+                    <div>
+                        <div>댓글목록</div>
+                        <input onChange={(e)=>{ e.target.value }} />
+                        <button onClick={()=>{ fetch('/URL', { method : 'POST', body : comment } ) }}>댓글전송</button>
+                    </div>
+                )
+            } 
+            ```
+    - ❗<b>client component에서 DB 내용을 가져오고 싶다면 useEffect() 활용!</b>
+        - <code>useEffect()</code>: 쓸데없는 코드 보관함, ajax나 타이머 등을 넣음
+            - 특징1. html 로드/재렌더링 될 때마다 실행됨(조절가능)
+            - 특징2. html 보여준 후 늦게 실행시작
+</details>
+
+<details>
+<summary><b>🤔 데이터를 DB에 저장할 때 어떻게 저장해야 잘했다고 소문날까요</b></summary>
+
+- ❗<b>나중에 데이터가 많아져도 저장, 수정, 삭제, 출력이 잘 되면 잘 저장한 것임</b>
+    - 어려울 것 같으면 다른 document로 빼보자
 </details>
 
 <details>
