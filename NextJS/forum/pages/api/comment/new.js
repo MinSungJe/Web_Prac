@@ -28,7 +28,8 @@ export default async function handler(요청, 응답) {
         }
         try {
             await coll.insertOne(docs)
-            return 응답.status(200).json('전송완료')
+            let result = await db.collection('comment').find({parent: new ObjectId(요청.body.parent)}).toArray()
+            return 응답.status(200).json(result)
         } catch (error) {
             return 응답.status(400).json(error)
         }

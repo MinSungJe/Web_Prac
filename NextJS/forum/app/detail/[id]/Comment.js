@@ -5,20 +5,14 @@ import CommentElement from "./CommentElement"
 
 export default function Comment({ id }) {
     let [comment, setComment] = useState('')
-    let [commentList, setCommentList] = useState([{ _id: '668ecce2b8a7b0b3ca74962a', content: '댓글이다옹', author: 'test2', parent: '668ec69eb8a7b0b3ca749623' }])
+    let [commentList, setCommentList] = useState([])
 
     useEffect(() => {
-        fetch('/api/comment/get', {
-            method: 'POST',
-            body: id
-        })
+        fetch(`/api/comment/get?id=${id}`)
             .then((r) => {
                 if (r.status == 200) {
                     return r.json()
                 }
-            })
-            .then((r) => {
-                return JSON.parse(r)
             })
             .then((r) => {
                 setCommentList(r)
@@ -28,9 +22,11 @@ export default function Comment({ id }) {
     return (
         <div>
             {
+                commentList.length > 0 ?
                 commentList.map((a, i) =>
                     <CommentElement key={i} content={a.content} author={a.author}></CommentElement>
                 )
+                : '댓글없음'
             }
             <input onChange={(e) => { setComment(e.target.value) }}></input>
             <button onClick={() => {
@@ -40,7 +36,14 @@ export default function Comment({ id }) {
                         content: comment,
                         parent: id
                     })
-                })
+                }).then((r) => {
+                    if (r.status == 200) {
+                        return r.json()
+                    }
+                    throw new Error('Failed to post comment');
+                }).then((r) => {
+                    setCommentList(r)
+                }).catch((error) => {console.log(error)})
             }}>댓글전송</button>
         </div>
     )

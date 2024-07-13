@@ -1,6 +1,6 @@
 [![Next.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Next.js 연습장
-## 🗒️Last Update : 2024-07-11
+## 🗒️Last Update : 2024-07-13
 <details>
 <summary><b>🤔 Next.js가 뭔가요?</b></summary>
 
@@ -528,6 +528,42 @@
 
 - ❗<b>나중에 데이터가 많아져도 저장, 수정, 삭제, 출력이 잘 되면 잘 저장한 것임</b>
     - 어려울 것 같으면 다른 document로 빼보자
+</details>
+
+<details>
+<summary><b>🤔 로딩 중/에러났을때 UI을 만들어보자</b></summary>
+
+- page.js 옆에 ❗<b>loading.js</b> 라는 파일 만들면 로드 전에 해당 내용을 먼저 보여줌
+    - React에서 <code><Suspense fallback={<h4>로딩중</h4>}></code>와 역할이 같음
+    - client component 사용 가능
+- page.js 옆에 ❗<b>error.js</b> 라는 파일 만들면 에러날 경우 error.js 내용을 대신 보여줌
+    - 여긴 무조건 client component
+    - props: error(에러내용 알려줌), reset(해당 페이지를 다시 로드하는 함수)
+        ```js
+        'use client'
+
+        export default function Error({error, reset}){
+            return (
+                <div>
+                <h4>오 이런 에러남</h4>
+                <button onClick={()=>{ reset() }}>다시시도</button>
+                </div>
+            )
+        }
+        ```
+    - layout.js 내용에서 에러가 나면 같은 폴더가 아닌 상위에 있는 error.js가 실행됨
+        ```html
+        <Layout>
+            <Error fallback={자식들 내용이 에러시 보여줄 error.js 내용}>
+                <Loading fallback={자식들 내용이 로딩시 보여줄 loading.js 내용}>
+                page.js 내용~~
+                </Loading>
+            </Error>
+        </Layout>
+        ```
+        - 맨 바깥쪽 layout.js에 error.js를 적용하려면 global-error.js 이용
+- 없는 URL로 접속하려는 경우 if문을 이용해 <code>notFound()</code>라는 함수를 실행시키도록 하면 ❗<b>not-found.js</b> 안의 내용을 대신 보여줌
+- loading.js, error.js, not-found.js가 같은 폴더 내에 없다면 계속 상위 폴더로 찾아가면서 가장 가까운 파일을 보여줌
 </details>
 
 <details>
