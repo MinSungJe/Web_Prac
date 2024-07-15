@@ -1,6 +1,6 @@
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 HTML5 & CSS3 연습장
-## 🗒️Last Update : 2024-06-18
+## 🗒️Last Update : 2024-07-15
 <details>
 <summary><b>🤔 이것들이 뭔가요?</b></summary>
 
@@ -729,4 +729,26 @@
 - sticky의 주의점
     - 스크롤을 할 부모 박스가 있어야 함
     - top 등 좌표속성과 함께 사용해야 제대로 보임
+</details>
+
+<details>
+<summary><b>🤔 CSS 3D animation으로 뒤집히는 UI 만들기</b></summary>
+
+- 앞면 뒷면을 모두 <code>position: absolute;</code>
+- 3D 애니메이션처럼 돌려주는 CSS style
+    ```
+    transform: rotateY(180deg);
+    ```
+- 3D 애니메이션처럼 돌려주는 CSS style
+    ```
+    transform: rotateY(180deg);
+    ```
+- 3D처럼 취급하는 CSS style
+    ```
+    transform-style: preserve-3d;
+    ```
+- 뒤집었을 때 뒷면 안보이는 CSS style
+    ```
+    backface-visibility: hidden;
+    ```
 </details>

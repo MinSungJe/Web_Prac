@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-07-13
+## 🗒️Last Update : 2024-07-15
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -516,4 +516,27 @@ ex) addEventListner() -> on() ...
             변경(이름1);
             console.log(이름1) // -> { name : '김' }
             ```
+</details>
+
+<details>
+<summary><b>🤔 Object 복사기, Constructor</b></summary>
+
+- Constructor 문법 -> ❗<b>비슷한 object를 쉽게 찍어낼 수 있음!!</b>
+    - 파라미터 문법으로 Object의 커스텀 가능
+    - new 키워드로 생성
+    - 기계: object 생성기계 (= constructor, 생성자)
+    - this: 기계에서 새로 생성되는 object (= instance)
+        ```js
+        function Student(name, age) { // 파라미터로 object의 값 커스텀 가능
+            this.name = name // this = 기계에서 새로 생성되는 object
+            this.age = age
+            this.sayHi = function() {
+                console.log(`안녕하세요 ${this.name}인데요`)
+            }
+        }
+
+        // Object 마구마구 생성 가능
+        var 민성제 = new Student('Min', 25) // new 키워드로 생성
+        var 박한민 = new Student('Park', 20) // new 키워드로 생성
+        ```
 </details>

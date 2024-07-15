@@ -13,6 +13,25 @@
     <button id="버튼">버튼이에요</button>
 
     <script>
+        function Student(name, age) {
+            this.name = name
+            this.age = age
+            this.sayHi = function() {
+                console.log(`안녕하세요 ${this.name}인데요`)
+            }
+        }
+
+        var 민성제 = new Student('Min', 25)
+
+        function Product(price) {
+            this.price = price
+            this.부가세 = function() {
+                console.log(price * 0.1)
+            }
+        }
+
+        var product1 = new Product(50000)
+
         // function 함수2(...rest) {
         //     for (let i = 0; i < rest.length; i ++) {
         //         console.log(rest[i])
