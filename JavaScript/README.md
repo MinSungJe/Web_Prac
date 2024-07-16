@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-07-15
+## 🗒️Last Update : 2024-07-16
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -526,6 +526,7 @@ ex) addEventListner() -> on() ...
     - new 키워드로 생성
     - 기계: object 생성기계 (= constructor, 생성자)
     - this: 기계에서 새로 생성되는 object (= instance)
+    - 부모가 가지고 있는 속성들을 자식들에게로 상속함
         ```js
         function Student(name, age) { // 파라미터로 object의 값 커스텀 가능
             this.name = name // this = 기계에서 새로 생성되는 object
@@ -539,4 +540,36 @@ ex) addEventListner() -> on() ...
         var 민성제 = new Student('Min', 25) // new 키워드로 생성
         var 박한민 = new Student('Park', 20) // new 키워드로 생성
         ```
+</details>
+
+<details>
+<summary><b>🤔 prototype은 유전자다</b></summary>
+
+- constructor를 만들면 prototype이라는 공간이 자동으로 생김
+- prototype: 유전자
+    - prototype에 값을 추가하면 모든 자식들이 물려받기 가능
+        ```js
+        function Student(name, age) {
+            this.name = name
+            this.age = age
+            this.sayHi = function() {
+                console.log(`안녕하세요 ${this.name}인데요`)
+            }
+        }
+
+        Student.prototype.gender = '남'
+        var 민성제 = new Student('Min', 25)
+        console.log(민성제.gender) // -> 남
+        ```
+    - 동작원리
+        - JS 오브젝트의 자료출력 실행순서가 이렇게 짜여있기 때문(속성을 물어봤을때)
+            1. 생성된 instance가 직접 속성을 가지고 있는가?
+            2. 생성된 instance의 부모 유전자가 속성을 가지고 있는가?
+            3. 찾을때까지 그 부모 유전자를 찾아봄
+    - 실은 JS의 내장함수도 prototype에 들어있기 때문에 실행 가능한거임
+    - 특징
+        1. prototype은 constructor 함수에만 생성됨
+        2. 내 부모 유전자(부모의 prototype)를 검사하고 싶다면 .__proto__
+            - 그렇기 때문에 __proto__를 이용하면 부모관계를 강제 등록 가능
+            - 콘솔창에서도 __proto__ 알려줌
 </details>

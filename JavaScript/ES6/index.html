@@ -13,24 +13,59 @@
     <button id="버튼">버튼이에요</button>
 
     <script>
-        function Student(name, age) {
-            this.name = name
-            this.age = age
-            this.sayHi = function() {
-                console.log(`안녕하세요 ${this.name}인데요`)
+        // function Student(이름, 나이){
+        // this.name = 이름;
+        // this.age = 나이;
+        // }
+
+        // Student.prototype.sayHi = function() {
+        //     console.log('안녕 나는 ' + this.name + '이야');
+        // }
+        // var 학생1 = new Student('Kim', 20);
+
+        // 학생1.sayHi();
+
+        // var 학생1 = new Student('Kim', 20)
+        // var 학생2 = new Student('Park', 21)
+        // var 학생3 = new Student('Lee', 22)
+
+        var arr = [1,2,3];
+        
+        Array.prototype.remove3 = function() {
+            for(let i = 0; i < arr.length; i++) {
+                if(arr[i] === 3)  {
+                    arr.splice(i, 1);
+                    i--;
+                }
             }
         }
+        
+        arr.remove3();
+        console.log(arr); //[1,2]
 
-        var 민성제 = new Student('Min', 25)
 
-        function Product(price) {
-            this.price = price
-            this.부가세 = function() {
-                console.log(price * 0.1)
-            }
-        }
+        // function Student(name, age) {
+        //     this.name = name
+        //     this.age = age
+        //     this.sayHi = function() {
+        //         console.log(`안녕하세요 ${this.name}인데요`)
+        //     }
+        // }
 
-        var product1 = new Product(50000)
+        // Student.prototype.gender = '남'
+
+        // var 민성제 = new Student('Min', 25)
+
+        
+
+        // function Product(price) {
+        //     this.price = price
+        //     this.부가세 = function() {
+        //         console.log(price * 0.1)
+        //     }
+        // }
+
+        // var product1 = new Product(50000)
 
         // function 함수2(...rest) {
         //     for (let i = 0; i < rest.length; i ++) {
