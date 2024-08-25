@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-07-16
+## 🗒️Last Update : 2024-08-26
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -572,4 +572,18 @@ ex) addEventListner() -> on() ...
         2. 내 부모 유전자(부모의 prototype)를 검사하고 싶다면 .__proto__
             - 그렇기 때문에 __proto__를 이용하면 부모관계를 강제 등록 가능
             - 콘솔창에서도 __proto__ 알려줌
+</details>
+
+<details>
+<summary><b>🤔 ES5 기능으로 구현하는 상속기능</b></summary>
+
+- <code>Object.create()</code>를 사용함
+    - 사용법: <code>Object.create(부모Object)</code>
+    - 예시
+        ```js
+        var 부모 = { name : 'Kim', age : 50 };
+        var 자식 = Object.create(부모);
+
+        console.log(자식.age); // 50나옴
+        ```
 </details>

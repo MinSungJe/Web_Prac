@@ -13,6 +13,13 @@
     <button id="버튼">버튼이에요</button>
 
     <script>
+        // Object.create(프로토타입object)
+
+        var 부모 = { name: 'Min', age: 50 }
+        var 자식 = Object.create(부모)
+        자식.age = 20
+        var 손자 = Object.create(자식)
+
         // function Student(이름, 나이){
         // this.name = 이름;
         // this.age = 나이;
@@ -29,19 +36,19 @@
         // var 학생2 = new Student('Park', 21)
         // var 학생3 = new Student('Lee', 22)
 
-        var arr = [1,2,3];
+        // var arr = [1,2,3];
         
-        Array.prototype.remove3 = function() {
-            for(let i = 0; i < arr.length; i++) {
-                if(arr[i] === 3)  {
-                    arr.splice(i, 1);
-                    i--;
-                }
-            }
-        }
+        // Array.prototype.remove3 = function() {
+        //     for(let i = 0; i < arr.length; i++) {
+        //         if(arr[i] === 3)  {
+        //             arr.splice(i, 1);
+        //             i--;
+        //         }
+        //     }
+        // }
         
-        arr.remove3();
-        console.log(arr); //[1,2]
+        // arr.remove3();
+        // console.log(arr); //[1,2]
 
 
         // function Student(name, age) {

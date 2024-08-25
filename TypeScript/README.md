@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-07-17
+## 🗒️Last Update : 2024-08-26
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -8,6 +8,7 @@
     - Dynamic typing을 지원하는 JS에서 type을 엄격하게 체크하도록 변경
         1. 타입 관련 에러를 잡아줌
         2. 에러의 퀄리티가 좋아짐
+- JS 문법 그대로 TS에서 사용가능
 </details>
 
 <details>
@@ -66,7 +67,7 @@
     2. vue 파일에서 타입스크립트를 쓰려면 lang 옵션을 켜두고 쓰면 됨
         ```html
         <script lang="ts">
-
+            ...
         </script>
         ```
 </details>
@@ -74,5 +75,17 @@
 <details>
 <summary><b>🤔 TypeScript 기초적인 타입 소개</b></summary>
 
-- 
+- <b>TypeScript에서는 변수에 타입 지정 가능 = 변수에 실드씌우는 것임</b>
+    - <code>변수명 :타입명</code>
+        ```ts
+        let 이름 :string = 'Min';
+        let 나이 :number = 25;
+        let 결혼여부 :boolean = false;
+        let 널 :null = null;
+        let 언디파인드 :undefined = undefined;
+        let 회원들: string[] = ['Min', 'Kim']
+        let 회원정보:{name: string, age: number} = { name: 'Min', age: 25 }
+        ```
+    - 장점: 타입이 실수로 변경될 때 에러 내줌
+    - 사실.. TypeScript에서 타입지정은 원래 자동으로 됨 -> 타입지정 문법 생략가능
 </details>

@@ -1,6 +1,6 @@
 [![Next.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Next.js 연습장
-## 🗒️Last Update : 2024-07-15
+## 🗒️Last Update : 2024-08-26
 <details>
 <summary><b>🤔 Next.js가 뭔가요?</b></summary>
 
@@ -590,4 +590,52 @@
             - .next 폴더 필수
             - node_modules 폴더는 빼기
         3. 사용하려는 서비스에 맞춰 설정하기
+</details>
+
+<details>
+<summary><b>🤔 브라우저의 저장소를 사용해보자</b></summary>
+
+- 브라우저에는 여러 저장소가 있음
+    - local storage
+        - 브라우저를 청소하지 않는 한 5MB까지 계속 사용가능
+        - <code>{'키' : '값'}</code>의 형태로 데이터를 저장함
+        - 문자나 숫자만 넣을 수 있음
+            - JSON 문법으로 문자로 변환한 Array와 Object도 보관가능
+    - session storage
+        - local과 차이점은 브라우저를 닫을 시 초기화 되는 저장소라는 거임
+- 이 저장소 또한 JS문법이기에 ❗<b>client component에서만 사용가능!</b>
+    - client component안에서도 미리 실행할 수 있는 건 미리 실행하기 때문에 useEffect를 이용해 실행시켜야 함
+    - useEffect의 실행타이밍은 html이 다 불러와지고 실행됨
+        ```js
+        'use client'
+
+        function 컴포넌트(){
+
+        useEffect(()=>{
+            // 현재 위치가 브라우저인지 서버인지 확인
+            if (typeof window != 'undefined') {
+                let res = localStorage.setItem('키', '값')
+            }
+        }, [])
+
+        return (생략)
+        } 
+        ```
+    - cookie
+        - <code>{'키' : '값'}</code>의 형태로 데이터를 저장함
+        - 사이트 하나 당 최대 50개, 총합 4KB의 문자데이터를 저장 가능
+        - 서버에 GET, POST등 요청 시 자동으로 서버로 전달됨
+        - 유효기간 설정 가능, 설정 안하면 브라우저 껐을 때 사라짐
+        - 데이터 사용하는 법
+            - 저장: <code>document.cookie='쿠키이름=값; max-age=3600'</code>
+        - 위 storage들은 useEffect를 이용하기 때문에 html이 다 불러와지고 실행되는데, 이를 쿠키를 이용해 개선할 수 있음
+        - ❗<b>쿠키는 server component나 서버 api에서 쉽게 읽을 수 있음!!</b>
+            ```js
+            import { cookies } from 'next/headers'
+
+            export default function 서버컴포넌트(){
+            let result = cookies().get('쿠키이름')
+            console.log(result)
+            } 
+            ```
 </details>
