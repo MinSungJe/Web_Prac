@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-08-26
+## 🗒️Last Update : 2024-08-27
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -88,4 +88,27 @@
         ```
     - 장점: 타입이 실수로 변경될 때 에러 내줌
     - 사실.. TypeScript에서 타입지정은 원래 자동으로 됨 -> 타입지정 문법 생략가능
+</details>
+
+<details>
+<summary><b>🤔 미리 정하기 애매한 타입을 만드는 방법</b></summary>
+
+- ❗<b>Union Type</b>
+    - 타입에 |(or) 기호 사용해서 새로운 타입을 만들 수 있음(가변적인 타입)
+        ```ts
+        let 회원 :number | string = 123;
+        let 어레이 :(number|string)[] = [1, '2', 3]
+        let 오브젝트 :{a : string|number} = {a : '123'}
+        ```
+- ❗<b>any Type</b>
+    - 모든 자료형을 허용하는 타입(타입실드 해제)
+        ```ts
+        let 아무거나 :any;
+        ```
+- ❗<b>unknown Type</b>
+    - 모든 자료형을 허용하는 타입2, 하지만 unknown이라는 타입을 부여함
+    - 무조건 타입실드를 해제하는게 아니라 any보다 안전성 있음
+        ```ts
+        let 아무거나2 :unknown;
+        ```
 </details>

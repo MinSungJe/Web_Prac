@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-08-26
+## 🗒️Last Update : 2024-08-27
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -569,13 +569,14 @@ ex) addEventListner() -> on() ...
     - 실은 JS의 내장함수도 prototype에 들어있기 때문에 실행 가능한거임
     - 특징
         1. prototype은 constructor 함수에만 생성됨
-        2. 내 부모 유전자(부모의 prototype)를 검사하고 싶다면 .__proto__
+        2. 내 부모 유전자(부모의 prototype)를 검사하고 싶다면 <code>자식.__proto__</code>
             - 그렇기 때문에 __proto__를 이용하면 부모관계를 강제 등록 가능
             - 콘솔창에서도 __proto__ 알려줌
+            - 같은 명령어: <code>Object.getPrototypeOf(자식)</code>
 </details>
 
 <details>
-<summary><b>🤔 ES5 기능으로 구현하는 상속기능</b></summary>
+<summary><b>🤔 (easy)ES5 기능으로 구현하는 상속기능</b></summary>
 
 - <code>Object.create()</code>를 사용함
     - 사용법: <code>Object.create(부모Object)</code>
@@ -585,5 +586,28 @@ ex) addEventListner() -> on() ...
         var 자식 = Object.create(부모);
 
         console.log(자식.age); // 50나옴
+        ```
+</details>
+
+<details>
+<summary><b>🤔 (hard)ES6 기능으로 구현하는 상속기능</b></summary>
+
+- <code>class</code>문법을 사용함!
+    - 사용법
+        ```js
+        class 부모 {
+            // 여기에 파라미터 넣음
+            constructor(name) {
+                this.name = name
+                // 여기에 함수넣으면 자식에게 직접 함수를 전달
+                this.sayHi = function() { console.log('안뇽') }
+            }
+            // 여기에 함수넣으면 부모.prototype에 전달
+            sayHey() {
+                console.log('이봐, 반가워')
+            }
+        }
+
+        var 자식 = new 부모('Min');
         ```
 </details>

@@ -1,6 +1,6 @@
 [![Next.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Next.js 연습장
-## 🗒️Last Update : 2024-08-26
+## 🗒️Last Update : 2024-08-27
 <details>
 <summary><b>🤔 Next.js가 뭔가요?</b></summary>
 
@@ -628,6 +628,8 @@
         - 유효기간 설정 가능, 설정 안하면 브라우저 껐을 때 사라짐
         - 데이터 사용하는 법
             - 저장: <code>document.cookie='쿠키이름=값; max-age=3600'</code>
+            - 수정도 동일함
+            - 값 찾기: <code>('; ' + document.cookie).split('; 찾으려는키=').pop().split(';')[0]</code>
         - 위 storage들은 useEffect를 이용하기 때문에 html이 다 불러와지고 실행되는데, 이를 쿠키를 이용해 개선할 수 있음
         - ❗<b>쿠키는 server component나 서버 api에서 쉽게 읽을 수 있음!!</b>
             ```js
