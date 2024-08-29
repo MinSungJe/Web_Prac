@@ -13,22 +13,48 @@
     <button id="버튼">버튼이에요</button>
 
     <script>
-        // Object.create(프로토타입object)
-
-        class 부모 {
-            // 여기에 파라미터 넣음
+        class 할아버지 {
             constructor(name) {
-                this.name = name
-                // 여기에 함수넣으면 자식에게 직접 함수를 전달
-                this.sayHi = function() { console.log('안뇽') }
+                this.성 = '민'
+                this.이름 = name
             }
-            // 여기에 함수넣으면 부모.prototype에 전달
-            sayHey() {
-                console.log('이봐, 반가워')
+            sayHi() {
+                console.log('안녕 나는 할아버지 '+this.이름)
             }
         }
 
-        var 자식 = new 부모('Min');
+        class 아버지 extends 할아버지 {
+            constructor(name) {
+                super(name);
+                this.나이 = 50;
+            }
+            sayHi() {
+                console.log('안녕 나는 아버지 '+this.이름)
+                super.sayHi()
+            }
+        }
+
+        var 달수할아버지 = new 할아버지('달수')
+        var 만수아버지 = new 아버지('만수')
+
+
+
+        // Object.create(프로토타입object)
+
+        // class 부모 {
+        //     // 여기에 파라미터 넣음
+        //     constructor(name) {
+        //         this.name = name
+        //         // 여기에 함수넣으면 자식에게 직접 함수를 전달
+        //         this.sayHi = function() { console.log('안뇽') }
+        //     }
+        //     // 여기에 함수넣으면 부모.prototype에 전달
+        //     sayHey() {
+        //         console.log('이봐, 반가워')
+        //     }
+        // }
+
+        // var 자식 = new 부모('Min');
 
         // var 부모 = { name: 'Min', age: 50 }
         // var 자식 = Object.create(부모)

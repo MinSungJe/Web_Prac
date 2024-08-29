@@ -1,6 +1,6 @@
 [![Next.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Next.js 연습장
-## 🗒️Last Update : 2024-08-27
+## 🗒️Last Update : 2024-08-29
 <details>
 <summary><b>🤔 Next.js가 뭔가요?</b></summary>
 
@@ -638,6 +638,82 @@
             export default function 서버컴포넌트(){
             let result = cookies().get('쿠키이름')
             console.log(result)
+            } 
+            ```
+</details>
+
+<details>
+<summary><b>🤔 서버기능 중간에서 간섭해보자, middleWare</b></summary>
+
+- 서버는 요청이 들어오면 응답해주는 간단한 프로그램임
+- 근데 이 요청과 응답사이에서 간섭하는 코드를 짜고 싶다면 middleware를 사용하면 됨
+- Next.js에서 middleware 사용하는 법
+    - ❗<b>app폴더와 나란한 위치에(root) middleware.js 파일 만들고 함수하나 만들면 작성 가능</b>
+        ```js
+        (/middleware.js)
+
+        import { NextResponse } from 'next/server'
+
+        export async function middleware(request) {
+            console.log(request.nextUrl)  //유저가 요청중인 URL 출력해줌
+            console.log(request.cookies)  //유저가 보낸 쿠키 출력해줌
+            console.log(request.headers)  //유저의 headers 정보 출력해줌 
+
+            // 마지막에 아래 셋 중 하나를 적어주는게 좋음!!
+            NextResponse.next()  //통과
+            NextResponse.redirect()  //다른페이지 이동
+            NextResponse.rewrite()  //다른페이지 이동
+        } 
+        ```
+    - 예를 들어 이런 기능을 만들 수 있음
+        1. 특정 페이지 접속하는 유저정보 기록
+            ```js
+            (/middleware.js)
+
+            import { NextResponse } from 'next/server'
+
+            export async function middleware(request) {
+                if (request.nextUrl.pathname.startsWith('/list')) {
+                    console.log(new Date().toLocaleString())
+                    console.log(request.headers.get('sec-ch-ua-platform'))
+                    return NextResponse.next()
+                }
+            } 
+            ```
+        2. 로그인 안된 유저들 특정 경로 막기
+            - .env 파일에 NEXTAUTH_SECRET 넣어주고 사용(JWT 암호화해주는 키)
+            ```js
+            import { NextResponse } from 'next/server';
+            import { getToken } from "next-auth/jwt";
+
+            export async function middleware(request) {
+
+            if (request.nextUrl.pathname.startsWith('/write')) {
+                    const session = await getToken({ req : request })
+                    // console.log('세션', session)
+                    if (session == null) {
+                        return NextResponse.redirect('http://localhost:3000/api/auth/signin'); 
+                    }
+                }
+            } 
+            ```
+        3. 특정 페이지 접속 시 쿠키 만들어주기
+            - 프론트엔드에서 useEffect 써서 만드는 쿠키를 여기서도 만들어줄 수 있음
+            ```js
+            import { NextResponse } from 'next/server';
+            export async function middleware(request) {
+                request.cookies.get('쿠키이름')  // 출력
+                request.cookies.has('쿠키이름')  // 존재확인
+                request.cookies.delete('쿠키이름')  // 삭제
+                
+                const response = NextResponse.next()
+                response.cookies.set({
+                    name: 'mode',
+                    value: 'dark',
+                    maxAge: 3600,
+                    httpOnly : true // 자바스크립트로 맘대로 조작이 불가능하게 막음, 크롬개발자도구로 수정은 못막음
+                })  
+                return response  //쿠키생성
             } 
             ```
 </details>

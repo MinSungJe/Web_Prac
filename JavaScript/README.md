@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-08-27
+## 🗒️Last Update : 2024-08-29
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -610,4 +610,42 @@ ex) addEventListner() -> on() ...
 
         var 자식 = new 부모('Min');
         ```
+</details>
+
+<details>
+<summary><b>🤔 class를 복사하는 extends, super</b></summary>
+
+- class를 하나더 복제하고 싶은데 그 class에 속성이 너무 많다면 하나하나 코딩하기 너무 어려움
+    - 그래서 extends, super문법을 사용해 쉽게 복제 가능!!
+- <code>extends</code>: 어떤 class를 물려받아 새로운 class를 만들게요~(상속)
+- <code>super()</code>
+    1. constructor 안: 물려받는 class의 constructor
+    2. prototype 함수 안: 부모 class의 prototype (참고)
+- 사용법
+    ```js
+    class 할아버지 {
+        constructor(name) {
+            this.성 = '민'
+            this.이름 = name
+        }
+        sayHi() {
+            console.log('안녕 나는 할아버지 '+this.이름)
+        }
+    }
+
+    // 할아버지를 상속해 아버지라는 class 생성
+    class 아버지 extends 할아버지 {
+        constructor(name) {
+            super(name); // constructor 안: 물려받는 class의 constructor
+            this.나이 = 50;
+        }
+        sayHi() {
+            console.log('안녕 나는 아버지 '+this.이름)
+            super.sayHi() // prototype 함수 안: 부모 class의 prototype (참고)
+        }
+    }
+
+    var 달수할아버지 = new 할아버지('달수')
+    var 만수아버지 = new 아버지('만수')
+    ```
 </details>
