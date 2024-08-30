@@ -13,29 +13,111 @@
     <button id="버튼">버튼이에요</button>
 
     <script>
-        class 할아버지 {
-            constructor(name) {
-                this.성 = '민'
-                this.이름 = name
+        class 강아지 {
+            constructor(type, color) {
+                this.type = type,
+                this.color = color
             }
-            sayHi() {
-                console.log('안녕 나는 할아버지 '+this.이름)
-            }
-        }
-
-        class 아버지 extends 할아버지 {
-            constructor(name) {
-                super(name);
-                this.나이 = 50;
-            }
-            sayHi() {
-                console.log('안녕 나는 아버지 '+this.이름)
-                super.sayHi()
+            한살먹기() {
+                if (this instanceof 고양이) {
+                    this.age += 1
+                }
+                else {
+                    throw new Error('뭔가 에러가 발생했어요')
+                }
             }
         }
 
-        var 달수할아버지 = new 할아버지('달수')
-        var 만수아버지 = new 아버지('만수')
+        var 강아지1 = new 강아지('말티즈', 'white')
+        var 강아지2 = new 강아지('진돗개', 'brown')
+
+        class 고양이 extends 강아지 {
+            constructor(type, color, age) {
+                super(type, color)
+                this.age = age
+            }
+        }
+
+        var 고양이1 = new 고양이('코숏', 'white', 5)
+        var 고양이2 = new 고양이('러시안블루', 'brown', 2)
+
+        class Unit {
+            constructor() {
+                this.공격력 = 5
+                this.체력 = 100   
+            }
+            get battlePoint() {
+                return this.공격력+this.체력
+            }
+            set heal(value) {
+                this.체력 += value
+            }
+        }
+
+        var data = {
+            odd : [],
+            even : [],
+            setter함수(...arg) {
+                arg.forEach((a) => {
+                    if (a % 2 != 0) this.odd = [...this.odd, a]
+                    else this.even = [...this.even, a]
+                }) 
+            },
+            getter함수() {
+                return [...this.odd, ...this.even].sort()
+            }
+        }
+
+
+        // var 사람 = {
+        //     name : 'Park',
+        //     age : 30,
+        //     get nextAge() {
+        //         return this.age + 1
+        //     },
+        //     set setAge(number) {
+        //         this.age = number
+        //     }
+        // }
+
+        // class 사람 {
+        //     constructor() {
+        //         this.name = 'Park'
+        //         this.age = 20
+        //     }
+        //     get nextAge() {
+        //         return this.age + 1
+        //     }
+        //     set setAge(number) {
+        //         this.age = number
+        //     }
+        // }
+        
+        // var 사람1 = new 사람()
+
+        // class 할아버지 {
+        //     constructor(name) {
+        //         this.성 = '민'
+        //         this.이름 = name
+        //     }
+        //     sayHi() {
+        //         console.log('안녕 나는 할아버지 '+this.이름)
+        //     }
+        // }
+
+        // class 아버지 extends 할아버지 {
+        //     constructor(name) {
+        //         super(name);
+        //         this.나이 = 50;
+        //     }
+        //     sayHi() {
+        //         console.log('안녕 나는 아버지 '+this.이름)
+        //         super.sayHi()
+        //     }
+        // }
+
+        // var 달수할아버지 = new 할아버지('달수')
+        // var 만수아버지 = new 아버지('만수')
 
 
 

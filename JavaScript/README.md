@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-08-29
+## 🗒️Last Update : 2024-08-31
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -648,4 +648,56 @@ ex) addEventListner() -> on() ...
     var 달수할아버지 = new 할아버지('달수')
     var 만수아버지 = new 아버지('만수')
     ```
+</details>
+
+<details>
+<summary><b>🤔 getter, setter 이거 왜써요?</b></summary>
+
+- getter: 데이터 꺼내는 함수 -> get 키워드
+    - return이 있어야 함
+    - 파라미터가 없어야 함
+- setter: 데이터 수정하는 함수 -> set 키워드
+    - 파라미터가 1개 있어야 함
+
+- 함수를 실행하기 위해 괜히 쓰는 복잡한 소괄호를 없애기 위해 ❗<b><code>set/get</code> 키워드를 사용할 수 있음!</b>
+    - set은 데이터 변경하는 함수에 붙이고 get은 데이터 꺼내쓰는 함수에 붙임
+        ```js
+        var 사람 = {
+            name : 'Kim',
+            age : 30,
+            set setAge(나이){
+                this.age = parseInt(나이)
+            },
+            get nextAge(){
+                return  this.age + 1  
+            }
+        }
+
+        사람.setAge = 40; // set 키워드를 추가하면 이렇게 함수를 사용가능
+        console.log( 사람.nextAge ) // get 키워드를 추가하면 이렇게 함수를 사용가능
+        ```
+
+- ❗<b>근데 왜 굳이 함수를 만들어 object 데이터를 다뤄야 되나요?</b>
+    1. object 자료가 복잡할 때 이득
+    2. object 자료 수정 시 편리
+        - 데이터를 잘못 넣은 경우를 막는 조건문을 넣을 수 있음(무결성 확보)
+
+- ❗<b>object이외에 class에서도 get/set을 사용할 수 있음!</b>
+    - prototype 함수들에도 get/set 사용할 수 있음
+        ```js
+        class 사람 {
+            constructor(){
+                this.name = 'Park';
+                this.age = 20;
+            }
+            get nextAge(){
+                return this.age + 1
+            }
+            set setAge(나이){
+                this.age = 나이;
+            }
+        }
+
+var 사람1 = new 사람();
+        ```
 </details>

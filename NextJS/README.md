@@ -1,6 +1,6 @@
 [![Next.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Next.js 연습장
-## 🗒️Last Update : 2024-08-29
+## 🗒️Last Update : 2024-08-31
 <details>
 <summary><b>🤔 Next.js가 뭔가요?</b></summary>
 
@@ -716,4 +716,58 @@
                 return response  //쿠키생성
             } 
             ```
+</details>
+
+<details>
+<summary><b>🤔 Next.js의 Server actions 기능</b></summary>
+
+- 지금까지 서버기능은 API를 새로 생성해서 구현함
+    - DB에 데이터를 저장하려면 당연히 서버를 거쳐야 함
+    - 서버기능을 사용하려면 서버 파일로 이동해서 API를 작성해야 함
+- 근데 새로 서버파일로 가서 새로 파일을 만들 필요 없이, ❗<b>page.js에서 전부 해결할 수 있음</b> => Server actions 기능!
+
+- 사전 작업
+    1. Next.js 13.4버전 이상에서만 작동
+    2. next.config.js 파일 수정필요(14버전부터 수정 필요 X)
+
+- server component에서 사용
+    - 이전과 차이점: 폼 전송시 새로고침이 되지 않음 => <code>revalidatePath, revalidateTag</code> 사용
+    ```js
+    import { connectDB } from "@/util/database";
+    import { revalidatePath } from "next/cache"
+
+    // 1. 만드는 페이지
+    export default async function Write2(){ 
+        // DB에서 데이터 뽑아서 보여주기 위해 변수 선언
+        const db = (await connectDB).db('forum')
+        let result = await db.collection('post_test').find().toArray()
+
+        // 3. 서버기능을 page.js에서 만들 수 있음!!
+        async function handleSubmit(formData) {
+            'use server';  // 이걸 넣어 서버 API로 만들어줄 수 있음
+            const db = (await connectDB).db('forum')
+            await db.collection('post_test').insertOne({title : formData.get('post1')})
+
+            // 해당 URL에 있는 캐시 삭제 후 다시 생성 = 새로고침
+            revalidatePath('/write2') 
+        }
+
+        // 2. 보여줄 폼
+        return (
+            <form action={handleSubmit}>
+            <input type="text" name="post1" />
+            <button type="submit">Submit</button>
+            {
+                result ? result.map((a)=>
+                <p>글제목 : {a.title}</p>
+                )
+                : null
+            }
+            </form>
+        )
+    } 
+    ```
+- client component에서 사용
+    - client에 서버기능이 보일 수 있으므로 따로 함수부분을 빼서 import 해오는 방식으로 구현
+    - 근데 이럴거면 그냥 기존처럼 API 새로 구현하는게 나을듯
 </details>
