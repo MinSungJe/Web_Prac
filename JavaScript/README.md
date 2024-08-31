@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-08-31
+## 🗒️Last Update : 2024-09-01
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -698,6 +698,50 @@ ex) addEventListner() -> on() ...
             }
         }
 
-var 사람1 = new 사람();
+        var 사람1 = new 사람();
         ```
+</details>
+
+<details>
+<summary><b>🤔 Array, Object 속 데이터를 쉽게 뽑아쓸래요: Destructuring 문법</b></summary>
+
+- Destructuring 문법 왜써요? 
+    Array/Object 안에 있는 데이터를 변수에 편하게 담는 문법
+    - Array
+        ```js
+        var [a,b,c] = [2,3,4];
+        var [a,b,c = 5] = [2,3]; // 디폴트 값도 부여 가능
+        ```
+    - Object
+        ```js
+        var { name : a, age : b } = { name : 'Kim', age : 30 };
+        var { name, age } = { name : 'Kim', age : 30 }; // 변수랑 key값이 동일한 이름일때
+
+        // 변수랑 key값이 동일한 이름일 때 object를 쉽게 만들 수 있음
+        var name = 'Kim';
+        var age = 30;
+
+        var obj = { name, age }
+        ```
+    - ❗<b>함수 파라미터 변수 만들때도 똑같이 적용됨!</b>
+        - 파라미터는 실은 변수 만드는 거랑 똑같은 행위이기 때문
+            ```js
+            function 함수( { name, age }) {
+                console.log(name);
+                console.log(age);
+            }
+
+            var obj = { name : 'Kim', age : 20 };
+            함수(obj);
+            ```
+        - Object 뿐만 아니라 Array도 가능
+            ```js
+            function 함수( [name, age] ) {
+                console.log(name);
+                console.log(age);
+            }
+
+            var array = [ 'Kim', 30 ];
+            함수( ['Kim', 30] );
+            ```
 </details>

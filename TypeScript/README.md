@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-08-29
+## 🗒️Last Update : 2024-09-01
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -145,4 +145,31 @@
             return x * 2 // void인데 뭔가 return하려고 하니까 여기서 에러남 
         }
         ```
+</details>
+
+<details>
+<summary><b>🤔 애매한 타입을 없애는 Type Narrowing</b></summary>
+
+- ❗<b>어떤 변수가 타입이 아직 불확실하면 if문 등으로 Narrowing 해줘야 조작 가능!</b>
+    - 예를 들어 애매한 타입에 조작을 하는 경우가 있음
+        ```ts
+        function 내함수(x :number | string){
+            return x + 1 // Error! 
+            // number|string 이라는 타입엔 number를 더할 수 없기 때문
+        }
+        ```
+- Narrowing 방법은 다음과 같음
+    - 그냥 현재 변수의 타입이 뭔지 특정지을 수 있기만 하면 다 인정해줌
+        - <code>if (typeof 변수 === '타입명') {}</code>
+            - TS에선 함수 안에서 if문 쓸때 마지막 else문 없으면 에러날 수 있음
+        - <code>속성명 in 오브젝트자료</code>
+        - <code>인스턴스 instanceof 부모</code>
+    - 아니면 assertion 문법(타입 덮어쓰기)
+        1. Narrowing 할 때 씀: 타입을 변경할 때 쓰는게 아님, 에러남
+        2. 무슨 타입이 들어올지 100% 확실할 때 쓰셈
+        3. 대표적인 사용처
+            - 왜 타입에러가 나는지 정말 모르겠는 상황에 임시 에러해결용
+            - 내가 어떤 타입이 들어올지 정말 확실하게 알고 있는데 컴파일러 에러가 방해할 때
+        - 사용법: <code>변수 as 타입명</code>
+        - 옛날 as문법: <code>&lt;number&gt;이름</code>: html 태그랑 헷갈려서 안 씀
 </details>
