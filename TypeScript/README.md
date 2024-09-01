@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-09-01
+## 🗒️Last Update : 2024-09-02
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -126,6 +126,7 @@
 - 타입 지정된 파라미터는 함수쓸때 필수로 들어가야 함
     - ❗<b>파라미터가 옵션일 경우 ?을 이용해 옵션으로 선언 가능</b>
         - 들어올 수 있다~란 뜻이긴 한데 ❗<b>정확히는 union 타입으로 undefined랑 결합된거랑 똑같음</b>
+        - 함수 파라미터 뿐만 아니라 object내 키값에도 ?를 사용할 수 있음
             ```ts
             function 내함수(x? :number) { 
                 
@@ -172,4 +173,76 @@
             - 내가 어떤 타입이 들어올지 정말 확실하게 알고 있는데 컴파일러 에러가 방해할 때
         - 사용법: <code>변수 as 타입명</code>
         - 옛날 as문법: <code>&lt;number&gt;이름</code>: html 태그랑 헷갈려서 안 씀
+</details>
+
+<details>
+<summary><b>🤔 타입이 길면 변수로 써보세요~: type alias</b></summary>
+
+- ❗<b>타입이 너무 길면 변수에 담아쓸 수 있음 => type alias(=별명)</b>
+    - type 변수 작명 관습: 일반 변수랑 차이점을 만들기 위해 영어 대문자로 시작
+        ```ts
+        type Animal = string | number | undefined;
+        let 동물 :Animal;
+        ```
+    - object 타입도 저장 가능
+        ```ts
+        type 사람 = {
+            name : string,
+            age : number,
+        }
+
+        let teacher :사람 = { name : 'john', age : 20 } 
+        ```
+    - type 키워드 여러 개를 합칠 수 있음
+        - 일반적인 방법으로 <code>|</code>(or) 연산자 활용
+            ```ts
+            type Name = string;
+            type Age = number;
+            type NewOne = Name | Age; 
+            ```
+        - object에 지정한 타입의 경우에도 합치기(=extend) 가능: <code>&</code>(and) 연산자 활용
+            ```ts
+            type PositionX = { x: number };
+            type PositionY = { y: number };
+            type XandY = PositionX & PositionY
+            let 좌표 :XandY = { x : 1, y : 2 }
+            ```
+    - type 키워드는 재정의 불가
+        ```ts
+        type Name = string;
+        type Name = number; // 에러남
+        ```
+</details>
+
+<details>
+<summary><b>🤔 TS에서 object를 다루는 테크닉들 소개(readonly, ?)</b></summary>
+
+- readonly
+    - const 자료는 원래 재할당이 불가능한 자료임
+    - 하지만 const로 object를 선언하면 그 안의 값을 변경하는 걸 막지 않음
+    - 이걸 막는 키워드: <code>readonly</code>
+        ```ts
+        type User = {
+            readonly name : string,
+        }
+
+        let 유저: User = {
+            name : '민성제'
+        }
+
+        유저.name = '성민제' // readonly라서 에러남
+        ```
+- ?
+    - 함수 파라미터랑 비슷하게 object의 키값에도 ?를 사용할 수 있음
+    - <code>타입?</code> = <code>타입 | undefined</code>
+        ```ts
+        type Square = {
+            color? : string,
+            width : number,
+        }
+
+        let 네모2 :Square = { 
+            width : 100 
+        }
+        ```
 </details>

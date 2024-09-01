@@ -16,32 +16,56 @@
 //     if (score >= 600) return '결혼가능'
 // }
 
-function 클리닝함수(arr: (number|string)[]): number[] {
-    let result: number[] = []
-    arr.forEach((a) => {
-        if (typeof a === 'string') {
-            result.push(parseInt(a))
-        } else {
-            result.push(a)
-        }
-    })
+// function 클리닝함수(arr: (number|string)[]): number[] {
+//     let result: number[] = []
+//     arr.forEach((a) => {
+//         if (typeof a === 'string') {
+//             result.push(parseInt(a))
+//         } else {
+//             result.push(a)
+//         }
+//     })
 
-    return result
+//     return result
+// }
+
+// console.log(클리닝함수(['1', 2, '3']))
+
+// let 철수쌤 = { subject : 'math' }
+// let 영희쌤 = { subject : ['science', 'english'] }
+// let 민수쌤 = { subject : ['science', 'art', 'korean'] }
+
+// function 만들함수(subject: {subject:string|string[]}) {
+//     if (typeof subject.subject === 'string') {
+//         return subject.subject
+//     } else {
+//         return subject.subject[subject.subject.length-1]
+//     }
+// }
+
+// console.log(만들함수( { subject : 'math' }))  //이 경우 'math'를 return
+// console.log(만들함수( { subject : ['science', 'art', 'korean'] })) //이 경우 'korean'을 return
+
+type 숙제2 = {
+    color?: string,
+    size: number,
+    readonly position: number[]
 }
 
-console.log(클리닝함수(['1', 2, '3']))
-
-let 철수쌤 = { subject : 'math' }
-let 영희쌤 = { subject : ['science', 'english'] }
-let 민수쌤 = { subject : ['science', 'art', 'korean'] }
-
-function 만들함수(subject: {subject:string|string[]}) {
-    if (typeof subject.subject === 'string') {
-        return subject.subject
-    } else {
-        return subject.subject[subject.subject.length-1]
-    }
+type 숙제3 = {
+    name: string,
+    phone: number,
+    email?: string
 }
 
-console.log(만들함수( { subject : 'math' }))  //이 경우 'math'를 return
-console.log(만들함수( { subject : ['science', 'art', 'korean'] })) //이 경우 'korean'을 return
+type 숙제3_5 = {
+    adult: boolean
+}
+
+type 숙제4 = 숙제3 & 숙제3_5
+
+let 회원가입정보 :숙제4 = {
+    name : 'kim',
+    adult : false,
+    phone : 1234
+  }

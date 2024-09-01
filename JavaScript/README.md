@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-09-01
+## 🗒️Last Update : 2024-09-02
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -744,4 +744,78 @@ ex) addEventListner() -> on() ...
             var array = [ 'Kim', 30 ];
             함수( ['Kim', 30] );
             ```
+</details>
+
+<details>
+<summary><b>🤔 import / export 문법</b></summary>
+
+- ❗<b>하나의 JS 파일을 여러 개의 JS파일로 쪼갤 때 import / export 문법을 사용할 수 있음!</b>
+- (참고) import 해온 변수는 read-only 변수임, 수정 불가능
+    1. export default / import
+    2. 여러 개를 export
+    3. 둘을 동시에 사용
+        ```js
+        (library.js)
+
+        var a = 10;
+        var b = 20;
+        var c = 30;
+        export {a, b}; // 2. 여러 개를 export, 변수에 export를 붙여도 됨
+        export default c; // 1. export default / import
+
+        ------------------------
+        (index.html)
+
+        <script type="module">
+            import 맘대로작명, {a,b} from 'library.js'; // a, b는 변수명 맞춰야 함
+            console.log(맘대로작명);
+        </script>
+        ```
+    4. 변수명이 마음에 안들면 as로 새로 지을 수 있음
+        ```js
+        (library.js)
+
+        var a = 10;
+        var c = 30;
+        export {a};
+        export default c;
+
+        ------------------------
+        (index.html)
+
+        <script type="module">
+            import 작명1, {a as 작명2} from 'library.js';
+            console.log(작명2);
+        </script>
+        ```
+    5. import 할때 변수들이 너무 많으면 * 기호 사용
+        ```js
+        (library.js)
+
+        var a = 10;
+        var b = 20;
+        var c = 30;
+        export {a,b};
+        export default c;
+
+        ------------------------
+        (index.html)
+
+        <script type="module">
+            import 작명1, * as 변수모음 from 'library.js'; // * 안에 {a, b}
+            console.log(변수모음.a);
+            console.log(작명1);
+        </script>
+        ```
+- (참고) 옛날에는 require, module.exports을 써서 모듈화했음: 이렇게 했었구나~
+    ```js
+    (export 하는 js파일)
+
+    module.exports.a = 10 ;
+
+    ------------------------
+    (import 하는 js파일)
+
+    var 가져온거 = require('/library.js'); 
+    ```
 </details>
