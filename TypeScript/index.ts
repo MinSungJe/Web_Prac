@@ -46,26 +46,39 @@
 // console.log(만들함수( { subject : 'math' }))  //이 경우 'math'를 return
 // console.log(만들함수( { subject : ['science', 'art', 'korean'] })) //이 경우 'korean'을 return
 
-type 숙제2 = {
-    color?: string,
-    size: number,
-    readonly position: number[]
+// type 숙제2 = {
+//     color?: string,
+//     size: number,
+//     readonly position: number[]
+// }
+
+// type 숙제3 = {
+//     name: string,
+//     phone: number,
+//     email?: string
+// }
+
+// type 숙제3_5 = {
+//     adult: boolean
+// }
+
+// type 숙제4 = 숙제3 & 숙제3_5
+
+// let 회원가입정보 :숙제4 = {
+//     name : 'kim',
+//     adult : false,
+//     phone : 1234
+//   }
+
+type 가위바위보 = '가위'|'바위'|'보'
+function 함수(a: 가위바위보): 가위바위보[] {
+    return ['가위', '가위', '보']
 }
 
-type 숙제3 = {
-    name: string,
-    phone: number,
-    email?: string
+var 자료 = {
+    name: 'Min'
+} as const
+function 내함수(a: 'Min') {
+
 }
-
-type 숙제3_5 = {
-    adult: boolean
-}
-
-type 숙제4 = 숙제3 & 숙제3_5
-
-let 회원가입정보 :숙제4 = {
-    name : 'kim',
-    adult : false,
-    phone : 1234
-  }
+내함수(자료.name)

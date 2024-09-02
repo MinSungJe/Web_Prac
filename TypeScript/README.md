@@ -12,7 +12,7 @@
 </details>
 
 <details>
-<summary><b>🤔 TypeScript 설치기사 왔습니다</b></summary>
+<summary><b>🤔 TypeScript 설치기사입니다</b></summary>
 
 - HTML/CSS/JavaScript
     1. nodejs 설치
@@ -245,4 +245,51 @@
             width : 100 
         }
         ```
+</details>
+
+<details>
+<summary><b>🤔 더 엄격해진 변수: Literal Types</b></summary>
+
+- 특정한 값만 넣을 수 있는 타입을 만들 수 있음!: Literal Types
+- 사용법
+    ```ts
+    let 이름: 'MinSungJe';
+    ```
+- 쓰는 이유
+    - 변수가 뭐가 들어올지 더 엄격하게 관리 가능
+    - VSCode의 기능에 의해 자동완성 가능
+    - const 변수의 업그레이드 버전이라고 볼 수 있음
+        - const 변수는 값을 바꿀 수 없지만, 다른 옵션을 부여할 수 없음
+        - Literal Type은 |(or) 연산자의 사용이 가능하므로 옵션부여 가능
+            ```ts
+            let 방향: 'left' | 'right';
+            방향 = 'left'; // left 또는 right만 가능(옵션 부여)
+            ```
+- Literal Type은 함수 파라미터에도 당연히 사용가능
+    - 이 때, 변수처럼 쓸 수 있다해서 ❗<b>함수 파라미터에 해당 타입을 맞추라고 한거지 해당 자료를 넣으라고 한 게 아니란 거에 유의!</b>
+        ```ts
+        var 자료 = {
+            name : 'kim'
+        }
+
+        function 내함수(a : 'kim') {}
+        
+        // 에러남, 'kim'이라는 타입만 받는데 string을 넣었기 때문
+        내함수(자료.name)
+        ```
+    - 이에 대한 해결책으로는 3가지가 있음
+        1. object 만들 때 object안의 요소에 대한 타입 미리 정하기
+        2. assertion을 써서 강제로 타입부여
+        3. <code>as const</code>를 object에 붙이기
+        - ❗<b><code>as const</code>는 object를 마치 const처럼 절대 변경할 수 없는 값으로 박제</b>하는 효과임
+            1. object내 key값들의 타입을 value(Literal Type)로 바꿔줌
+            2. object 안에 있는 모든 속성을 readonly로 바꿔줌(변경하면 에러)
+                ```ts
+                var 자료 = {
+                    name : 'kim'
+                } as const; // as const 추가
+
+                function 내함수(a : 'kim') {}
+                내함수(자료.name) // 에러 안남
+                ```
 </details>

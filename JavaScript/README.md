@@ -819,3 +819,19 @@ ex) addEventListner() -> on() ...
     var 가져온거 = require('/library.js'); 
     ```
 </details>
+
+<details>
+<summary><b>🤔 웹브라우저 동작원리가 궁금해요</b></summary>
+
+- 왜 이벤트리스너, setTimeout, ajax요청은 의도와 다르게 미스터리하게 동작할까?
+- 웹 브라우저
+    - 서버에서 받아온 HTML, CSS, JS를 실행시켜주는 프로그램
+    - ❗<b>JS를 실행하는 데 일련의 과정이 있고 이를 통해 Single Thread 언어인 JS에서 비동기적 처리 가능!</b>
+    - 동작원리는 아래와 같음
+        1. JS 코드를 발견하면 일단 Stack에 넣고 돌림
+        2. 처리가 오래걸리는 특정코드를 만나면 무조건 대기실에 보류해둠
+            - ex) ajax요청, 이벤트리스너, setTimeout 등..
+        3. 대기실 내 코드들이 실행준비가 되면 Queue에 넣어둠
+        4. Queue에 있는 코드는 <b>Stack이 비어있을 때만</b> 차례로 집어넣어서 실행시켜줌
+- JS 코드를 짤 때 Stack과 Queue를 바쁘지 않게 코드를 짜는게 중요함
+</details>
