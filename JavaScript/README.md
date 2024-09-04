@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-09-02
+## 🗒️Last Update : 2024-09-04
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -834,4 +834,43 @@ ex) addEventListner() -> on() ...
         3. 대기실 내 코드들이 실행준비가 되면 Queue에 넣어둠
         4. Queue에 있는 코드는 <b>Stack이 비어있을 때만</b> 차례로 집어넣어서 실행시켜줌
 - JS 코드를 짤 때 Stack과 Queue를 바쁘지 않게 코드를 짜는게 중요함
+</details>
+
+<details>
+<summary><b>🤔 동기와 비동기 처리, 그리고 콜백함수</b></summary>
+
+- ❗<b>자바스크립트는 기본적으로 동기식 처리(Synchronous)</b>
+    - 한 번에 코드 한 줄씩 차례로 실행
+    - 오래 걸리는 연산을 만나면 처리될 때까지 멈추게 됨
+- 하지만 ❗<b>비동기식 처리(Asynchronous)를 시키는 경우도 있음</b>
+    - 오래 걸리는 작업이 있으면 제껴두고 다른 거부터 처리함
+        - 이 때문에 웹 브라우저가 멈추지 않고 동작할 수 있음
+    - 비동기식 처리를 도와주는 함수를 사용
+        - 특징: 오래 걸리거나 실행까지 오래 걸리는 함수들
+            - <code>setTimeout()</code>
+            - 이벤트 리스너
+            - ajax 요청
+    - 동작원리: 비동기식 처리를 해야하는 함수 속 코드들을 <b>Web API</b>에 보냄(실행 대기실)
+    - 따라서 ❗<b>Web API와 연관된 특수한 함수들을 쓰면 작업이 오래 걸릴 때 다른 거부터 실행 가능</b>
+
+- JavaScript를 순차적으로 실행하려면 콜백함수를 사용함
+    - 콜백함수: 함수 안에 들어가는 함수(함수 디자인 패턴)
+        ```js
+        setTimeout(콜백함수, 1000)
+        ~~.addEventListener('click', 콜백함수)
+        ```
+    - ❗<b>콜백함수는 JS에서 함수를 순차적으로 실행시키도록 할 수 있는 함수 디자인 패턴임</b>
+        ```js
+        function 첫째함수(func) {
+            console.log(1)
+            func()
+        }
+        function 둘째함수() {
+            console.log(2)
+        }
+
+        첫째함수(둘째함수) // -> 1 다음 2 출력
+        ```
+    - 콜백함수의 문제점: 콜백함수 자리에 직접 함수 선언문을 넣으면 함수가 지저분해짐
+        - 이를 쉽게 쓰도록 개선한 Promise 패턴이 있음
 </details>

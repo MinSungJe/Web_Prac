@@ -2,12 +2,19 @@
 //     if (x) console.log('안녕하세요', x)
 //     else console.log('이름이 없습니다')
 // }
-function 함수(a) {
-    return ['가위', '가위', '보'];
-}
-var 자료 = {
-    name: 'Min'
+var cutZero = function (letter) {
+    var result = letter.replace(/^0+/, "");
+    return result;
 };
-function 내함수(a) {
-}
-내함수(자료.name);
+console.log(cutZero('00안녕'));
+console.log(cutZero('안녕'));
+var removeDash = function (letter) {
+    var result = letter.replace(/-/g, "");
+    return parseFloat(result);
+};
+console.log(removeDash('010-5029-4914'));
+var 숙제3 = function (letter, cutZero, removeDash) {
+    var result = removeDash(cutZero(letter));
+    console.log(result);
+};
+숙제3('010-1111-2222', cutZero, removeDash);

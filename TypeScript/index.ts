@@ -70,15 +70,62 @@
 //     phone : 1234
 //   }
 
-type 가위바위보 = '가위'|'바위'|'보'
-function 함수(a: 가위바위보): 가위바위보[] {
-    return ['가위', '가위', '보']
+// type 가위바위보 = '가위'|'바위'|'보'
+// function 함수(a: 가위바위보): 가위바위보[] {
+//     return ['가위', '가위', '보']
+// }
+
+// var 자료 = {
+//     name: 'Min'
+// } as const
+// function 내함수(a: 'Min') {
+
+// }
+// 내함수(자료.name)
+
+// type 회원정보타입 = {
+//     name: string,
+//     age: number,
+//     plusOne: (x: number) => number,
+//     changeName: () => void
+// }
+
+
+// let 회원정보: 회원정보타입 = {
+//     name: 'kim',
+//     age: 30,
+//     plusOne(x) {
+//         return x + 1
+//     },
+//     changeName: () => {
+//         console.log('안녕')
+//     }
+// }
+
+type cutZeroType = (a: string) => string
+
+let cutZero: cutZeroType = (letter) => {
+    let result = letter.replace(/^0+/, "");
+    return result
 }
 
-var 자료 = {
-    name: 'Min'
-} as const
-function 내함수(a: 'Min') {
+console.log(cutZero('00안녕'))
+console.log(cutZero('안녕'))
 
+type removeDashType = (a: string) => number
+
+let removeDash: removeDashType = (letter) => {
+    let result = letter.replace(/-/g, "");
+    return parseFloat(result)
 }
-내함수(자료.name)
+
+console.log(removeDash('010-5029-4914'))
+
+type 숙제3타입 = (a: string, b: cutZeroType, c: removeDashType) => void
+
+let 숙제3: 숙제3타입 = (letter, cutZero, removeDash) => {
+    let result = removeDash(cutZero(letter))
+    console.log(result)
+}
+
+숙제3('010-1111-2222', cutZero, removeDash)

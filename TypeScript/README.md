@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-09-02
+## 🗒️Last Update : 2024-09-04
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -292,4 +292,44 @@
                 function 내함수(a : 'kim') {}
                 내함수(자료.name) // 에러 안남
                 ```
+</details>
+
+<details>
+<summary><b>🤔 함수와 methods에 type alias를 지정하고 싶어요</b></summary>
+
+- function type도 type alias로 저장이 가능함
+    ```ts
+    type NumOut = (x: number, y: number ) => number
+    ```
+- 저장된 function type을 사용하고 싶다면 함수선언식이 아닌 함수표현식으로 함수를 작성해야 함
+    ```ts
+    type NumOut = (x: number, y: number ) => number
+    function Numout() { return x+y } // 함수선언식, type alias 적용 불가능
+    let 함수이름작명: NumOut = function(x,y){
+        return x + y
+    } // 함수표현식
+    ```
+- methods(오브젝트 안 함수) 안에도 타입지정 가능
+    ```ts
+    type Member = {
+        name : string,
+        age : number,
+        plusOne : ( x :number ) => number,
+        changeName : () => void
+    }
+
+    let 회원정보: Member = {
+        name : 'kim',
+        age : 30,
+        plusOne (x){
+            return x + 1
+        },
+        changeName : () => {
+            console.log('안녕')
+        }
+    }
+    
+    회원정보.plusOne(1);
+    회원정보.changeName();
+    ```
 </details>
