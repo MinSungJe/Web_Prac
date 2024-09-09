@@ -1,0 +1,16 @@
+{
+  "name": "nodejs_mongodb",
+  "version": "1.0.0",
+  "description": "[![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)\r # 📝 Node.js / MongoDB 연습장\r ## 🗒️Last Update : 2024-09-10\r <details>\r <summary><b>🤔 Node.js의 정체와 특징</b></summary>",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
