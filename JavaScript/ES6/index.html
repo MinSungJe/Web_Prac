@@ -18,19 +18,31 @@
     </script> -->
 
     <script>
+        var 프로미스 = new Promise((resolve, reject)=>{
+            setTimeout(() => {
+                resolve()
+            }, 1000);
+        })
+
+        프로미스.then(()=>{
+            console.log('성공')
+        }).catch(()=>{
+            console.log('실패')
+        })
+
         // console.log(1)
         // setTimeout(()=>{console.log(2), 1000})
         // console.log(3)
 
-        function 첫째함수(func) {
-            console.log(1)
-            func()
-        }
-        function 둘째함수() {
-            console.log(2)
-        }
+        // function 첫째함수(func) {
+        //     console.log(1)
+        //     func()
+        // }
+        // function 둘째함수() {
+        //     console.log(2)
+        // }
 
-        첫째함수(둘째함수)
+        // 첫째함수(둘째함수)
 
         
         // var name = 'Kim'

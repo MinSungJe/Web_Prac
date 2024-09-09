@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-09-04
+## 🗒️Last Update : 2024-09-09
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -332,4 +332,60 @@
     회원정보.plusOne(1);
     회원정보.changeName();
     ```
+</details>
+
+<details>
+<summary><b>🤔 TypeScript로도 당연히 HTML 요소 조작 가능합니다</b></summary>
+
+- TS는 JS에 type을 더한 것 뿐이므로 당연히 JS처럼 HTML 요소를 다룰 수 있음
+- 근데 JS 쓰듯이 그냥 쓰면 에러남
+    - <code>querySelector()</code>로 찾은 요소는 해당하는 요소가 없을 수 있기 때문에 type이 <code>Element|null</code>인 Union Type임
+    - 근데 <b>요소를 조작하려면 Union 타입이 아닌 Element 타입으로 Narrowing 시켜야 함!</b>
+        ```ts
+        let 제목 = document.querySelector('#title');
+        제목.innerHTML = '반갑소' // 에러, Narrowing 필요
+        ```
+- HTML 조작 시 narrowing 과정 5가지
+    1. <code>제목 != null</code>로 narrowing
+        ```ts
+        let 제목 = document.querySelector('#title');
+        if (제목 != null) {
+            제목.innerHTML = '반갑소'
+        }
+        ```
+    2. ❗<b><code>instanceof</code>로 narrowing</b>: 더 좋은 방법임
+        ```ts
+        let 제목 = document.querySelector('#title');
+        if (제목 instanceof HTMLElement) { // 해당 클래스의 instance인지 확인하는 키워드
+            제목.innerHTML = '반갑소'
+        }
+        ```
+    3. assertion으로 사기치기
+        ```ts
+        let 제목 = document.querySelector('#title') as HTMLElement;
+        제목.innerHTML = '반갑소'
+        ```
+    4. optional chaining 연산자: 왼쪽에 있는 object 자료 안에 .innerHTML이 있으면 그거 쓰고 없으면 undefined 남겨주세요~
+        ```ts
+        let 제목 = document.querySelector('#title');
+        if (제목?.innerHTML != undefined) { // optional chaining
+            제목.innerHTML = '반갑소'
+        }
+        ```
+    5. 그냥 tsconfig의 strict 설정 false로 끄기
+- HTML 조작 시 주의점
+    - ❗<b>HTML 요소를 <code>instanceof</code>로 narrowing 할 때 해당 태그에 맞는 상세타입으로 narrowing 해줘야함!</b>
+        - a -> HTMLAnchorElement
+        - img -> HTMLImageElement
+        - h4 -> HTMLHeadingElement
+        - 기타등등..
+    - 이벤트리스너 붙일 때 optional chaining 신문법 사용 가능
+        ```ts
+        let 버튼 = document.getElementById('button');
+
+        // 버튼에 addEventListener 있으면 붙여주고 없으면 undefined로 남겨줘
+        버튼?.addEventListener('click', function(){
+            console.log('안녕')
+        }) 
+        ```
 </details>

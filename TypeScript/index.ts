@@ -102,30 +102,57 @@
 //     }
 // }
 
-type cutZeroType = (a: string) => string
+// type cutZeroType = (a: string) => string
 
-let cutZero: cutZeroType = (letter) => {
-    let result = letter.replace(/^0+/, "");
-    return result
+// let cutZero: cutZeroType = (letter) => {
+//     let result = letter.replace(/^0+/, "");
+//     return result
+// }
+
+// console.log(cutZero('00안녕'))
+// console.log(cutZero('안녕'))
+
+// type removeDashType = (a: string) => number
+
+// let removeDash: removeDashType = (letter) => {
+//     let result = letter.replace(/-/g, "");
+//     return parseFloat(result)
+// }
+
+// console.log(removeDash('010-5029-4914'))
+
+// type 숙제3타입 = (a: string, b: cutZeroType, c: removeDashType) => void
+
+// let 숙제3: 숙제3타입 = (letter, cutZero, removeDash) => {
+//     let result = removeDash(cutZero(letter))
+//     console.log(result)
+// }
+
+// 숙제3('010-1111-2222', cutZero, removeDash)
+
+let 제목 = document.querySelector('#title')
+if (제목?.innerHTML != undefined) {
+    제목.innerHTML = '진짜 연습장임'
 }
 
-console.log(cutZero('00안녕'))
-console.log(cutZero('안녕'))
-
-type removeDashType = (a: string) => number
-
-let removeDash: removeDashType = (letter) => {
-    let result = letter.replace(/-/g, "");
-    return parseFloat(result)
+let 링크 = document.querySelector('.link')
+if (링크 instanceof HTMLAnchorElement) {
+    링크.href = 'https://kakao.com'
 }
 
-console.log(removeDash('010-5029-4914'))
+let 버튼 = document.querySelector('#button')
+버튼?.addEventListener('click', () => {
+})
 
-type 숙제3타입 = (a: string, b: cutZeroType, c: removeDashType) => void
-
-let 숙제3: 숙제3타입 = (letter, cutZero, removeDash) => {
-    let result = removeDash(cutZero(letter))
-    console.log(result)
+let 이미지 = document.querySelector('#image')
+if (이미지 instanceof HTMLImageElement) {
+    이미지.src = 'new.jpg'
 }
 
-숙제3('010-1111-2222', cutZero, removeDash)
+let 링크들 = document.querySelectorAll('.naver')
+링크들.forEach((a)=>{
+    if (a instanceof HTMLAnchorElement) {
+        a.href = 'https://kakao.com'
+    }
+})
+

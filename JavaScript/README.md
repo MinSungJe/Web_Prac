@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-09-04
+## 🗒️Last Update : 2024-09-09
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -873,4 +873,40 @@ ex) addEventListner() -> on() ...
         ```
     - 콜백함수의 문제점: 콜백함수 자리에 직접 함수 선언문을 넣으면 함수가 지저분해짐
         - 이를 쉽게 쓰도록 개선한 Promise 패턴이 있음
+</details>
+
+<details>
+<summary><b>🤔 콜백함수의 개선패턴, Promise</b></summary>
+
+- Promise: 성공/실패 판정 기계
+    ```js
+    var 프로미스 = new Promise(function(resolve, reject){
+        resolve(); // 성공했어요
+        reject(); // 실패했어요
+    });
+
+    프로미스.then(function(){
+        // 성공 시 실행할 코드
+    }).catch(function(){
+        // 실패 시 실행할 코드
+    }).finally(function(){
+        // 성공이든 실패든 판정되면 실행할 코드
+    })
+    ```
+- Promise 쓰는 이유
+    1. 옆으로 길어지지 않아서 보기 이쁨
+    2. 성공/실패의 경우에 맞춰 코드 실행 가능(try/catch)
+    3. 성공이든 실패든 뭔가 일어났을 때 실행할 코드도 만들 수 있음(finally)
+- Promise 쓰는 예시
+    - <code>jQuery.ajax()</code>, <code>fetch()</code> 등의 서버처리
+- Promise의 3가지 상태
+    - Promise를 출력해보면 Object형의 자료라는 것을 알 수 있음
+    - Object 자료 안에는 ❗<b>Promise의 3가지 상태</b>를 담고 있음
+        1. 성공하면 <code>&lt;resolved&gt;</code>
+        2. 판정 대기중이면 <code>&lt;pending&gt;</code>
+        3. 실패하면 <code>&lt;rejected&gt;</code>
+- Promise에 대한 오해
+    - Promise는 비동기적 처리를 하는 함수가 아님
+        - 예를 들어 Promise 안에 10초 걸리는 연산을 시키면 브라우저는 10초동안 멈춤
+    - 그냥 콜백함수 디자인의 대체품일 뿐임
 </details>
