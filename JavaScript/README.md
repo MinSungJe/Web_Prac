@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-09-09
+## 🗒️Last Update : 2024-09-10
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -881,11 +881,11 @@ ex) addEventListner() -> on() ...
 - Promise: 성공/실패 판정 기계
     ```js
     var 프로미스 = new Promise(function(resolve, reject){
-        resolve(); // 성공했어요
+        resolve(data); // 성공했어요
         reject(); // 실패했어요
     });
 
-    프로미스.then(function(){
+    프로미스.then(function(data){
         // 성공 시 실행할 코드
     }).catch(function(){
         // 실패 시 실행할 코드

@@ -48,3 +48,22 @@
     7. 뚫어놓은 포트번호 이용해서 페이지 접속
 - ❗<b>PORT란? 외부에서 내 컴퓨터로 접속할 수 있도록 뚫어놓는 구멍번호</b>
 </details>
+
+<details>
+<summary><b>🤔 여러 페이지들 보내려면 routing</b></summary>
+
+- ❗<b>라우팅: URL을 기반으로 각각 다른 페이지나 자료를 보내는 기법</b>
+- Express에서 라우팅하는 방법은 아래와 같음
+    ```js
+    app.get('/URL들어가는곳', (요청, 응답)=>{
+        응답.send('보내줄 웹페이지 내용')
+    }) 
+    ```
+- 글 말고 HTML 파일 보내려면 <code>응답.sendFile()</code> 사용
+- <code>__dirname</code>: 현재 <code>server.js</code>가 들어있는 폴더 위치를 나타냄
+    ```js
+    app.get('/URL들어가는곳', function(요청, 응답) {
+        응답.sendFile(__dirname + '/index.html') // html 파일 주소를 넣음
+    })
+    ```
+</details>
