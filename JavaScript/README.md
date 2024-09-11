@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-09-10
+## 🗒️Last Update : 2024-09-11
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -909,4 +909,40 @@ ex) addEventListner() -> on() ...
     - Promise는 비동기적 처리를 하는 함수가 아님
         - 예를 들어 Promise 안에 10초 걸리는 연산을 시키면 브라우저는 10초동안 멈춤
     - 그냥 콜백함수 디자인의 대체품일 뿐임
+</details>
+
+<details>
+<summary><b>🤔 더 쉬운 Promise, async/await</b></summary>
+
+- 순차처리하려고, 혹은 <code>.then()</code>쓰려고 Promise 쓰기 귀찮음
+- ❗<b>async를 function 앞에 붙이면 함수 실행 후에 Promise 오브젝트가 남음!</b>
+    - 성공만 가능(즉 <code>.then()</code>만 가능)
+    - 실패 보내려면 async function에서 결과 보낼 때 <code>return Promise.reject('내용')</code>
+        ```js
+        async function 더하기(){
+            return 1 + 1 
+        }
+
+        더하기().then(function(결과){
+            console.log(결과)
+        });
+        ```
+- ❗<b>async 함수 안에서 Promise 쓰려면 then 대신 await 사용 가능!</b>
+    - <b>await</b>: Promise 앞에 붙임, ❗<b>해당 Promise가 해결될 때까지 기다려! 라는 뜻</b>
+    - ❗<b>await은 프로미스 실패 시 에러나고 멈춤 -> <code>try{}catch{}</code> 이용해야 함</b>
+        ```js
+        async function 더하기() {
+            var 어려운연산 = new Promise((성공, 실패)=>{
+                성공(남길결과);
+            });
+
+            try {
+                // (async function 안에서 사용가능) 프로미스 끝날 때까지 기다려!
+                var 결과 = await 어려운연산
+            }
+            catch { 
+                // 어려운연산 Promise가 실패할 경우 실행할 코드
+            }
+        }
+        ```
 </details>

@@ -1,6 +1,6 @@
 [![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Node.js / MongoDB 연습장
-## 🗒️Last Update : 2024-09-10
+## 🗒️Last Update : 2024-09-11
 <details>
 <summary><b>🤔 Node.js의 정체와 특징</b></summary>
 
@@ -66,4 +66,33 @@
         응답.sendFile(__dirname + '/index.html') // html 파일 주소를 넣음
     })
     ```
+</details>
+
+<details>
+<summary><b>🤔 (꿀팁) server.js에 변경사항 있을 때마다 껐다키는게 귀찮아요</b></summary>
+
+- ❗<b>nodemon 사용하면 해결가능!</b>
+- 설치: <code>npm install -g nodemon</code>
+- 사용
+    1. 서버파일 실행시킬 때 node말고 <code>nodemon server.js</code>
+    2. 그러면 소스코드를 변경 후 파일 저장하면 얘가 알아서 서버 재시작해줌
+</details>
+
+<details>
+<summary><b>🤔 static 파일 첨부하기</b></summary>
+
+- static 파일: css, js, 이미지파일 등 서비스 중 변경점이 별로 없는 파일
+- 방법: <b>static 파일을 하나의 폴더(public)에 몰아넣고 서버에 그 폴더를 등록!</b>
+    1. public 폴더를 만들어서 넣고싶은 static 파일 넣기
+    2. 서버에 등록
+        ```js
+        (server.js)
+        app.use(express.static(__dirname + '/public'));
+        ```
+    3. 이후 html 파일에서 사용 가능, 이때 경로는 등록한 폴더를 제외하고 사용
+        ```html
+        <!-- /public/main.css가 아니라 /main.css임 -->
+        <link href="/main.css" rel="stylesheet">
+        ```
+- static 파일을 이용해 css, js로 html을 꾸미거나 이미지파일을 html에 보여줄 수 있음
 </details>

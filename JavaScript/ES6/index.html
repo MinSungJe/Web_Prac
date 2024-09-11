@@ -13,6 +13,7 @@
     <p id="hello">안녕</p>
     <button id="button">버튼</button>
     <button id="버튼">버튼이에요</button>
+    <button id="button-promise">프로미스버튼</button>
     <img id="test" src="https://codingapple1.github.io/kona.jpg">
 
     <!-- <script type="module">
@@ -21,53 +22,72 @@
     </script> -->
 
     <script>
-        var 프로미스1 = new Promise((resolve, reject) => {
-            let img = document.querySelector('#test')
-            img.addEventListener('load', ()=>{
-                resolve()
+        async function 에이싱크() {
+            var 프로미스 = new Promise((성공, 실패) => {
+                var btn = document.querySelector('#button-promise')
+                btn.addEventListener('click', ()=>{
+                    성공('성공했어요')
+                })
             })
-            img.addEventListener('error', ()=>{
-                reject()
-            })
-        })
 
-        프로미스1.then(()=>{
-            console.log('로드성공1')
-        }).catch(()=>{
-            console.log('로드실패1')
-        })
+            var 결과 = await 프로미스
+            console.log(결과)
+        }
 
-        var 프로미스2 = new Promise((resolve, reject)=>{
-            $.get('https://codingapple1.github.io/hello.txt').done((data)=>{
-                resolve(data)
-            }).fail(()=>{
-                reject()
-            })
-        })
+        에이싱크()
+
+
+        // 더하기().then((결과)=>{
+        //     console.log(결과)
+        // })
+
+        // var 프로미스1 = new Promise((resolve, reject) => {
+        //     let img = document.querySelector('#test')
+        //     img.addEventListener('load', ()=>{
+        //         resolve()
+        //     })
+        //     img.addEventListener('error', ()=>{
+        //         reject()
+        //     })
+        // })
+
+        // 프로미스1.then(()=>{
+        //     console.log('로드성공1')
+        // }).catch(()=>{
+        //     console.log('로드실패1')
+        // })
+
+        // var 프로미스2 = new Promise((resolve, reject)=>{
+        //     $.get('https://codingapple1.github.io/hello.txt').done((data)=>{
+        //         resolve(data)
+        //     }).fail(()=>{
+        //         reject()
+        //     })
+        // })
         
-        var 프로미스3 = new Promise((resolve, reject)=>{
-            $.get('https://codingapple1.github.io/hello2.txt').done((data)=>{
-                resolve(data)
-            }).fail(()=>{
-                reject()
-            })
-        })
+        // var 프로미스3 = new Promise((resolve, reject)=>{
+        //     $.get('https://codingapple1.github.io/hello2.txt').done((data)=>{
+        //         resolve(data)
+        //     }).fail(()=>{
+        //         reject()
+        //     })
+        // })
 
-        프로미스2.then((data)=>{
-            console.log(data)
-        }).catch(()=>{
-            console.log('로드실패2')
-        })
+        // 프로미스2.then((data)=>{
+        //     console.log(data)
+        // }).catch(()=>{
+        //     console.log('로드실패2')
+        // })
         
-        프로미스2.then((data)=>{
-            console.log(data)
-            return 프로미스3
-        }).then((data)=>{
-            console.log(data)
-        })
-        .catch(()=>{
-            console.log('로드실패2')
-        })
+        // 프로미스2.then((data)=>{
+        //     console.log(data)
+        //     return 프로미스3
+        // }).then((data)=>{
+        //     console.log(data)
+        // })
+        // .catch(()=>{
+        //     console.log('로드실패2')
+        // })
         
         // var 프로미스 = new Promise((resolve, reject)=>{
         //     setTimeout(() => {
