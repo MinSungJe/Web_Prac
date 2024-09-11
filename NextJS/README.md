@@ -1,6 +1,6 @@
 [![Next.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Next.js 연습장
-## 🗒️Last Update : 2024-08-31
+## 🗒️Last Update : 2024-09-11
 <details>
 <summary><b>🤔 Next.js가 뭔가요?</b></summary>
 
