@@ -23,7 +23,7 @@
 - node_modules
     - 설치한 라이브러리 보관용 폴더
 - public
-    - 이미지나 static 파일 보관 용
+    - 이미지 등 static 파일 보관 용
 - package.json
     - 설치한 라이브러리 자동으로 기록해줌
     - 터미널에서 쓸 수 있는 명령어도 기록해줌
