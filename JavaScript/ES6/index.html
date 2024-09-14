@@ -22,19 +22,38 @@
     </script> -->
 
     <script>
-        async function 에이싱크() {
-            var 프로미스 = new Promise((성공, 실패) => {
-                var btn = document.querySelector('#button-promise')
-                btn.addEventListener('click', ()=>{
-                    성공('성공했어요')
-                })
-            })
+        var 어레이 = [2,3,4,5]
 
-            var 결과 = await 프로미스
-            console.log(결과)
+        for (let 자료 of 어레이) {
+            console.log(자료)
         }
 
-        에이싱크()
+        // class 부모 {
+
+        // }
+        // 부모.prototype.name = 'Park'
+
+        // var 오브젝트 = new 부모()
+
+        // for (let key in 오브젝트) {
+        //     오브젝트.hasOwnProperty(key)
+        //     console.log(오브젝트[key])
+        // }
+
+
+        // async function 에이싱크() {
+        //     var 프로미스 = new Promise((성공, 실패) => {
+        //         var btn = document.querySelector('#button-promise')
+        //         btn.addEventListener('click', ()=>{
+        //             성공('성공했어요')
+        //         })
+        //     })
+
+        //     var 결과 = await 프로미스
+        //     console.log(결과)
+        // }
+
+        // 에이싱크()
 
 
         // 더하기().then((결과)=>{

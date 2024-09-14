@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-09-09
+## 🗒️Last Update : 2024-09-14
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -388,4 +388,31 @@
             console.log('안녕')
         }) 
         ```
+</details>
+
+<details>
+<summary><b>🤔 class 만들 때도 타입 지정 가능</b></summary>
+
+- class 필드 타입 지정 가능
+- 필드 값에 미리 선언해둬야 constructor에서 사용 가능
+- Prototype 함수(필드와 똑같은 위치에서 선언)에 타입지정 가능
+- 당연히 함수 관련된 rest parameter, default parameter 사용 가능
+    ```ts
+    class Person {
+        data: number = 0 // 필드 타입 지정 가능
+        name: string; // 필드값에 미리 선언해둬야 constructor 사용 가능
+        constructor(파라미터: string) { // 파라미터에도 타입지정 가능
+            this.name = 파라미터
+        }
+
+        // 프로토타입 함수에도 타입지정 가능
+        함수(a: string): void {
+            console.log('프로토타입 함수임: '+a)
+        }
+    }
+
+    let 사람1 = new Person('Min')
+    let 사람2 = new Person('Sung')
+    사람1.함수('테스트')
+    ```
 </details>

@@ -130,29 +130,76 @@
 
 // 숙제3('010-1111-2222', cutZero, removeDash)
 
-let 제목 = document.querySelector('#title')
-if (제목?.innerHTML != undefined) {
-    제목.innerHTML = '진짜 연습장임'
-}
+// let 제목 = document.querySelector('#title')
+// if (제목?.innerHTML != undefined) {
+//     제목.innerHTML = '진짜 연습장임'
+// }
 
-let 링크 = document.querySelector('.link')
-if (링크 instanceof HTMLAnchorElement) {
-    링크.href = 'https://kakao.com'
-}
+// let 링크 = document.querySelector('.link')
+// if (링크 instanceof HTMLAnchorElement) {
+//     링크.href = 'https://kakao.com'
+// }
 
-let 버튼 = document.querySelector('#button')
-버튼?.addEventListener('click', () => {
-})
+// let 버튼 = document.querySelector('#button')
+// 버튼?.addEventListener('click', () => {
+// })
 
-let 이미지 = document.querySelector('#image')
-if (이미지 instanceof HTMLImageElement) {
-    이미지.src = 'new.jpg'
-}
+// let 이미지 = document.querySelector('#image')
+// if (이미지 instanceof HTMLImageElement) {
+//     이미지.src = 'new.jpg'
+// }
 
-let 링크들 = document.querySelectorAll('.naver')
-링크들.forEach((a)=>{
-    if (a instanceof HTMLAnchorElement) {
-        a.href = 'https://kakao.com'
+// let 링크들 = document.querySelectorAll('.naver')
+// 링크들.forEach((a)=>{
+//     if (a instanceof HTMLAnchorElement) {
+//         a.href = 'https://kakao.com'
+//     }
+// })
+
+// class Person {
+//     data: number = 0 // 필드 타입 지정 가능
+//     name: string; // 필드값에 미리 선언해둬야 constructor 사용 가능
+//     constructor(파라미터: string) { // 파라미터에도 타입지정 가능
+//         this.name = 파라미터
+//     }
+    
+//     함수(a: string): void {
+//         console.log('프로토타입 함수임: '+a)
+//     }
+// }
+
+// let 사람1 = new Person('Min')
+// let 사람2 = new Person('Sung')
+// 사람1.함수('테스트')
+
+class Car {
+    model: string
+    price: number
+    constructor(model: string, price: number) {
+        this.model = model
+        this.price = price
     }
-})
+    tax(): number {
+        return this.price * 0.1
+    }
+}
 
+let car1 = new Car('소나타', 3000)
+console.log(car1) //콘솔창 출력결과는 { model : '소나타', price : 3000 }
+console.log(car1.tax()) //콘솔창 출력결과는 300
+
+class Word {
+    num: number[]
+    str: string[]
+    constructor(...para: (number|string)[]) {
+        this.num = []
+        this.str = []
+        para.map((element) => {
+            if (typeof element === 'number') this.num.push(element)
+            if (typeof element === 'string') this.str.push(element)
+        })
+    }
+}
+let obj = new Word('kim', 3, 5, 'park');
+console.log(obj.num) //[3,5]
+console.log(obj.str) //['kim', 'park']

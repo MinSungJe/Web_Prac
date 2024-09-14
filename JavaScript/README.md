@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-09-11
+## 🗒️Last Update : 2024-09-14
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -945,4 +945,45 @@ ex) addEventListner() -> on() ...
             }
         }
         ```
+</details>
+
+<details>
+<summary><b>🤔 JS for 반복문 모두정리</b></summary>
+
+- 반복문 사용 용례는 2가지임
+    1. 코드 여러 번 실행할때
+    2. Array, Object에서 자료 꺼내쓸 때
+
+- for 반복문 종류
+    - 그냥 for 반복문
+        ```js
+        for (let i = 0; i < 3; i++) {
+
+        }
+        ```
+    - forEach() 반복문(Array 전용)
+        ```js
+        [0,1,2].forEach()
+        ```
+    - for in 반복문(Object 전용)
+        1. enumerable 한 것만 반복해 줌
+            - enumerable: 셀 수 있는지 여부, 
+        2. 부모의 prototype도 반복해 줌
+            - 만약 부모 prototype을 보기 싫으면 <code>오브젝트.hasOwnProperty(key)</code> 이용
+        3. Object 자료형에만 사용       
+            ```js
+            var 오브젝트 = {name: 'Min', age: 30}
+
+            for (let key in 오브젝트) {
+                console.log(오브젝트[key])
+            }
+            ```
+    - ❗<b>for of 반복문(iterable 전용)</b>
+        - iterable: Array, 문자, arguments, NodeList, Map, Set...등 반복 가능한거
+        - Python의 for문과 문법이 비슷함
+            ```js
+            for (let 자료 of iterable한거) {
+                console.log(자료)
+            }
+            ```
 </details>

@@ -1,6 +1,6 @@
 [![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Node.js / MongoDB 연습장
-## 🗒️Last Update : 2024-09-11
+## 🗒️Last Update : 2024-09-14
 <details>
 <summary><b>🤔 Node.js의 정체와 특징</b></summary>
 
@@ -95,4 +95,13 @@
         <link href="/main.css" rel="stylesheet">
         ```
 - static 파일을 이용해 css, js로 html을 꾸미거나 이미지파일을 html에 보여줄 수 있음
+</details>
+
+<details>
+<summary><b>🤔 MongoDB 구조 소개</b></summary>
+
+- Database > Collection > Document 순
+- <b>Database</b>: 프로젝트 이름
+- <b>Collection</b>: Document들을 담는 폴더
+- <b>Document</b>: 데이터 하나를 담는 문서, JS Object랑 똑같은 모습으로 저장함
 </details>
