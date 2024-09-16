@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-09-14
+## 🗒️Last Update : 2024-09-16
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -299,11 +299,11 @@
 
 - function type도 type alias로 저장이 가능함
     ```ts
-    type NumOut = (x: number, y: number ) => number
+    type NumOut = (x: number, y: number ) => number;
     ```
 - 저장된 function type을 사용하고 싶다면 함수선언식이 아닌 함수표현식으로 함수를 작성해야 함
     ```ts
-    type NumOut = (x: number, y: number ) => number
+    type NumOut = (x: number, y: number ) => number;
     function Numout() { return x+y } // 함수선언식, type alias 적용 불가능
     let 함수이름작명: NumOut = function(x,y){
         return x + y
@@ -415,4 +415,44 @@
     let 사람2 = new Person('Sung')
     사람1.함수('테스트')
     ```
+</details>
+
+<details>
+<summary><b>🤔 Object에 타입 지정할 때 type 외에 interface도 있어요</b></summary>
+
+- Object에 타입 지정할 때 type 말고도 class처럼 interface를 이용해 지정할 수 있음
+    ```js
+    // class 선언하듯 interface로 타입선언
+    interface Square {
+        color: string,
+        width: number
+    }
+    let 네모: Square = {color: 'red', width: 100}
+    ```
+- ❗<b>interface 장점: extends로 복사가능!</b>
+    ```ts
+    interface Student {
+        name: string
+    }
+    interface Teacher extends Student {
+        age: number
+    }
+
+    let 학생: Student = { name: 'Min' }
+    let 선생: Teacher = { name: 'Min', age: 20 }
+    ```
+    - 만약 extends 쓸 때 중복속성 발생하면 에러로 잡아줌
+- 사실 type도 & 기호(intersection type)을 이용해 비슷하게 장점구현 가능
+    - & 기호(intersection type): 두 타입을 전부 만족하는 타입
+        ```ts
+        type Animal = { name: string };
+        type Cat = { age: number } & Animal
+        ```
+    - 만약 &로 연결할 때 중복속성 발생하면 미리 에러가 안나므로 주의
+- type과 interface의 차이점
+    - ❗<b>interface는 중복선언 가능하지만, type은 중복선언 불가능</b>
+        - interface를 중복선언하면 두 interface가 합쳐진다!! (유연)
+            - 외부 라이브러리같은 경우 interface 많이 씀
+            - 추후에 해당 타입에 뭐 더하는게 쉬움
+        - type은 중복선언하면 에러가 발생한다. (엄격)
 </details>

@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-09-14
+## 🗒️Last Update : 2024-09-16
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -986,4 +986,35 @@ ex) addEventListner() -> on() ...
                 console.log(자료)
             }
             ```
+</details>
+
+<details>
+<summary><b>🤔 실용적이진 않지만 Symbol 자료형 알아봅시다</b></summary>
+
+- 심볼을 사용하는 방법: <code>var 심볼 = Symbol('설명')</code>
+- 심볼의 용도: Object 자료형의 비밀스런 key값
+    - 숨기고 싶은 비밀스런 데이터를 Object에 저장할 수 있음
+        ```js
+        var weight = Symbol('내 시크릿 몸무게임')
+        var height = Symbol('내 키 정보임')
+
+        var info = {
+            name: "Min",
+            age: 25,
+            [height]: 160
+        }
+        info[weight] = 100;
+
+        for (var key in info) {
+            console.log(info[key])
+        } // Min, 25만 출력됨
+        ```
+    - 출력이 되지 않는 이유는 Symbol은 enumerable하지 않기 때문
+    - import 해온 파일 / 라이브러리 쓸 때 거기 있던 object에 자료를 추가할 때 사용 가능(기존 라이브러리를 해치지 않기 때문)
+- 심볼의 특징
+    1. 들어가는 설명이 같다고 같은 심볼이 아님, 심볼 만들때마다 Unique한 심볼이 생김
+    2. 전역 변수같은 전역 Symbol을 만드려면 <code>var a = Symbol.for('설명1')</code>
+        - 같은 설명을 가진 심볼이 위에 이미 있으면 기존 심볼을 복붙해줌
+    3. 기본 내장 Symbol들
+        - Array에서의 <code>Symbol.iterator</code>
 </details>

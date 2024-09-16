@@ -22,11 +22,28 @@
     </script> -->
 
     <script>
-        var 어레이 = [2,3,4,5]
+        var 심볼 = Symbol('설명')
 
-        for (let 자료 of 어레이) {
-            console.log(자료)
+        // var weight = Symbol('내 시크릿 몸무게임')
+        var height = Symbol('내 시크릿 키임')
+
+        var info = {
+            name: "Min",
+            age: 25,
+            [height]: 160
         }
+        // info[weight] = 100;
+        info[height] = 160;
+
+        for (var key in info) {
+            console.log(info[key])
+        } // Min, 25만 출력됨
+
+        // var 어레이 = [2,3,4,5]
+
+        // for (let 자료 of 어레이) {
+        //     console.log(자료)
+        // }
 
         // class 부모 {
 

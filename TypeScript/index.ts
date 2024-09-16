@@ -162,7 +162,7 @@
 //     constructor(파라미터: string) { // 파라미터에도 타입지정 가능
 //         this.name = 파라미터
 //     }
-    
+
 //     함수(a: string): void {
 //         console.log('프로토타입 함수임: '+a)
 //     }
@@ -172,34 +172,82 @@
 // let 사람2 = new Person('Sung')
 // 사람1.함수('테스트')
 
-class Car {
-    model: string
+// class Car {
+//     model: string
+//     price: number
+//     constructor(model: string, price: number) {
+//         this.model = model
+//         this.price = price
+//     }
+//     tax(): number {
+//         return this.price * 0.1
+//     }
+// }
+
+// let car1 = new Car('소나타', 3000)
+// console.log(car1) //콘솔창 출력결과는 { model : '소나타', price : 3000 }
+// console.log(car1.tax()) //콘솔창 출력결과는 300
+
+// class Word {
+//     num: number[]
+//     str: string[]
+//     constructor(...para: (number|string)[]) {
+//         this.num = []
+//         this.str = []
+//         para.map((element) => {
+//             if (typeof element === 'number') this.num.push(element)
+//             if (typeof element === 'string') this.str.push(element)
+//         })
+//     }
+// }
+// let obj = new Word('kim', 3, 5, 'park');
+// console.log(obj.num) //[3,5]
+// console.log(obj.str) //['kim', 'park']
+
+// interface Square {
+//     color: string,
+//     width: number
+// }
+// let 네모: Square = { color: 'red', width: 100 }
+
+// interface Student {
+//     name: string
+// }
+// interface Teacher extends Student {
+//     age: number
+// }
+
+// let 학생: Student = { name: 'Min' }
+// let 선생: Teacher = { name: 'Min', age: 20 }
+
+// type Animal = { name: string }
+// type Cat = { age: number } & Animal
+
+interface Stuff {
+    brand: string,
+    serialNumber: number,
+    model: string[]
+}
+
+let 상품: Stuff = { brand : 'Samsung', serialNumber : 1360, model : ['TV', 'phone'] }
+
+interface Bag {
+    product: string,
     price: number
-    constructor(model: string, price: number) {
-        this.model = model
-        this.price = price
-    }
-    tax(): number {
-        return this.price * 0.1
-    }
+}
+interface UpgradeBag extends Bag {
+    card: boolean
 }
 
-let car1 = new Car('소나타', 3000)
-console.log(car1) //콘솔창 출력결과는 { model : '소나타', price : 3000 }
-console.log(car1.tax()) //콘솔창 출력결과는 300
-
-class Word {
-    num: number[]
-    str: string[]
-    constructor(...para: (number|string)[]) {
-        this.num = []
-        this.str = []
-        para.map((element) => {
-            if (typeof element === 'number') this.num.push(element)
-            if (typeof element === 'string') this.str.push(element)
-        })
+interface 숙제4타입 {
+    plus: (a: number, b: number) => number,
+    minus: (a: number, b: number) => number
+}
+let 숙제4: 숙제4타입 = {
+    plus: (a, b) => {
+        return a+b
+    },
+    minus: (a, b) => {
+        return a-b
     }
 }
-let obj = new Word('kim', 3, 5, 'park');
-console.log(obj.num) //[3,5]
-console.log(obj.str) //['kim', 'park']

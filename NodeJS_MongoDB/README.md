@@ -1,6 +1,6 @@
 [![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Node.js / MongoDB 연습장
-## 🗒️Last Update : 2024-09-14
+## 🗒️Last Update : 2024-09-16
 <details>
 <summary><b>🤔 Node.js의 정체와 특징</b></summary>
 
@@ -104,4 +104,40 @@
 - <b>Database</b>: 프로젝트 이름
 - <b>Collection</b>: Document들을 담는 폴더
 - <b>Document</b>: 데이터 하나를 담는 문서, JS Object랑 똑같은 모습으로 저장함
+</details>
+
+<details>
+<summary><b>🤔 MongoDB와 서버를 연결해봅시다</b></summary>
+
+- 사용자가 DB에 직접 접근하게 하지 않고, 서버를 중간에 두는 게 일반적임
+- 서버 - DB 통신하는 법
+    1. MongoDB 라이브러리 설치
+        ```cmd
+        npm install mongodb@5
+        ```
+    2. server.js에 해당 코드 작성(mongoDB 라이브러리 사용법)
+        ```js
+        const { MongoClient } = require('mongodb')
+
+        let db
+        const url = 'mongodb사이트에 있던 님들의 DB 접속 URL'
+        new MongoClient(url).connect().then((client)=>{
+            console.log('DB연결성공')
+            db = client.db('데이터베이스(콜렉션)이름')
+
+            // 서버 띄우는 코드도 여기에 넣는게 좋음
+            app.listen(8080, () => {
+                console.log('http://localhost:8080 에서 서버 실행 중임')
+            })
+        }).catch((err)=>{
+            console.log(err)
+        })
+        ```
+    3. 내용 찾아서 넣기
+- 데이터베이스에 Document 하나 작성하려면 <code>.insertOne()</code>
+    ```js
+    app.get('/news', (요청, 응답) => {
+        db.collection('post').insertOne({title: '어쩌구'})
+    })
+    ```
 </details>
