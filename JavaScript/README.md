@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-09-16
+## 🗒️Last Update : 2024-09-17
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -1017,4 +1017,46 @@ ex) addEventListner() -> on() ...
         - 같은 설명을 가진 심볼이 위에 이미 있으면 기존 심볼을 복붙해줌
     3. 기본 내장 Symbol들
         - Array에서의 <code>Symbol.iterator</code>
+</details>
+
+<details>
+<summary><b>🤔 Map / Set 자료형</b></summary>
+
+- Map 자료형
+    - 자료간의 연관성을 표현하기 위해 사용
+    - key와 value를 저장함
+    - ❗<b>Map 자료형에서는 key 이름으로 모든 자료형 넣을 수 있음(문자만 X)</b>
+    - 사용법
+        ```js
+        var person = new Map(); // 생성
+        person.set('name', 'Min'); // 자료넣기
+        person.get('name') // 자료출력
+        person.delete('name') // 자료삭제
+        console.log(person.size) // 자료개수 세기
+
+        // 직접 자료 넣기
+        var person = new Map([
+            ['name', 'Min'],
+            ['age', 20]
+        ])
+        ```
+- Set 자료형
+    - 중복자료를 허용하지 않는 Array 비슷한 것
+    - 사용법
+        ```js
+        var 출석부 = new Set(['민', '성', '제', '성']) // 생성
+        출석부.add('김') // 자료넣기
+        출석부.delete('성') // 자료삭제
+        출석부.has('민') // 자료있는지 확인
+        console.log(출석부.size) // 자료개수 세기
+        ```
+    - Set 자료형은 Array 자료형과 왔다갔다할 수 있음: ❗<b>Array의 중복자료를 제거할 때 사용 가능!</b>
+        ```js
+        // Set -> Array
+        var 출석부 = new Set(['민', '성', '제', '성'])
+        출석부2 = [...출석부]
+
+        // Array -> Set
+        var 출석부 = new Set([~~~, ~~~])
+        ```
 </details>

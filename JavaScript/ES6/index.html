@@ -22,22 +22,29 @@
     </script> -->
 
     <script>
-        var 심볼 = Symbol('설명')
+        var person = new Map();
+        person.set('name', 'Min')
+        person.set('age')
+        person.get('name')
 
-        // var weight = Symbol('내 시크릿 몸무게임')
-        var height = Symbol('내 시크릿 키임')
+        var 출석부 = new Set(['민', '성', '제', '성'])
 
-        var info = {
-            name: "Min",
-            age: 25,
-            [height]: 160
-        }
-        // info[weight] = 100;
-        info[height] = 160;
+        // var 심볼 = Symbol('설명')
 
-        for (var key in info) {
-            console.log(info[key])
-        } // Min, 25만 출력됨
+        // // var weight = Symbol('내 시크릿 몸무게임')
+        // var height = Symbol('내 시크릿 키임')
+
+        // var info = {
+        //     name: "Min",
+        //     age: 25,
+        //     [height]: 160
+        // }
+        // // info[weight] = 100;
+        // info[height] = 160;
+
+        // for (var key in info) {
+        //     console.log(info[key])
+        // } // Min, 25만 출력됨
 
         // var 어레이 = [2,3,4,5]
 

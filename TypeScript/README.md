@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-09-16
+## 🗒️Last Update : 2024-09-17
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -455,4 +455,25 @@
             - 외부 라이브러리같은 경우 interface 많이 씀
             - 추후에 해당 타입에 뭐 더하는게 쉬움
         - type은 중복선언하면 에러가 발생한다. (엄격)
+</details>
+
+<details>
+<summary><b>🤔 ...(rest parameter, destrcuturing)에도??</b></summary>
+
+- rest parameter에도 타입지정가능: Array 형태로 들어오므로 Array 식으로 선언
+    ```ts
+    function 함수(...a: (number|string)[]) {
+        console.log(a)
+    }
+    함수(1,2,3,4,5,6,'히히')
+    ```
+- destructuring 할 때도 타입 지정 가능
+    ```ts
+    let 오브젝트 = {student: true, age: 20}
+
+    function 함수({student, age}: {student: boolean, age: number}) {
+        console.log(student, age)
+    }
+    함수(오브젝트)
+    ```
 </details>

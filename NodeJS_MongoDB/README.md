@@ -1,6 +1,6 @@
 [![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Node.js / MongoDB 연습장
-## 🗒️Last Update : 2024-09-16
+## 🗒️Last Update : 2024-09-17
 <details>
 <summary><b>🤔 Node.js의 정체와 특징</b></summary>
 
@@ -123,7 +123,7 @@
         const url = 'mongodb사이트에 있던 님들의 DB 접속 URL'
         new MongoClient(url).connect().then((client)=>{
             console.log('DB연결성공')
-            db = client.db('데이터베이스(콜렉션)이름')
+            db = client.db('데이터베이스이름')
 
             // 서버 띄우는 코드도 여기에 넣는게 좋음
             app.listen(8080, () => {
@@ -140,4 +140,21 @@
         db.collection('post').insertOne({title: '어쩌구'})
     })
     ```
+</details>
+
+<details>
+<summary><b>🤔 MongoDB에 있는 데이터를 출력해봅시다</b></summary>
+
+- DB에 있는 모든 데이터 출력하는 방법: <code>await db.collection('post').find().toArray()</code>
+    ```js
+    app .get('/list', async (요청, 응답) => {
+        let result = await db.collection('post').find().toArray()
+        console.log(result)
+        응답.send('DB에 있던 게시물 보여줄 페이지임')
+    })
+    ```
+    - await은 이 코드 다 실행될 때까지 기다려주세요~ 라는 뜻
+    - await은 async 함수 안에서만 사용 가능
+    - (참고) await은 Promise 앞에만 붙일 수 있음
+
 </details>

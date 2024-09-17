@@ -223,31 +223,65 @@
 // type Animal = { name: string }
 // type Cat = { age: number } & Animal
 
-interface Stuff {
-    brand: string,
-    serialNumber: number,
-    model: string[]
+// interface Stuff {
+//     brand: string,
+//     serialNumber: number,
+//     model: string[]
+// }
+
+// let 상품: Stuff = { brand : 'Samsung', serialNumber : 1360, model : ['TV', 'phone'] }
+
+// interface Bag {
+//     product: string,
+//     price: number
+// }
+// interface UpgradeBag extends Bag {
+//     card: boolean
+// }
+
+// interface 숙제4타입 {
+//     plus: (a: number, b: number) => number,
+//     minus: (a: number, b: number) => number
+// }
+// let 숙제4: 숙제4타입 = {
+//     plus: (a, b) => {
+//         return a+b
+//     },
+//     minus: (a, b) => {
+//         return a-b
+//     }
+// }
+// function 함수(...a: (number | string)[]) {
+//     console.log(a)
+// }
+// 함수(1, 2, 3, 4, 5, 6, '히히')
+
+let 오브젝트 = {student: true, age: 20}
+
+function 함수({student, age}: {student: boolean, age: number}) {
+    console.log(student, age)
+}
+함수(오브젝트)
+
+function 최댓값(...numbers: number[]): number {
+    let result = 0
+
+    numbers.forEach((num)=>{
+        if (num > result) result = num
+    })
+    return result
 }
 
-let 상품: Stuff = { brand : 'Samsung', serialNumber : 1360, model : ['TV', 'phone'] }
+type UserType = {user: string, comment: number[], admin: boolean}
 
-interface Bag {
-    product: string,
-    price: number
-}
-interface UpgradeBag extends Bag {
-    card: boolean
+function 함수2({user, comment, admin}: UserType): void {
+    console.log(user, comment, admin)
 }
 
-interface 숙제4타입 {
-    plus: (a: number, b: number) => number,
-    minus: (a: number, b: number) => number
+함수2( { user : 'kim', comment : [3,5,4], admin : false } )
+
+function 함수3([a,b,c]: (number|string|boolean)[]) {
+    console.log(a, b, c)
 }
-let 숙제4: 숙제4타입 = {
-    plus: (a, b) => {
-        return a+b
-    },
-    minus: (a, b) => {
-        return a-b
-    }
-}
+
+함수3( [40, 'wine', false, 1] )
