@@ -256,32 +256,62 @@
 // }
 // 함수(1, 2, 3, 4, 5, 6, '히히')
 
-let 오브젝트 = {student: true, age: 20}
+// let 오브젝트 = {student: true, age: 20}
 
-function 함수({student, age}: {student: boolean, age: number}) {
-    console.log(student, age)
+// function 함수({student, age}: {student: boolean, age: number}) {
+//     console.log(student, age)
+// }
+// 함수(오브젝트)
+
+// function 최댓값(...numbers: number[]): number {
+//     let result = 0
+
+//     numbers.forEach((num)=>{
+//         if (num > result) result = num
+//     })
+//     return result
+// }
+
+// type UserType = {user: string, comment: number[], admin: boolean}
+
+// function 함수2({user, comment, admin}: UserType): void {
+//     console.log(user, comment, admin)
+// }
+
+// 함수2( { user : 'kim', comment : [3,5,4], admin : false } )
+
+// function 함수3([a,b,c]: (number|string|boolean)[]) {
+//     console.log(a, b, c)
+// }
+
+// 함수3( [40, 'wine', false, 1] )
+
+// type Fish = {swim: string}
+// type Bird = {fly: string}
+
+// function 함수(animal: Fish|Bird) {
+//     if ('swim' in animal) { // Fish라고 Narrowing 됨
+//         let 변수 = animal.swim
+//     }
+// }
+
+let 날짜 = new Date()
+if (날짜 instanceof Date) {
+    // Date의 인스턴스일때 실행됨
 }
-함수(오브젝트)
 
-function 최댓값(...numbers: number[]): number {
-    let result = 0
-
-    numbers.forEach((num)=>{
-        if (num > result) result = num
-    })
-    return result
+type Car = {
+    wheel: '4개',
+    color: string
 }
 
-type UserType = {user: string, comment: number[], admin: boolean}
-
-function 함수2({user, comment, admin}: UserType): void {
-    console.log(user, comment, admin)
+type Bike = {
+    wheel: '2개'
+    color: string
 }
 
-함수2( { user : 'kim', comment : [3,5,4], admin : false } )
-
-function 함수3([a,b,c]: (number|string|boolean)[]) {
-    console.log(a, b, c)
+function 함수(x: Car|Bike) {
+    if (x.wheel === '4개') {
+        // 리터럴 타입을 이용해 Car타입만 통과되도록 Narrowing
+    }
 }
-
-함수3( [40, 'wine', false, 1] )

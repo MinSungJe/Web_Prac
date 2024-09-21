@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-09-17
+## 🗒️Last Update : 2024-09-21
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -164,7 +164,7 @@
         - <code>if (typeof 변수 === '타입명') {}</code>
             - TS에선 함수 안에서 if문 쓸때 마지막 else문 없으면 에러날 수 있음
         - <code>속성명 in 오브젝트자료</code>
-        - <code>인스턴스 instanceof 부모</code>
+        - <code>인스턴스 instanceof 부모class</code>
     - 아니면 assertion 문법(타입 덮어쓰기)
         1. Narrowing 할 때 씀: 타입을 변경할 때 쓰는게 아님, 에러남
         2. 무슨 타입이 들어올지 100% 확실할 때 쓰셈
@@ -476,4 +476,63 @@
     }
     함수(오브젝트)
     ```
+</details>
+
+<details>
+<summary><b>🤔 null & undefined 타입 체크하려면</b></summary>
+
+- 
+</details>
+
+<details>
+<summary><b>🤔 Type Narrowing 하는 방법 2</b></summary>
+
+- null & undefined 타입 체크하려는 경우
+    ```ts
+    function 함수(a: string|undefined) {
+    if (a && typeof a === 'string') {
+            // a가 undefined면 조건문 실행 X / string이면 조건문 실행 O
+        }
+    }
+    ```
+- typeof 연산자는 number, string, boolean, object 등의 기본적인 타입만 판정가능
+- ❗<b>in 키워드로 object narrowing 가능</b>
+    - <code>속성명 in 오브젝트자료</code>
+        ```ts
+        type Fish = {swim: string};
+        type Bird = {fly: string};
+
+        function 함수(animal: Fish|Bird) {
+            if ('swim' in animal) { // Fish라고 Narrowing 됨
+                let 변수 = animal.swim
+            }
+        }
+        ```
+- ❗<b>object 두개가 비슷하면 부모 class가 누군지 물어봐서 narrowing 가능</b>
+    - <code>오브젝트명 instanceof 부모class</code>
+        ```ts
+        let 날짜 = new Date()
+        if (날짜 instanceof Date) {
+            // Date의 인스턴스일때 실행됨
+        }
+        ```
+- ❗<b>비슷한 object 타입일 경우 literal type 강제로 만들어두면 도움됨</b>
+    ```ts
+    type Car = {
+        wheel: '4개',
+        color: string
+    }
+
+    type Bike = {
+        wheel: '2개'
+        color: string
+    }
+
+    function 함수(x: Car|Bike) {
+        if (x.wheel === '4개') {
+            // 리터럴 타입을 이용해 Car타입만 통과되도록 Narrowing
+        }
+    }
+    ```
+- ❗<b>결론: 논리적으로 이 타입인지 특정지을 수 있으면 Narrowing으로 인정해줌</b>
 </details>

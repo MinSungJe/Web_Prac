@@ -1,6 +1,6 @@
 [![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Node.js / MongoDB 연습장
-## 🗒️Last Update : 2024-09-17
+## 🗒️Last Update : 2024-09-21
 <details>
 <summary><b>🤔 Node.js의 정체와 특징</b></summary>
 
@@ -156,5 +156,37 @@
     - await은 이 코드 다 실행될 때까지 기다려주세요~ 라는 뜻
     - await은 async 함수 안에서만 사용 가능
     - (참고) await은 Promise 앞에만 붙일 수 있음
+</details>
 
+<details>
+<summary><b>🤔 이제 DB에서 출력한 데이터를 페이지에 꼽아봅시다</b></summary>
+
+- HTML 페이지에 DB에서 가져온 정보를 꼽으려면 <b>template engine</b>을 사용해야 함
+- 대표적인 template engine인 ejs 사용법
+    1. <code>npm install ejs</code>로 라이브러리 설치
+    2. server.js 상단에(app.use 밑) 코드 작성
+        ```js
+        app.set('view engine', 'ejs')
+        ```
+    3. 루트 폴더에 views폴더 만들고 ~~~.ejs 파일 작성
+        - .ejs파일: html파일인데 안에 서버데이터 넣을 수 있는 것 뿐임
+    4. server.js에서 <code>응답.render('ejs파일경로(루트는 views)')</code>
+- 서버 데이터를 ejs 파일에 넣으려면
+    1. ejs 파일로 데이터 전송
+        ```js
+        app.get('/list', async (요청, 응답) => {
+            let result = await db.collection('post').find().toArray()
+            응답.render('list.ejs', {데이터이름작명: result})
+        })
+        ```
+    2. ejs 파일 안에서 <code>&lt;%= 데이터 이름 %&gt;</code>
+        ```html
+        <div class="list-box">
+            <h4><%=posts[0].title%></h4>
+            <p><%=posts[0].content%></p>
+        </div>
+        ```
+    - 참고: 이렇게 데이터를 박아넣는 작업은 서버사이드 렌더링임
+        - 서버에서 html을 모두 만들고 클라이언트에 보내줌
+        - (반대)클라이언트 사이드 렌더링: html 껍데기랑 데이터를 보내주고 클라이언트에서 조합
 </details>

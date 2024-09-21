@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-09-17
+## 🗒️Last Update : 2024-09-21
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -1059,4 +1059,40 @@ ex) addEventListner() -> on() ...
         // Array -> Set
         var 출석부 = new Set([~~~, ~~~])
         ```
+</details>
+
+<details>
+<summary><b>🤔 Web Components로 나만의 HTML 태그를 만들어보자</b></summary>
+
+- Web Components
+    - JS 문법으로 구현할 수 있는 브라우저 기본 기능임
+    - 긴 HTML도 함수처럼 재사용 가능(=컴포넌트)
+        ```js
+        // 정의하려는 클래스는 HTMLElement를 extend해야함
+        class 클래스 extends HTMLElement {
+            // 불러지면 실행될 코드들
+            connectedCallback() {
+                // name이라는 Attribute 사용법
+                let name = this.getAttribute('name')
+                this.innerHTML = `<div><label>${name}</label><input></div>`
+            }
+
+            // name이라는 Attribute 변경 감지
+            static get observedAttributes() {
+                return ['name']
+            }
+
+            // 변경이 감지되면 실행될 코드
+            attributeChangedCallback() {
+                console.log(this.getAttribute('name'))
+            }
+        }
+        
+        // 선언, 클래스로 정의
+        customElements.define('custom-input', 클래스)
+        ```
+        ```html
+        <custom-input name="비번"></custom-input>
+        ```
+- React, Vue나 다른 라이브러리들로 더 쉽고 효율적으로 컴포넌트 문법 사용가능
 </details>

@@ -16,18 +16,36 @@
     <button id="button-promise">프로미스버튼</button>
     <img id="test" src="https://codingapple1.github.io/kona.jpg">
 
+    <custom-input name="비번"></custom-input>
+    <custom-input name="이메일"></custom-input>
+
     <!-- <script type="module">
         import c, {a} from './library.js'
         console.log(c)
     </script> -->
 
     <script>
-        var person = new Map();
-        person.set('name', 'Min')
-        person.set('age')
-        person.get('name')
+        class 클래스 extends HTMLElement {
+            connectedCallback() {
+                let name = this.getAttribute('name')
+                this.innerHTML = `<div><label>${name}</label><input></div>`
+            }
+            static get observedAttributes() {
+                return ['name']
+            }
+            attributeChangedCallback() {
+                console.log(this.getAttribute('name'))
+            }
+        }
 
-        var 출석부 = new Set(['민', '성', '제', '성'])
+        customElements.define('custom-input', 클래스)
+
+        // var person = new Map();
+        // person.set('name', 'Min')
+        // person.set('age')
+        // person.get('name')
+
+        // var 출석부 = new Set(['민', '성', '제', '성'])
 
         // var 심볼 = Symbol('설명')
 

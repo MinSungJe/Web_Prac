@@ -207,31 +207,40 @@
 //     console.log(a)
 // }
 // 함수(1, 2, 3, 4, 5, 6, '히히')
-var 오브젝트 = { student: true, age: 20 };
-function 함수(_a) {
-    var student = _a.student, age = _a.age;
-    console.log(student, age);
+// let 오브젝트 = {student: true, age: 20}
+// function 함수({student, age}: {student: boolean, age: number}) {
+//     console.log(student, age)
+// }
+// 함수(오브젝트)
+// function 최댓값(...numbers: number[]): number {
+//     let result = 0
+//     numbers.forEach((num)=>{
+//         if (num > result) result = num
+//     })
+//     return result
+// }
+// type UserType = {user: string, comment: number[], admin: boolean}
+// function 함수2({user, comment, admin}: UserType): void {
+//     console.log(user, comment, admin)
+// }
+// 함수2( { user : 'kim', comment : [3,5,4], admin : false } )
+// function 함수3([a,b,c]: (number|string|boolean)[]) {
+//     console.log(a, b, c)
+// }
+// 함수3( [40, 'wine', false, 1] )
+// type Fish = {swim: string}
+// type Bird = {fly: string}
+// function 함수(animal: Fish|Bird) {
+//     if ('swim' in animal) { // Fish라고 Narrowing 됨
+//         let 변수 = animal.swim
+//     }
+// }
+var 날짜 = new Date();
+if (날짜 instanceof Date) {
+    // Date의 인스턴스일때 실행됨
 }
-함수(오브젝트);
-function 최댓값() {
-    var numbers = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        numbers[_i] = arguments[_i];
+function 함수(x) {
+    if (x.wheel === '4개') {
+        // 리터럴 타입을 이용해 Car타입만 통과되도록 Narrowing
     }
-    var result = 0;
-    numbers.forEach(function (num) {
-        if (num > result)
-            result = num;
-    });
-    return result;
 }
-function 함수2(_a) {
-    var user = _a.user, comment = _a.comment, admin = _a.admin;
-    console.log(user, comment, admin);
-}
-함수2({ user: 'kim', comment: [3, 5, 4], admin: false });
-function 함수3(_a) {
-    var a = _a[0], b = _a[1], c = _a[2];
-    console.log(a, b, c);
-}
-함수3([40, 'wine', false, 1]);
