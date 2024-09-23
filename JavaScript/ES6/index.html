@@ -10,14 +10,21 @@
 </head>
 
 <body>
-    <p id="hello">안녕</p>
+    <!-- <p id="hello">안녕</p>
     <button id="button">버튼</button>
     <button id="버튼">버튼이에요</button>
     <button id="button-promise">프로미스버튼</button>
     <img id="test" src="https://codingapple1.github.io/kona.jpg">
+    <input type="range">
+    <div id="mordor"></div>
+    
+    <template id="template1">
+        <label>이메일입력</label><input>
+        <style>label {color: red}</style>
+    </template> -->
 
-    <custom-input name="비번"></custom-input>
-    <custom-input name="이메일"></custom-input>
+    <!-- <custom-input name="비번"></custom-input> -->
+    <!-- <custom-input name="이메일"></custom-input> -->
 
     <!-- <script type="module">
         import c, {a} from './library.js'
@@ -25,20 +32,27 @@
     </script> -->
 
     <script>
-        class 클래스 extends HTMLElement {
-            connectedCallback() {
-                let name = this.getAttribute('name')
-                this.innerHTML = `<div><label>${name}</label><input></div>`
-            }
-            static get observedAttributes() {
-                return ['name']
-            }
-            attributeChangedCallback() {
-                console.log(this.getAttribute('name'))
-            }
+
+        var user = {
+            name: 'Min',
+            age: {value: 25}
         }
 
-        customElements.define('custom-input', 클래스)
+        console.log(user.age.value)
+        console.log(user.나이?.value)
+
+        // document.querySelector('#mordor').attachShadow({mode: 'open'})
+        // document.querySelector('#mordor').shadowRoot.innerHTML = 
+        // `<p>여기에내용을추가</p>`
+
+        // class 클래스 extends HTMLElement {
+        //     connectedCallback() {
+        //         this.attachShadow({mode:"open"})
+        //         this.shadowRoot.append(template1.content.cloneNode(true))
+        //     }
+        // }
+
+        // customElements.define('custom-input', 클래스)
 
         // var person = new Map();
         // person.set('name', 'Min')

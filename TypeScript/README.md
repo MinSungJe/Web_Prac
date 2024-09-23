@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-09-21
+## 🗒️Last Update : 2024-09-23
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -535,4 +535,92 @@
     }
     ```
 - ❗<b>결론: 논리적으로 이 타입인지 특정지을 수 있으면 Narrowing으로 인정해줌</b>
+</details>
+
+<details>
+<summary><b>🤔 never 타입 소개글</b></summary>
+
+- ❗<b>never: 코드를 이상하게 짜면 출몰하는 타입</b>
+    1. 뭔가 이상한 narrowing
+    2. 어떤 함수표현식(에러내뿜는함수)은 return 타입이 자동으로 never
+        ```ts
+        let 함수 = () => {
+            throw new Error() {
+
+            }
+        }
+        ```
+- function return 값이 다음과 같을 경우 붙일 수도 있음
+    1. return 값이 없어야 함
+    2. endpoint가 없어야 함
+        - 사실 모든 함수는 <code>return undefined</code>를 가지고 있음
+        - 따라서 어떤 함수가 절대 끝나지 않아야 함
+            1. 에러가 나는 함수
+            2. 반복문이 멈추지 않는 함수
+- 그럼 이거를 어디다가 써요?
+    - 대부분 쓸데 없음: void로 대체 가능
+    - 근데 몇몇 경우에 출몰하는 경우가 있으므로 알아만 두자~
+</details>
+
+<details>
+<summary><b>🤔 객체지향 언어에 사용하는 public, private도 사용가능</b></summary>
+
+- 타입스크립트는 객체 지향 언어에 사용하는 public, private 키워드 사용 가능
+- <b>public</b>
+    - class 안의 원하는 속성 왼쪽에 붙이면 그 속성은 아무데서나 수정 가능
+        ```ts
+        class User {
+        public name: string;
+
+        constructor(){
+                this.name = 'kim';
+            }
+        }
+
+        let 유저1 = new User();
+        유저1.name = 'park';  //가능
+        ```
+        - 사실 속성을 그냥 만들면 public이 왼쪽에 몰래 부여됨
+        - (참고) public 키워드는 class 내 prototype 함수에도 붙일 수 있음
+- <b>private</b>
+    - class 안의 원하는 속성 왼쪽에 붙이면 ❗<b>그 속성은 무조건 class {} 안에서만 수정 가능</b>
+    - class 안에서만 사용하고 싶은 중요한 변수나 속성에 사용(안전장치)
+    - 외부에서 수정하면 안되는 변수나 속성에 사용
+        ```ts
+        class User {
+        public name: string;
+        private familyName: string;  
+
+        constructor() {
+                this.name = 'SungJe';
+                let hello = this.familyName + 'Min'; // 가능
+            }
+        }
+
+        let 유저1 = new User();
+        유저1.name = 'MinJe';  // 가능
+        유저1.familyName = 'Kim'; // 에러남
+        ```
+    - private 부여된 속성을 class 밖에서 수정해야할 경우
+        1. class 안에 private 속성을 수정하는 함수를 만들고(setter)
+        2. 외부에서 함수를 실행시키면 됨
+- 이 키워드를 쓰면 constructor 안에서 `this.name = name` 같은거 생략가능
+    ```ts
+    // 수정 전
+    class Person { 
+        name;
+        constructor ( name: string ){  
+            this.name = name;
+        } 
+    }
+    let 사람1 = new Person('Min')
+
+    // 수정 후
+    class Person { 
+        constructor ( public name: string ){  
+
+        } 
+    }
+    let 사람1 = new Person('Min')
+    ```
 </details>

@@ -1,6 +1,6 @@
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 JavaScript 연습장
-## 🗒️Last Update : 2024-09-21
+## 🗒️Last Update : 2024-09-23
 <details>
 <summary><b>🤔 JavaScript 기본적인 활용법</b></summary>
 
@@ -1095,4 +1095,97 @@ ex) addEventListner() -> on() ...
         <custom-input name="비번"></custom-input>
         ```
 - React, Vue나 다른 라이브러리들로 더 쉽고 효율적으로 컴포넌트 문법 사용가능
+</details>
+
+<details>
+<summary><b>🤔 shadow DOM 직접 만들어봅시다</b></summary>
+
+- 복잡한 input태그 등 하나의 태그 안에 여러 태그가 있는 요소를 shadow DOM이라고 함
+    - ex) range 타입의 input태그: 3개의 태그로 이루어져 있음
+        ```html
+        <input type="range">
+        ```
+- 이걸 한번 만들어보자
+    1. HTML에 div태그 하나 생성
+        ```html
+        <div id="mordor"></div>
+        ```
+    2. 해당 div태그에 shadowRoot를 연결
+        ```js
+        document.querySelector('#mordor').attachShadow({mode: 'open'})
+        ```
+    3. shadowRoot에 내용 채워넣기
+        ```js
+        document.querySelector('#mordor').shadowRoot.innerHTML = 
+        `<p>여기에내용을추가</p>`
+        ```
+- 근데 이거 어디다가 씀
+    - 위의 Web Component에 shadow DOM을 이용해 스타일을 넣기
+        ```js
+        class 클래스 extends HTMLElement {
+            connectedCallback() {
+                this.attachShadow({mode:"open"})
+                this.shadowRoot.innerHTML = `<label>이메일입력</label><input>
+                <style>label {color: red}</style>`
+            }
+        }
+
+        customElements.define('custom-input', 클래스)
+        ```
+        - shadow DOM은 독립된 공간임
+        - 다른 HTML 요소에 영향을 주지 않도록 스타일을 넣을 수 있음
+        - shadow DOM안의 요소에 이벤트리스너도 부착 가능함
+</details>
+
+<details>
+<summary><b>🤔 HTML 임시보관함: template</b></summary>
+
+- innerHTML을 바꾸기위해 따옴표를 이용해 HTML을 작성하는 하는건 지저분함
+- ❗<b>template 태그 이용해서 HTML을 임시보관 가능!</b>
+    ```html
+    <template id="template1">
+        <label>이메일입력</label><input>
+        <style>label {color: red}</style>
+    </template>
+    ```
+    ```js
+    class 클래스 extends HTMLElement {
+        connectedCallback() {
+            this.attachShadow({mode:"open"})
+            // template 사용
+            this.shadowRoot.append(template1.content.cloneNode(true)) 
+        }
+    }
+
+    customElements.define('custom-input', 클래스)
+    ```
+</details>
+
+<details>
+<summary><b>🤔 object에서 자료뽑을 때 사용하는 ?./?? 연산자</b></summary>
+
+- ❗<b>?.(optional chaining 연산자)</b>
+    - ?. 왼쪽이 null, undefined면 마침표 찍지말고 undefined 남겨줌
+    - 중첩된 object 자료에서 자료뽑을 때 reference 에러 없이 뽑을 수 있음
+        ```js
+        var user = {
+            name: 'Min',
+            age: {value: 25}
+        }
+
+        console.log(user.age.value) // 25
+        console.log(user.나이.value) // 에러 발생(undefined.value)
+        console.log(user.나이?.value) // undefined
+        console.log(user.나이) // undefined
+
+        document.querySelector('#없는거')?.innerHTML // undefined
+        ```
+- ❗<b>??(nullish coalescing 연산자)</b>
+    - ?? 왼쪽이 null, undefined면 오른쪽 내용을 남겨줌
+    - 데이터가 늦게 도착할 때 대신 채워줄 문자를 설정하는 데 사용
+        ```js
+        var user
+
+        console.log(user ?? '로딩중')
+        ```
 </details>

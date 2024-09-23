@@ -1,6 +1,6 @@
 [![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Node.js / MongoDB 연습장
-## 🗒️Last Update : 2024-09-21
+## 🗒️Last Update : 2024-09-23
 <details>
 <summary><b>🤔 Node.js의 정체와 특징</b></summary>
 
@@ -179,7 +179,7 @@
             응답.render('list.ejs', {데이터이름작명: result})
         })
         ```
-    2. ejs 파일 안에서 <code>&lt;%= 데이터 이름 %&gt;</code>
+    2. ejs 파일 안에서 `<%= 데이터 이름 %>`
         ```html
         <div class="list-box">
             <h4><%=posts[0].title%></h4>
@@ -189,4 +189,33 @@
     - 참고: 이렇게 데이터를 박아넣는 작업은 서버사이드 렌더링임
         - 서버에서 html을 모두 만들고 클라이언트에 보내줌
         - (반대)클라이언트 사이드 렌더링: html 껍데기랑 데이터를 보내주고 클라이언트에서 조합
+</details>
+
+<details>
+<summary><b>🤔 ejs 파일 안에서 자바스크립트 문법 사용하는 방법</b></summary>
+
+- ❗<b>ejs 파일 안 어디서든지 자바스크립트 문법 사용가능</b>
+- 이를 이용해 반복문 돌려서 DB 데이터를 여러번 페이지에 꼽을 수 있음
+    - 사용법: `<% JS코드 %>`
+    ```html
+    <% for (let i = 0; i < posts.length; i++) { %>
+        <div class="list-box">
+          <h4><%=posts[i].title%></h4>
+          <p><%=posts[i].content%></p>
+        </div>
+    <% } %>
+    ```
+</details>
+
+<details>
+<summary><b>🤔 다른 ejs 파일에 있는 html을 슬쩍하는 방법</b></summary>
+
+- ❗<b>`include()`</b> 사용
+    - 사용법: `<%- include(가져올ejs경로) %>`
+        ```html
+        <%- include('nav.ejs') %>
+        ```
+- ❗<b>(참고) `<%=%>`과 `<%-%>`의 차이</b>
+    - <b>`<%=%>`</b>: html 태그의 문자라도 문자 그대로 나옴
+    - <b>`<%-%>`</b>: html 태그의 문자를 html로 실제로 렌더링해줌
 </details>

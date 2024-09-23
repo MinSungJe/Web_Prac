@@ -235,12 +235,36 @@
 //         let 변수 = animal.swim
 //     }
 // }
-var 날짜 = new Date();
-if (날짜 instanceof Date) {
-    // Date의 인스턴스일때 실행됨
-}
-function 함수(x) {
-    if (x.wheel === '4개') {
-        // 리터럴 타입을 이용해 Car타입만 통과되도록 Narrowing
+// let 날짜 = new Date()
+// if (날짜 instanceof Date) {
+//     // Date의 인스턴스일때 실행됨
+// }
+// type Car = {
+//     wheel: '4개',
+//     color: string
+// }
+// type Bike = {
+//     wheel: '2개'
+//     color: string
+// }
+// function 함수(x: Car|Bike) {
+//     if (x.wheel === '4개') {
+//         // 리터럴 타입을 이용해 Car타입만 통과되도록 Narrowing
+//     }
+// }
+var User = /** @class */ (function () {
+    function User(name) {
+        this.familyName = 'Min';
+        this.name = name + this.familyName;
     }
-}
+    return User;
+}());
+var 유저1 = new User('SungJe');
+var Person = /** @class */ (function () {
+    function Person(name) {
+        this.name = name;
+    }
+    return Person;
+}());
+var 유저 = new Person('Min');
+console.log(유저);
