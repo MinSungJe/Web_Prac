@@ -1,6 +1,6 @@
 [![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Node.js / MongoDB 연습장
-## 🗒️Last Update : 2024-09-23
+## 🗒️Last Update : 2024-09-24
 <details>
 <summary><b>🤔 Node.js의 정체와 특징</b></summary>
 
@@ -218,4 +218,45 @@
 - ❗<b>(참고) `<%=%>`과 `<%-%>`의 차이</b>
     - <b>`<%=%>`</b>: html 태그의 문자라도 문자 그대로 나옴
     - <b>`<%-%>`</b>: html 태그의 문자를 html로 실제로 렌더링해줌
+</details>
+
+<details>
+<summary><b>🤔 서버의 통신원리, 그리고 RESTful API</b></summary>
+
+- 서버는 누가 요청하면 그대로 처리해주는 프로그램일 뿐임
+- ❗<b>서버에게 요청을 할 때 정확한 특정형식을 맞춰야 처리를 해줄 수 있음</b>
+    1. method: `GET`, `POST`, `PUT`, `UPDATE`, `DELETE`...
+    2. url: `/어쩌구`
+- 지금까지 짠 서버기능(=API)도 동일함
+    ```js
+    // /news로 get 요청받으면 작동하는 서버기능(API)
+    app.get('/news', (요청, 응답) => {
+        응답.send('오늘의 늬우스')
+    })
+    ```
+- 서버가 유저에게 처리하는 과정은 알겠는데, 유저가 서버에게 요청하는 방법은 뭐가 있어?
+    - GET요청 예시: 주소창에 URL입력
+    - POST요청 예시: `<form>`태그 사용
+- 유저는 어떤 url, method 적어야하는지 모르는데 어떻게 요청해야하는지 어케 앎?
+    - 보통 웹페이지에 숨겨놓음(버튼누르면 POST 보내고, 뭐 누르면 GET요청 보내고..)
+- ❗<b>REST API(좋은 API 디자인 하는 원칙 6가지)</b>
+    - 요즘은 그냥 method, URL만 잘 기입해두면 관습적으로 REST하다고 부름
+    1. Uniform Interface
+        - 일관성있는 URL
+        - 하나의 URL로는 하나의 데이터를 가져오게 디자인
+    2. Client-server 역할 구분
+        - 유저에게 서버역할을 맡기거나 DB를 직접 입출력하게 시키면 안됨
+    3. Stateless
+        - 요청들은 서로 의존성이 있으면 안되고 각각 독립적으로 처리되어야 함
+    4. Cacheable
+        - 서버가 보내는 자료들은 캐싱이 가능해야 함
+    5. Layered System
+        - 서버기능을 만들 때 레이어를 걸쳐서 코드가 실행되도록 만들어도 된다.
+    6. Code on demand
+        - 서버는 실행가능한 코드를 보낼 수 있음
+- ❗<b>좋은 URL 작명 관습</b>
+    - 동사보다는 명사 위주로
+    - 띄어쓰기는 언더바(_) 대신 대시(-) 기호
+    - 파일 확장자 쓰기 말기(.html 이른거)
+    - 하위 문서들을 뜻할 땐 / 기호를 사용함 (하위폴더같은 느낌)
 </details>

@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-09-23
+## 🗒️Last Update : 2024-09-24
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -563,9 +563,28 @@
 </details>
 
 <details>
-<summary><b>🤔 객체지향 언어에 사용하는 public, private도 사용가능</b></summary>
+<summary><b>🤔 public, private, protected, static도 사용가능</b></summary>
 
-- 타입스크립트는 객체 지향 언어에 사용하는 public, private 키워드 사용 가능
+- 타입스크립트는 객체 지향 언어에 사용하는 public, private, protected, static 키워드 사용 가능
+- 이 키워드를 쓰면 constructor 안에서 `this.name = name` 같은거 생략가능
+    ```ts
+    // 수정 전
+    class Person { 
+        name;
+        constructor ( name: string ){  
+            this.name = name;
+        } 
+    }
+    let 사람1 = new Person('Min')
+
+    // 수정 후
+    class Person { 
+        constructor ( public name: string ){  
+
+        } 
+    }
+    let 사람1 = new Person('Min')
+    ```
 - <b>public</b>
     - class 안의 원하는 속성 왼쪽에 붙이면 그 속성은 아무데서나 수정 가능
         ```ts
@@ -604,23 +623,33 @@
     - private 부여된 속성을 class 밖에서 수정해야할 경우
         1. class 안에 private 속성을 수정하는 함수를 만들고(setter)
         2. 외부에서 함수를 실행시키면 됨
-- 이 키워드를 쓰면 constructor 안에서 `this.name = name` 같은거 생략가능
-    ```ts
-    // 수정 전
-    class Person { 
-        name;
-        constructor ( name: string ){  
-            this.name = name;
-        } 
-    }
-    let 사람1 = new Person('Min')
+- <b>protected</b>
+    - class 안의 원하는 속성 왼쪽에 붙이면 private랑 비슷하게 class {} 안에서만 사용가능
+    - private랑 다른 점은 `extends`된 class {} 안에서도 사용가능
+        ```ts
+        class User {
+            protected x = 10
+        }
 
-    // 수정 후
-    class Person { 
-        constructor ( public name: string ){  
+        class NewUser extends User {
+            doThis() {
+                this.x = 20 // 사용가능
+            }
+        }
+        ```
+- <b>static</b>
+    - class 안의 원하는 속성 왼쪽에 붙이면 부모 class에 직접 부여됨
+    - class로 만든 자식에게 물려주지 않음, extends 하면 잘 따라옴
+    - 특정 속성을 숨길 때 사용 가능하지만.. 그럴거면 private, protected 쓰는게 나음
+    - 위 3가지 속성과 동시에 사용 가능
+        ```ts
+        class User {
+            public static x = 10
+            y = 20
+        }
 
-        } 
-    }
-    let 사람1 = new Person('Min')
-    ```
+        let 자식 = new User()
+        console.log(자식) // x가 나오지 않음
+        console.log(User.x) // x가 출력됨
+        ```
 </details>

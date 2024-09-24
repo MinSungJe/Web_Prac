@@ -316,19 +316,63 @@
 //     }
 // }
 
+// class User {
+//     name: string
+//     familyName: string = 'Min'
+//     constructor(name: string) {
+//         this.name = name + this.familyName
+//     }
+// }
+// let 유저1 = new User('SungJe')
+
+// class Person {
+//     constructor(public name: string) {
+//     }
+// }
+
+// let 유저 = new Person('Min')
+// console.log(유저)
+
+
 class User {
-    name: string
-    familyName: string = 'Min'
-    constructor(name: string) {
-        this.name = name + this.familyName
+    private static x = 10;
+    public static y = 20;
+
+    static addOne = (num: number) => {
+        User.x += num
+    }
+
+    static printX() {
+        console.log(User.x)
     }
 }
-let 유저1 = new User('SungJe')
 
-class Person {
-    constructor(public name: string) {
+User.addOne(3) //이렇게 하면 x가 3 더해져야함
+User.addOne(4) //이렇게 하면 x가 4 더해져야함
+User.printX()  //이렇게 하면 콘솔창에 x값이 출력되어야함
+
+class Square {
+    x: number
+    y: number
+    color: string
+    constructor(x: number, y: number, color: string) {
+        this.x = x
+        this.y = y
+        this.color = color
+    }
+
+    draw(): void {
+        let canvas = document.getElementById('squareCanvas')
+        if (!(canvas instanceof HTMLCanvasElement)) return
+        let ctx = canvas.getContext('2d')
+        if (!(ctx instanceof CanvasRenderingContext2D)) return
+        ctx.fillStyle = this.color
+        ctx.fillRect(Math.random() * 400, Math.random() * 400, this.x, this.y)
     }
 }
 
-let 유저 = new Person('Min')
-console.log(유저)
+let 네모 = new Square(30, 30, 'red');
+네모.draw()
+네모.draw()
+네모.draw()
+네모.draw()

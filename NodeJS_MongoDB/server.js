@@ -34,7 +34,6 @@ app.get('/about', (요청, 응답) => {
 
 app.get('/news', (요청, 응답) => {
     응답.send('오늘의 늬우스')
-    // db.collection('post').insertOne({title: '어쩌구'})
 })
 
 app.get('/list', async (요청, 응답) => {
