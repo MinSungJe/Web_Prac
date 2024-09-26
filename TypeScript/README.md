@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-09-24
+## 🗒️Last Update : 2024-09-26
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -479,12 +479,6 @@
 </details>
 
 <details>
-<summary><b>🤔 null & undefined 타입 체크하려면</b></summary>
-
-- 
-</details>
-
-<details>
 <summary><b>🤔 Type Narrowing 하는 방법 2</b></summary>
 
 - null & undefined 타입 체크하려는 경우
@@ -652,4 +646,79 @@
         console.log(자식) // x가 나오지 않음
         console.log(User.x) // x가 출력됨
         ```
+</details>
+
+<details>
+<summary><b>🤔 타입도 import export 가능함</b></summary>
+
+- 타입도 JS import/export 하는 것 처럼 내보내고 불러낼 수 있음
+    ```ts
+    // (a.ts)
+    export type Name = string
+
+    // (index.ts)
+    import {Name} from './a'
+    let 변수: Name = 'Sung'
+    ```
+- 예전에는 import/export 문법이 없어서 파일을 여러개 불러왔었음
+    - 변수명이 겹치는 경우 발생
+    - ❗<b>그래서 외부 파일에서 사용하지 않을 변수들을 감췄음: namespace</b>
+        ```ts
+        // (a.ts)
+        namespace 네임스페이스 {
+            export type Name = string | number;
+        }
+
+        // (index.ts)
+        ///<reference path='./a.ts'/> // 불러오는 방법임
+        let 변수: 네임스페이스.Name = 'Sung'
+        ```
+        - type 뿐만 아니라 interface도 감출 수 있음
+        - 옛날에는 `namespace` 대신 `module`이었음
+</details>
+
+<details>
+<summary><b>🤔 타입을 파라미터로 전달하는 Generic</b></summary>
+
+- ❗<b>`function 함수<사용할타입명>() {}`으로 타입을 파라미터로 전달가능!</b>
+- 사용하는 일례
+    ```ts
+    function 함수(x: unknown[]) {
+        return x[0];
+    }
+
+    let a = 함수([4,2])
+    console.log(a + 1) // 오류남: unknown + number을 하려 했기 때문 
+    ```
+    ```ts
+    // MyType이라는 이름으로 타입을 파라미터로 전달
+    function 함수<MyType>(x: MyType[]) :MyType {
+        return x[0];
+    }
+
+    let a = 함수<number>([4,2])
+    let b = 함수<string>(['kim', 'park'])
+    ```
+- 보통 `<T>`같은걸로 많이 함
+- ❗<b>Generic에 들어가는 타입을 제한할 수 있음</b>
+    ```ts
+    function 함수<MyType extends number>(x: MyType) {
+        return x - 1
+    }
+
+    let a = 함수<number>(100) // number로 제한
+    ```
+- 커스텀 타입도 extends 가능: 특정 속성을 가지고 있는 지 체크 가능!
+    ```js
+    interface lengthCheck {
+        length : number
+    }
+    function 함수<MyType extends lengthCheck>(x: MyType) {
+        return x.length
+    }
+
+    let a = 함수<string>('hello')  // 가능
+    let a = 함수<number>(1234) // 에러남
+    ```
+- (참고) class, 타입변수도 타입을 파라미터로 전달 가능
 </details>

@@ -334,45 +334,109 @@
 // console.log(유저)
 
 
-class User {
-    private static x = 10;
-    public static y = 20;
+// class User {
+//     private static x = 10;
+//     public static y = 20;
 
-    static addOne = (num: number) => {
-        User.x += num
-    }
+//     static addOne = (num: number) => {
+//         User.x += num
+//     }
 
-    static printX() {
-        console.log(User.x)
-    }
+//     static printX() {
+//         console.log(User.x)
+//     }
+// }
+
+// User.addOne(3) //이렇게 하면 x가 3 더해져야함
+// User.addOne(4) //이렇게 하면 x가 4 더해져야함
+// User.printX()  //이렇게 하면 콘솔창에 x값이 출력되어야함
+
+// class Square {
+//     x: number
+//     y: number
+//     color: string
+//     constructor(x: number, y: number, color: string) {
+//         this.x = x
+//         this.y = y
+//         this.color = color
+//     }
+
+//     draw(): void {
+//         let canvas = document.getElementById('squareCanvas')
+//         if (!(canvas instanceof HTMLCanvasElement)) return
+//         let ctx = canvas.getContext('2d')
+//         if (!(ctx instanceof CanvasRenderingContext2D)) return
+//         ctx.fillStyle = this.color
+//         ctx.fillRect(Math.random() * 400, Math.random() * 400, this.x, this.y)
+//     }
+// }
+
+// let 네모 = new Square(30, 30, 'red');
+// 네모.draw()
+// 네모.draw()
+// 네모.draw()
+// 네모.draw()
+
+// import {Car, Bike, 함수타입} from './a'
+
+// let car1: Car = {
+//     wheel: 4,
+//     model: 'Audi'
+// }
+
+// let bike1: Bike = {
+//     wheel: 2,
+//     model: 'good'
+// }
+
+// let 함수: 함수타입 = (bike1) => {
+
+// }
+
+// namespace 네임스페이스 {
+//     export type Dog = string;
+// }
+// interface Dog { name : string };
+
+// let dog1 :네임스페이스.Dog = 'bark';
+// let dog2 :Dog = { name : 'paw' }
+
+// interface LengthCheck {
+//     length: number
+// }
+
+// function 함수<MyType extends LengthCheck>(x: MyType) {
+//     return x.length
+// }
+
+// let a = 함수<string[]>(['100'])
+
+interface LengthCheck {
+    length: number
 }
 
-User.addOne(3) //이렇게 하면 x가 3 더해져야함
-User.addOne(4) //이렇게 하면 x가 4 더해져야함
-User.printX()  //이렇게 하면 콘솔창에 x값이 출력되어야함
+function 함수<T extends LengthCheck>(a: T) {
+    return a.length
+}
+console.log(함수<string>('hello'))
+console.log(함수<string[]>(['kim', 'park']))
 
-class Square {
-    x: number
-    y: number
-    color: string
-    constructor(x: number, y: number, color: string) {
-        this.x = x
-        this.y = y
-        this.color = color
-    }
-
-    draw(): void {
-        let canvas = document.getElementById('squareCanvas')
-        if (!(canvas instanceof HTMLCanvasElement)) return
-        let ctx = canvas.getContext('2d')
-        if (!(ctx instanceof CanvasRenderingContext2D)) return
-        ctx.fillStyle = this.color
-        ctx.fillRect(Math.random() * 400, Math.random() * 400, this.x, this.y)
-    }
+interface Animal {
+    name: string;
+    age: number
 }
 
-let 네모 = new Square(30, 30, 'red');
-네모.draw()
-네모.draw()
-네모.draw()
-네모.draw()
+function 함수2<T>(data: string): T {
+    return JSON.parse(data)
+}
+
+let data = '{"name" : "dog", "age" : 1 }'
+
+class Person<T> {
+    name: T;
+    constructor(a) {
+        this.name = a;
+    }
+}
+let a = new Person<string>('어쩌구');
+let b = a.name

@@ -3,6 +3,8 @@ const app = express()
 
 app.use(express.static(__dirname + '/public'))
 app.set('view engine', 'ejs')
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 
 const { MongoClient } = require('mongodb')
 
@@ -43,4 +45,25 @@ app.get('/list', async (요청, 응답) => {
 
 app.get('/time', (요청, 응답) => {
     응답.render('time.ejs', {time: new Date()})
+})
+
+app.get('/write', (요청, 응답) => {
+    응답.render('write.ejs')
+})
+
+app.post('/add', async (요청, 응답) => {
+    let data = 요청.body
+
+    if (data.title == '') {
+        응답.send('제목입력안했는데요')
+        return
+    }
+
+    try {
+        let result = await db.collection('post').insertOne({title: data.title, content: data.content})
+        응답.redirect('/list')
+    } catch(e) {
+        console.log(e)
+        응답.status(500).send('서버에러남')
+    }
 })

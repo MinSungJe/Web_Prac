@@ -1,6 +1,6 @@
 [![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Node.js / MongoDB 연습장
-## 🗒️Last Update : 2024-09-24
+## 🗒️Last Update : 2024-09-26
 <details>
 <summary><b>🤔 Node.js의 정체와 특징</b></summary>
 
@@ -259,4 +259,53 @@
     - 띄어쓰기는 언더바(_) 대신 대시(-) 기호
     - 파일 확장자 쓰기 말기(.html 이른거)
     - 하위 문서들을 뜻할 땐 / 기호를 사용함 (하위폴더같은 느낌)
+</details>
+
+<details>
+<summary><b>🤔 글 작성기능 구현</b></summary>
+
+1. 글작성페이지에서 글써서 서버로 전송
+    - 글작성페이지 만들기(특정 URL get 연결 및 ejs 연동)
+        ```js
+        app.get('/write', (요청, 응답) => {
+            응답.render('write.ejs')
+        })
+        ```
+    - 해당 페이지에 form태그 생성
+    - form태그에 URL+method 추가해두기, input태그에 name속성 추가
+        ```html
+        <form class="form-box" action="/add" method="POST">
+            <h4>글쓰기</h4>
+            <input name="title" placeholder="글제목">
+            <input name="content" placeholder="내용">
+            <button type="submit">전송</button>
+        </form>
+        ```
+2. 서버는 글을 출력해보고 검사
+    - ❗<b>`요청.body`로 post 요청으로 받은 내용 출력 가능</b>
+        ```js
+        app.post('/add', (요청, 응답) => {
+            console.log(요청.body)
+        })
+        ```
+    - `요청.body` 잘 쓰려면 세팅 필요
+        ```js
+        app.use(express.json())
+        app.use(express.urlencoded({extended:true}))
+        ```
+3. 글을 DB에 저장
+    - 사용하는 DB의 데이터 저장 문법 사용
+        ```js
+        // MongoDB: insertOne()
+        await db.collection('post').insertOne({데이터: '어쩌구~~'})
+        ```
+    - (참고) await 쓰는 db랑 통신하는 코드의 경우 `try-catch`문으로 에러방지 가능
+</details>
+
+<details>
+<summary><b>🤔 유저의 요청 이후 서버의 응답 모음</b></summary>
+
+- `응답.redirect('/URL')`: 요청끝내고 /URL로 이동시킴
+- `응답.send('메세지')`: 메세지를 보냄
+    - `응답.status(500).send('서버에러남')`: status를 통해 FE에게도 무슨 상황인지 전달 가능
 </details>
