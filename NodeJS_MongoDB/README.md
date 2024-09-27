@@ -1,6 +1,6 @@
 [![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 Node.js / MongoDB 연습장
-## 🗒️Last Update : 2024-09-26
+## 🗒️Last Update : 2024-09-27
 <details>
 <summary><b>🤔 Node.js의 정체와 특징</b></summary>
 
@@ -308,4 +308,31 @@
 - `응답.redirect('/URL')`: 요청끝내고 /URL로 이동시킴
 - `응답.send('메세지')`: 메세지를 보냄
     - `응답.status(500).send('서버에러남')`: status를 통해 FE에게도 무슨 상황인지 전달 가능
+</details>
+
+<details>
+<summary><b>🤔 (mongoDB) _id로 document 중 하나 찾기</b></summary>
+
+- `.findOne({key: value})` 이용 
+    ```js
+    await db.collection('post').findOne({_id : new ObjectId('64bfde3b02d2932a4c06ffba')}) 
+    ```
+</details>
+
+<details>
+<summary><b>🤔 디테일 페이지 만들기: URL parameter</b></summary>
+
+- 비슷한 페이지 여러 개 만들때 여러 개의 API를 다 개발해야 하나? -> ❗<b>URL parameter 이용!</b>
+- 사용법: URL의 파라미터 넣고싶은 부분에 `:작명`
+    ```js
+    app.get('/detail/:id', (요청, 응답) => {
+        응답.render('detail.ejs', {})
+    })
+    ```
+- 불러오는 법: `요청.params`
+    ```js
+    app.get('/detail/:id', (요청, 응답) => {
+        console.log(요청.params)
+    })
+    ```
 </details>

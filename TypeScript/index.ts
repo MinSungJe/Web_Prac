@@ -411,32 +411,32 @@
 
 // let a = 함수<string[]>(['100'])
 
-interface LengthCheck {
-    length: number
-}
+// interface LengthCheck {
+//     length: number
+// }
 
-function 함수<T extends LengthCheck>(a: T) {
-    return a.length
-}
-console.log(함수<string>('hello'))
-console.log(함수<string[]>(['kim', 'park']))
+// function 함수<T extends LengthCheck>(a: T) {
+//     return a.length
+// }
+// console.log(함수<string>('hello'))
+// console.log(함수<string[]>(['kim', 'park']))
 
-interface Animal {
-    name: string;
-    age: number
-}
+// interface Animal {
+//     name: string;
+//     age: number
+// }
 
-function 함수2<T>(data: string): T {
-    return JSON.parse(data)
-}
+// function 함수2<T>(data: string): T {
+//     return JSON.parse(data)
+// }
 
-let data = '{"name" : "dog", "age" : 1 }'
+// let data = '{"name" : "dog", "age" : 1 }'
 
-class Person<T> {
-    name: T;
-    constructor(a) {
-        this.name = a;
-    }
-}
-let a = new Person<string>('어쩌구');
-let b = a.name
+// class Person<T> {
+//     name: T;
+//     constructor(a) {
+//         this.name = a;
+//     }
+// }
+// let a = new Person<string>('어쩌구');
+// let b = a.name

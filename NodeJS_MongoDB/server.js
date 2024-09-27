@@ -1,12 +1,12 @@
 const express = require('express')
 const app = express()
+const { MongoClient, ObjectId } = require('mongodb')
 
 app.use(express.static(__dirname + '/public'))
 app.set('view engine', 'ejs')
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-const { MongoClient } = require('mongodb')
 
 let db
 const url = 'mongodb+srv://admin:qwer1234@cluster0.xacmkco.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
@@ -66,4 +66,11 @@ app.post('/add', async (요청, 응답) => {
         console.log(e)
         응답.status(500).send('서버에러남')
     }
+})
+
+app.get('/detail/:id', async (요청, 응답) => {
+    let data = 요청.params
+    let result = await db.collection('post').findOne({ _id: new ObjectId(data.id)})
+    console.log(result)
+    응답.render('detail.ejs', {title: result.title, content: result.content})
 })

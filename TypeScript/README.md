@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-09-26
+## 🗒️Last Update : 2024-09-27
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -721,4 +721,43 @@
     let a = 함수<number>(1234) // 에러남
     ```
 - (참고) class, 타입변수도 타입을 파라미터로 전달 가능
+</details>
+
+<details>
+<summary><b>🤔 TS를 다른 거랑 묶어보자1: React</b></summary>
+
+- 설치: `npx create-react-app 프로젝트명 --template typescript`
+- `.tsx`: jsx 문법을 쓰는 파일의 확장자
+- `.ts`: 일반 파일
+- ❗<b>잘 쓰는 법</b>
+    1. 일반변수, 함수 만들 때 타입지정 잘하자
+    2. JSX(html 요소)를 표현하는 타입이 있음!: `JSX.Element`
+        ```tsx
+        let 박스 :JSX.Element = <div></div>
+        ```
+    3. component 만들 때 타입지정 가능: 파라미터, return값
+        ```tsx
+        function Profile(): JSX.Element {
+            return (
+                <div>프로필인데요</div>
+            )
+        }
+        ```
+    4. component props 타입지정: props는 object 형식으로 전달받는다!
+        ```tsx
+        // (너무 길면 항상 type alias 사용가능한걸 절대 기억해)
+        function Profile(props: {name: string}): JSX.Element {
+            return (
+                <div>{props.name} 프로필인데요</div>
+            )
+        }
+        ```
+    5. useState 타입지정
+        ```tsx
+        // 처음값에 따라 타입지정 자동으로 되므로 신경 안써도 됨
+        let [user, setUser] = useState('kim')
+
+        // 근데 string|number 타입을 넣고 싶으면 Generic 문법 사용
+        let [user, setUser] = useState<string|number>('kim')
+        ```
 </details>
