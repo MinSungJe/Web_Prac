@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-09-27
+## 🗒️Last Update : 2024-09-28
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -760,4 +760,45 @@
         // 근데 string|number 타입을 넣고 싶으면 Generic 문법 사용
         let [user, setUser] = useState<string|number>('kim')
         ```
+</details>
+
+<details>
+<summary><b>🤔 TS를 다른 거랑 묶어보자2: Redux</b></summary>
+
+- ❗<b>Redux(전역 상태 관리 라이브러리)</b>
+    1. 모든 컴포넌트가 state 공유 가능
+    2. 수정방법을 파일 한 곳에 정의해둠: 오류가 났을 때 하나 파일만 들여다보면 됨
+- 설치방법: `npm install redux react-redux`
+- redux에서 만드는 거는 두가지 -> ❗<b>여기에 똑같이 변수와 함수정의에 타입지정하면 됨!</b>
+    1. 모든 컴포넌트가 공유할 state(변수)
+        ```tsx
+        const 초기값: {count: number}  = { count: 0 };
+        ```
+    2. 미리 정의할 state 수정방법(함수)
+        ```tsx
+        // 인자: state, action을 인자로 받음
+        // state: 위에서 타입지정했으면 알아서 
+        // action: 수정요청(dispatch())날릴 때 거기 넣는 파라미터랑 같음
+        // action.type을 string으로 쓰기 때문에 그걸 타입지정
+        function reducer(state = 초기값, action: {type: string}) {
+            if (action.type === '증가') {
+                return { count : state.count + 1 }
+            } else if (action.type === '감소'){
+                return { count : state.count - 1 }
+            } else {
+                return initialState
+            }
+        }
+        ```
+- redux로 만들어 둔 state를 컴포넌트에서 쓰는 법
+    - 꺼내는 요즘 문법: `useSelector()` 훅 사용
+        - 타입은 정의한 곳에서 import
+    - 수정하는 요즘 문법: `dispatch()` 사용
+        - 타입은 redux에서 제공하는 타입 사용
+- (참고) <b>@reduxjs/toolkit 쓰면 redux의 더러운 if-else문을 `createSlice()`라는 함수로 정리할 수 있음</b>
+    - 설치방법: `npm install @reduxjs/toolkit`
+    - state, reducer를 object로 정리할 수 있음 -> slice
+    - 함수라 보기 좋음
+    - stat 수정 시 사본만들 필요가 없음
+    - action은 `PayloadAction`을 redux toolkit에서 import해서 타입지정 하면 됨
 </details>
