@@ -440,3 +440,28 @@
 // }
 // let a = new Person<string>('어쩌구');
 // let b = a.name
+
+// function 함수(...x: [number, string]) {
+
+// }
+// 함수(1, '2')
+
+let 최근에먹은음식: [string, number, boolean] = ['햄버거', 10000, true]
+let arr: [string, number, ...boolean[]] = ['동서녹차', 4000, true, false, true, true, false, true]
+type 함수파라미터용 = [string, boolean, ...(number|string)[]]
+function 함수(...x: 함수파라미터용){
+    console.log(x)
+}
+함수('안녕', true, 10, '안녕', '히히')
+
+function 분류기(...x: [...(string|number)[]]): [string[], number[]] {
+    let strings: string[] = []
+    let numbers: number[] = []
+
+    x.forEach((a)=>{
+        if (typeof a === 'string') strings.push(a)
+        if (typeof a === 'number') numbers.push(a)
+    })
+
+    return [strings, numbers]
+}

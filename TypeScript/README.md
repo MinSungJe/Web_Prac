@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-09-28
+## 🗒️Last Update : 2024-09-29
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -801,4 +801,35 @@
     - 함수라 보기 좋음
     - stat 수정 시 사본만들 필요가 없음
     - action은 `PayloadAction`을 redux toolkit에서 import해서 타입지정 하면 됨
+</details>
+
+<details>
+<summary><b>🤔 array에 타입넣는 법: tuple</b></summary>
+
+- 지금까지 array에 타입 지정한 방법
+    ```ts
+    let 멍멍: (string|boolean)[] = ['dog', true]
+    ```
+- ❗<b>tuple타입을 이용하면 위치와 순서까지 고려한 타입지정 가능!</b>
+    - 사용법
+        ```ts
+        // 첫 번째
+        let 멍멍: [string, boolean] = ['dog', true]
+        ```
+    - tuple 안에 옵션 표시 가능, 맨 뒤쪽에서만 사용 가능
+        ```ts
+        let 멍멍: [string, boolean?] = ['dog'] // boolean값이 들어와도 되고 들어오지 않아도 됨
+        ```
+    - 함수에서 쓰는 tuple(Rest parameter 타입지정 시)
+        ```ts
+        function 함수(...x: [number, string]) {
+            console.log(x)
+        }
+        함수(1, '2')
+        ```
+    - array 합칠 때 spread 연산자 쓰는 데 이때 타입지정은?: 똑같이 rest parameter 쓰듯이 쓰면 됨
+        ```ts
+        let arr = [1,2,3]
+        let arr2: [number, number, ...number[]] = [4,5, ...arr]
+        ```
 </details>
