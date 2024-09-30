@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-09-29
+## 🗒️Last Update : 2024-09-30
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -832,4 +832,35 @@
         let arr = [1,2,3]
         let arr2: [number, number, ...number[]] = [4,5, ...arr]
         ```
+</details>
+
+<details>
+<summary><b>🤔 .ts에서 다른 (.js|.ts)파일 안의 변수를 사용하고 싶어요</b></summary>
+
+- .js의 변수를 .ts에서 이용하고 싶음
+    - 일반 html, css, js 개발 시 그냥 `<script src="">`
+    - ts에서 갖다쓰면 오류는 나지만 잘 실행은 됨. ❗<b>오류 거슬린다면 `declare` 키워드 사용</b>
+        - <b>`declare`</b>: 변수를 재정의하는 키워드
+            ```ts
+            declare let a: number
+            ```
+        - 힌트를 주는 느낌
+        - jQuery 같은 JS 외부 라이브러리를 불러올 때 재정의로 오류를 없애는 용도
+
+- .ts의 변수를 .ts에서 이용하고 싶음
+    - 당연히 import, export
+    - 근데 import, export 안해도 되긴 함: ❗<b>모든 ts 파일은 ambient module(글로벌 모듈)로 선언되기 때문</b>
+        - ts 파일 끼리 서로 공유됨
+        - 그래서 특정 키워드는 
+    - ❗<b>ts파일을 ambient 모듈이 아니라 로컬 모듈로 만드는 법: import, export 키워드를 하나 추가해두면 됨</b>
+        - ❗<b>이렇게 만든 로컬 모듈 안에서 전역 변수 만들고 싶으면 `declare global {}`</b>
+            ```ts
+            //(data.ts)
+            export {}; // 로컬 모듈로 만들어줌
+            type Age = number;
+            let 나이: Age = 25;
+            declare global {
+                let 이름: string = 'Min' // 여기 안에 있는건 전역변수임
+            }
+            ```
 </details>
