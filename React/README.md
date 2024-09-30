@@ -1,6 +1,6 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://github.com/MinSungJe/FrontEnd_Prac)
 # 📝 React 연습장
-## 🗒️Last Update : 2024-09-11
+## 🗒️Last Update : 2024-09-30
 <details>
 <summary><b>🤔 React Project 생성법</b></summary>
 
@@ -594,3 +594,39 @@ class Modal2 extends React.Component {
   })
   ```
 </details>
+
+<details>
+<summary><b>🤔 자주 쓰는 함수는 따로 빼두자, custom hook</b></summary>
+
+- ❗<b>그냥 반복적인 코드 function으로 따로 빼서 재사용해보자는 뜻</b>
+- ex) like 기능을 만들었는데 다른 페이지에서도 필요할 거 같아요
+  ```jsx
+  let [like, setLike] = useState(0)
+  function addLike() {
+    setLike(a => a+1)
+  }
+
+  return (
+    ...
+    {like} <span onClick={()=>{addLike()}}>♥️</span>
+    ...
+  )
+  ```
+  - ❗<b>hooks 폴더를 만들고 파일을 만들어서 함수를 선언하고 export</b>
+    - (주의) 정의되지 않은 변수, 함수 정의 해줘야 함
+    - 함수 안에 있던 변수는 함수 안에서만 사용가능하므로, 함수안의 변수를 바깥으로 배출하자: `return`
+  - ❗<b>코드에 `use어쩌구()`가 들어있으면 그 함수 역시 이름이 use로 시작해야함 = custom hook</b>
+    - jsx 컴포넌트 안 return() 위 부분에서만 정의할 수 있기 때문!
+    ```js
+    // (like.js)
+    import { useState } from "react" // 정의되지 않은 함수 정의
+
+    export function useLike() {
+        let [like, setLike] = useState(0)
+        function addLike() {
+            setLike(a => a + 1)
+        }
+
+        return [like, addLike] // 배출
+    }
+    ```

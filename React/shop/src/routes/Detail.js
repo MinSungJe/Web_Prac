@@ -6,6 +6,7 @@ import { Nav } from 'react-bootstrap';
 import { Context1 } from './../App.js'
 import { Provider, useDispatch } from "react-redux";
 import { addItem } from '../store.js'
+import { useLike } from "../hooks/like.js";
 
 let YellowBtn = styled.button`
   background : ${props => props.bg};
@@ -13,6 +14,8 @@ let YellowBtn = styled.button`
   padding : 10px;
 `
 function Detail(props) {
+
+  let [like, addLike] = useLike()
 
   let {inventory} = useContext(Context1)
 
@@ -75,6 +78,7 @@ function Detail(props) {
           <img src={"https://codingapple1.github.io/shop/shoes1.jpg"} width="100%" />
         </div>
         <div className="col-md-6">
+          {like} <span onClick={()=>{addLike()}}>♥️</span>
           <h4 className="pt-5">{product.title}</h4>
           <p>{product.content}</p>
           <p>{product.price}원</p>

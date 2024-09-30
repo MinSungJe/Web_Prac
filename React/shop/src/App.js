@@ -8,6 +8,7 @@ import About from './routes/About.js'
 import Event from './routes/Event.js'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query';
+import { useName } from './hooks/getUser.js';
 
 // import Detail from './routes/Detail.js'
 // import Cart from './routes/Cart.js'
@@ -37,6 +38,7 @@ function App() {
       })
     }
   })
+  let username = useName()
 
 
 
@@ -52,7 +54,7 @@ function App() {
           <Nav style={{ 'color': 'white' }} className='ms-auto'>
             {result.isLoading && '로딩중'}
             {result.error && '에러남'}
-            {result.data && "안녕하세요 " + result.data.name}
+            {result.data && "안녕하세요 " + result.data.name + ", 그리고 " + username}
           </Nav>
         </Container>
       </Navbar>
