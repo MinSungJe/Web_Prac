@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-09-30
+## 🗒️Last Update : 2024-10-01
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -863,4 +863,37 @@
                 let 이름: string = 'Min' // 여기 안에 있는건 전역변수임
             }
             ```
+</details>
+
+<details>
+<summary><b>🤔 d.ts 파일이 뭘까요</b></summary>
+
+- ❗<b>`~~~.d.ts`: 타입정의 보관용 파일임!</b>
+- ts 파일에 타입정의가 너무 길면 d.ts 파일 만들기도 함
+- 여러 타입을 정의하고 import/export하면 됨
+    ```ts
+    // (~~~.d.ts)
+    export type Age = number;
+    export interface Person { name: string, age: number}
+    ```
+- 모든 타입을 정의해놓은 레퍼런스용으로 d.ts파일 쓰는 법
+    - `tsconfig.json`의 옵션값을 바꾸면 됨!: `"declaration": true`
+    ```json
+    (tsconfig.json)
+    {
+        "compilerOptions": {
+            "target": "es5",
+            "module": "es6",
+            "declaration": true, // 요거 쓰면 됨
+        }
+    }
+    ```
+- d.ts 파일 용도
+    1. 타입정의 따로 보관할 파일이 필요할 때
+    2. 타입 레퍼런스 생성하고 싶을 때 tsconfig 변경하고 생성
+- (참고) d.ts 파일은 자동으로 글로벌 모듈이 되는게 아니므로 export, import해야 함
+    - d.ts파일을 글로벌 모듈로 만드는 법: `tsconfig.json`에 `"typeRoots": ["./types"]` 추가하고 해당 폴더 만들어서 쓰면 됨
+- 외부라이브러리 쓸 때 타입정의 안되어있다면 Definitely Typed github 레포지토리나 타입스크립트 공식홈페이지 가서 원하는 타입파일 다운받아 갖다쓰면 됨
+    - ❗<b>node_modules/@types 폴더에 있는 타입들은 자동으로 글로벌 모듈이 됨</b>
+    - typeRoots 옵션이 있다면 자동으로 읽어들일 수 없으므로 주의
 </details>
