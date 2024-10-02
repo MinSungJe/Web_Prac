@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-10-01
+## 🗒️Last Update : 2024-10-02
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -896,4 +896,94 @@
 - 외부라이브러리 쓸 때 타입정의 안되어있다면 Definitely Typed github 레포지토리나 타입스크립트 공식홈페이지 가서 원하는 타입파일 다운받아 갖다쓰면 됨
     - ❗<b>node_modules/@types 폴더에 있는 타입들은 자동으로 글로벌 모듈이 됨</b>
     - typeRoots 옵션이 있다면 자동으로 읽어들일 수 없으므로 주의
+</details>
+
+<details>
+<summary><b>🤔 interface + implements => class 타입 확인할 때 쓸 수 있음</b></summary>
+
+- ❗<b>`implements`: interface에 들어있는 속성을 가지고 있는 지 확인해주세요~</b>
+    - ❗<b>이 class가 특정 필드와 함수를 가지고 있는지 확인하고 싶은 경우 사용</b>
+        ```ts
+        // CarType interface의 model, price가
+        interface CarType {
+            model : string,
+            price : number
+        }
+
+        // Car에 있는지 확인
+        class Car implements CarType {
+            model: string;
+            price: number = 1000;
+            constructor(a :string) {
+                this.model = a
+            }
+        }
+        let 붕붕이 = new Car('morning');
+        ```
+    - (주의) implements는 타입지정문법이 아니고 속성을 가지고 있는지만 확인하라는 뜻임!: class에다가 필드와 타입을 할당하고 변형시키는 역할은 아님
+        ```ts
+        interface CarType {
+            model : string,
+            tax : (price :number) => number;
+        }
+
+        class Car implements CarType {
+            // 그냥 model과 tax 속성이 있으면 통과
+            model;   // model은 any 타입됨, string 할당 X
+            tax (a){   // a 파라미터는 any 타입됨, 타입 할당 X
+                return a * 0.1
+            }
+        }
+        ```
+    - 사용하는 곳: 클래스끼리 복잡하게 상속하고 그런 경우에 class가 특정 필드와 함수 같은 걸 가지고 있는지 확인하고 체크할 때?
+    - `extends`랑 다른 점은?
+        - `extends`는 뒤 class에 있던 필드와 함수를 A로 복사해줌: 상속 구현할 때 씀
+        - `implements`는 그냥 class에 있는 필드와 함수가 있는지 체크만 해줌
+</details>
+
+<details>
+<summary><b>🤔 object 타입지정할 때 쓰는 index signature</b></summary>
+
+- object 용 타입을 하나 만들고 싶은데 어떤 이름의 key가 들어올지 몰라요..
+- `index signature`을 써서 해결!: ❗<b>특정 type의 key값에 해당하는 value의 타입지정 가능</b>
+    ```ts
+    interface StringOnly {
+        // 모든 string type의 키값에 해당하는 value는 string
+        [key: string]: string 
+    }
+
+    let obj: StringOnly = {
+        name : 'kim',
+        age : '20',
+        location : 'seoul'
+    }
+    ```
+- 논리적으로 말이 된다면 응용도 충분히 가능
+    ```ts
+    // age만 number 넣고 나머지는 string 넣고 싶을 때
+    interface StringOnly {
+    age: number,   // 가능
+    [key: string]: string | number,
+    }
+    ```
+</details>
+
+<details>
+<summary><b>🤔 recursive하게 타입 만드는 법</b></summary>
+
+- 타입 안에 자기랑 똑같은 타입 쓸 수 있음
+- 마지막 값을 고려하려면 `|`로 묶어보자
+    ```ts
+    interface MyType {
+        'font-size': MyType | number
+    }
+
+    let css: MyType = {
+        'font-size': {
+            'font-size': {
+                'font-size': 14
+            }
+        }
+    }
+    ```
 </details>

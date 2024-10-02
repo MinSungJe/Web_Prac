@@ -467,6 +467,58 @@
 // }
 // console.log(a + 1)
 
-import { Age } from "./test";
+// import { Age } from "./test";
 
-let age: Age
+// let age: Age
+
+// interface CarType {
+//     model : string,
+//     tax : (price :number) => number;
+// }
+
+// class Car implements CarType {
+//     model;   ///any 타입됨
+//     tax (a){   ///a 파라미터는 any 타입됨 
+//         return a * 0.1
+//     }
+// }
+interface MyType {
+    'font-size': MyType | number
+}
+
+let css: MyType = {
+    'font-size': {
+        'font-size': {
+            'font-size': 14
+        }
+    }
+}
+
+interface 숙제1타입 {
+    [key:string] : string|number
+}
+
+let obj: 숙제1타입 = {
+    model: 'k5',
+    brand: 'kia',
+    price: 6000,
+    year: 2030,
+    date: '6월',
+    percent: '5%',
+    dealer: '김차장',
+}
+
+interface 숙제2타입 {
+    'font-size': number
+    [key: string]: 숙제2타입 | number
+}
+
+let obj2: 숙제2타입 = {
+    'font-size' : 10,
+    'secondary' : {
+      'font-size' : 12,
+      'third' : {
+        'font-size' : 14
+      }
+    }
+  }
