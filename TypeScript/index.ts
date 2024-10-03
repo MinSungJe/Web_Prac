@@ -482,43 +482,77 @@
 //         return a * 0.1
 //     }
 // }
-interface MyType {
-    'font-size': MyType | number
+// interface MyType {
+//     'font-size': MyType | number
+// }
+
+// let css: MyType = {
+//     'font-size': {
+//         'font-size': {
+//             'font-size': 14
+//         }
+//     }
+// }
+
+// interface 숙제1타입 {
+//     [key:string] : string|number
+// }
+
+// let obj: 숙제1타입 = {
+//     model: 'k5',
+//     brand: 'kia',
+//     price: 6000,
+//     year: 2030,
+//     date: '6월',
+//     percent: '5%',
+//     dealer: '김차장',
+// }
+
+// interface 숙제2타입 {
+//     'font-size': number
+//     [key: string]: 숙제2타입 | number
+// }
+
+// let obj2: 숙제2타입 = {
+//     'font-size' : 10,
+//     'secondary' : {
+//       'font-size' : 12,
+//       'third' : {
+//         'font-size' : 14
+//       }
+//     }
+//   }
+
+// interface Person {
+//     [key: string]: number
+// }
+
+// let obj = {name: 'Min', age: 25}
+// Object.keys(obj)
+
+// type PersonKeys = keyof Person
+// let k: PersonKeys = 'age'
+
+type Car = {
+    color: boolean,
+    model: boolean,
+    price: boolean|number
 }
 
-let css: MyType = {
-    'font-size': {
-        'font-size': {
-            'font-size': 14
-        }
-    }
+type TypeChanger<MyType> = {
+    [key in keyof MyType]: string|number
 }
 
-interface 숙제1타입 {
-    [key:string] : string|number
-}
+type 새로운타입 = TypeChanger<Car>
 
-let obj: 숙제1타입 = {
-    model: 'k5',
-    brand: 'kia',
-    price: 6000,
-    year: 2030,
-    date: '6월',
-    percent: '5%',
-    dealer: '김차장',
-}
+// type Bus = {
+//     color: string,
+//     model: boolean,
+//     price: number
+// }
 
-interface 숙제2타입 {
-    'font-size': number
-    [key: string]: 숙제2타입 | number
-}
+// type 숙제1Changer<T, name> = {
+//     [key in keyof T]: name
+// }
 
-let obj2: 숙제2타입 = {
-    'font-size' : 10,
-    'secondary' : {
-      'font-size' : 12,
-      'third' : {
-        'font-size' : 14
-      }
-    }
-  }
+// type NewType = 숙제1Changer<Bus, number>

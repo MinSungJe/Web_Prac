@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-10-02
+## 🗒️Last Update : 2024-10-03
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -962,8 +962,8 @@
     ```ts
     // age만 number 넣고 나머지는 string 넣고 싶을 때
     interface StringOnly {
-    age: number,   // 가능
-    [key: string]: string | number,
+        age: number,   // 가능
+        [key: string]: string | number,
     }
     ```
 </details>
@@ -985,5 +985,37 @@
             }
         }
     }
+    ```
+</details>
+
+<details>
+<summary><b>🤔 타입을 한꺼번에 바꿔치기도 가능함</b></summary>
+
+- `keyof`: `Object.keys(오브젝트명)`과 비슷한 TypeScript 키워드
+    ```ts
+    interface Person {
+        age: number,
+        name: string
+    }
+    type PersonKeys = keyof Person // = 'age'|'name'
+    let k: PersonKeys = 'age'
+    ```
+    - 모든 문자 key를 표현하는 index signature를 keyof로 담으면 `string|number`이 됨
+        - 오브젝트의 key값은 number도 string으로 읽히기 때문
+- ❗<b>이걸 이용하면 타입 전부 바꿔치기도 가능함</b>
+    ```ts
+    type Car = {
+        color: boolean,
+        model: boolean,
+        price: boolean|number
+    }
+
+    type TypeChanger<MyType> = {
+        // [key in 'color'|'model'|'price']: string
+        [key in keyof MyType]: string
+    }
+
+    // color, model, price가 전부 string인 새로운 타입 선언
+    type 새로운타입 = TypeChanger<Car>
     ```
 </details>
