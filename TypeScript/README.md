@@ -1,6 +1,6 @@
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/MinSungJe/Web_Prac)
 # 📝 TypeScript 연습장
-## 🗒️Last Update : 2024-10-03
+## 🗒️Last Update : 2024-10-04
 <details>
 <summary><b>🤔 TypeScript가 뭐에요?</b></summary>
 
@@ -1017,5 +1017,39 @@
 
     // color, model, price가 전부 string인 새로운 타입 선언
     type 새로운타입 = TypeChanger<Car>
+    ```
+</details>
+
+<details>
+<summary><b>🤔 타입을 만들때 조건문을 쓸 수 있어요</b></summary>
+
+- Generic(`<T>`)은 일반 타입변수에도 사용가능함
+- 여기에 if문 대용인 ❗<b>삼항연산자 이용!, 조건식은 `extends`를 쓰면 됨</b>
+    ```ts
+    // T가 string인지 확인, extends 문법 사용
+    type Age<T> = T extends string ? string : unknown
+    ```
+</details>
+
+<details>
+<summary><b>🤔 조건문에서는 infer 키워드를 쓸 수 있음</b></summary>
+
+- `infer`: 해당 자리에 들어갈 타입을 작명해서 추출해주는 키워드임
+    ```ts
+    // R은 T의 타입을 뽑아서 넣게됨
+    type Person<T> = T extends infer R ? R : unknown
+    ```
+- 근데 이거 어디다가 쓰나요
+    ```ts
+    // array 내부의 타입을 뽑는 예제
+    type 타입추출<T> = T extends (infer R)[] ? R : unknown;
+    type a = 타입추출<string[]> // array 내부의 타입만 뽑았으므로 a = string
+
+    // 함수를 넣으면 함수의 return 타입만 뽑는 예제
+    type 타입추출<T> = T extends (() => infer R) ? R : unknown;
+    type a = 타입추출<() => void> // 함수의 return 타입을 뽑았으므로 a = void
+
+    // 사실 이거 ReturnType이라는 기본 함수 쓰면 알아서 해줌
+    type b = ReturnType<()=>void>
     ```
 </details>

@@ -533,17 +533,17 @@
 // type PersonKeys = keyof Person
 // let k: PersonKeys = 'age'
 
-type Car = {
-    color: boolean,
-    model: boolean,
-    price: boolean|number
-}
+// type Car = {
+//     color: boolean,
+//     model: boolean,
+//     price: boolean|number
+// }
 
-type TypeChanger<MyType> = {
-    [key in keyof MyType]: string|number
-}
+// type TypeChanger<MyType> = {
+//     [key in keyof MyType]: string|number
+// }
 
-type 새로운타입 = TypeChanger<Car>
+// type 새로운타입 = TypeChanger<Car>
 
 // type Bus = {
 //     color: string,
@@ -556,3 +556,11 @@ type 새로운타입 = TypeChanger<Car>
 // }
 
 // type NewType = 숙제1Changer<Bus, number>
+
+type Age<T> = T extends [string, ...any] ? string : unknown
+let age1: Age<[string, number]>;
+let age2: Age<[boolean, number]>; 
+
+type 타입뽑기<T> = T extends ((x: infer R) => void) ? R : unknown
+let type1: 타입뽑기<(x :number) => void> //이러면 number가 이 자리에 남음
+let type2: 타입뽑기<(x :string) => void> //이러면 string이 이 자리에 남음

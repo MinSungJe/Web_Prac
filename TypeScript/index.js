@@ -2,12 +2,7 @@
 //     if (x) console.log('안녕하세요', x)
 //     else console.log('이름이 없습니다')
 // }
-// type Bus = {
-//     color: string,
-//     model: boolean,
-//     price: number
-// }
-// type 숙제1Changer<T, name> = {
-//     [key in keyof T]: name
-// }
-// type NewType = 숙제1Changer<Bus, number>
+var age1;
+var age2;
+var type1; //이러면 number가 이 자리에 남음
+var type2; //이러면 string이 이 자리에 남음
